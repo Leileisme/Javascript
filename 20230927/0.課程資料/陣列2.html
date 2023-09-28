@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const numbers = [100, 200, 300, 400, 500]
+
+    // 陣列.includes(搜尋內容)
+    // 陣列是否包含搜尋內容, boolean
+    console.log('includes', numbers.includes(100))
+    // 陣列.indexOf(搜尋內容)
+    // 陣列搜尋內容位置, -1 代表找不到
+    console.log('indexOf', numbers.indexOf(400))
+
+    const arr = [{ a: 1}]
+    console.log('arr.includes', arr.includes({a: 1}))  // false
+
+    const obj = { b: 2 }
+    const arr2 = [obj]
+    console.log('arr2.includes', arr2.includes(obj))  // true
+
+    // 陣列.some(function)
+    // 陣列裡面有沒有一個東西執行 function 後 return true
+    // 回傳 boolean
+    const hasMoreThan300 = numbers.some((value) => {
+      return value > 300
+    })
+    // const hasMoreThan300 = numbers.some(value => value > 300)
+    console.log('hasMoreThan300', hasMoreThan300)
+
+    // 陣列.every(function)
+    // 陣列裡面是不是所有東西執行 function 後 return true
+    // 回傳 boolean
+    const allMoreThan300 = numbers.every((value) => {
+      return value > 300
+    })
+    console.log('allMoreThan300', allMoreThan300)
+
+    // 陣列.find(function)
+    // 回傳第一個執行 function 結果為 true 的值
+    const find300 = numbers.find(value => {
+      return value > 300
+    })
+    console.log('find300', find300)
+
+    // 陣列.findLast(function)
+    // 回傳最後一個執行 function 結果為 true 的值
+    const findLast300 = numbers.findLast(value => {
+      return value > 300
+    })
+    console.log('findLast300', findLast300)
+
+    // 陣列.findIndex(function)
+    // 回傳第一個執行 function 結果為 true 的索引
+    const findIndex300 = numbers.findIndex(value => {
+      return value > 300
+    })
+    console.log('findIndex300', findIndex300)
+
+    // 陣列.findLastIndex(function)
+    // 回傳最後一個執行 function 結果為 true 的索引
+    const findLastIndex300 = numbers.findLastIndex(value => {
+      return value > 300
+    })
+    console.log('findLastIndex300', findLastIndex300)
+
+    // 陣列.filter(function)
+    // 回傳所有 return true 的值的陣列
+    // 不會動到原陣列，會產生一個新的陣列
+    const filter300 = numbers.filter(value => {
+      return value > 300
+    })
+    console.log('filter300', filter300)
+    console.log(numbers)
+  </script>
+</body>
+</html>

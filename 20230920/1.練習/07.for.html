@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07.for</title>
+</head>
+
+<body>
+  <script>
+    const alphabets = ['a', 'b', 'c', 'd']
+    // for (值 of 陣列)
+    for (const alphabet of alphabets) {
+      document.write(alphabet + '<br>')
+    }
+
+    // for(索引 in 陣列或物件)
+    //  i資料型態是文字
+    for (const i in alphabets) {
+      document.write(`${i * 1 + 1}:${alphabets[i]} <br>`)
+    }
+
+
+    document.write('<hr>')
+
+
+    // for in
+    const obj = {
+      a: 1,
+      b: 2,
+      c: 3
+    }
+
+
+    for (const key in obj) {
+      console.log(typeof key)
+      document.write(`${key}:${obj[key]}<br>`)
+    }
+
+  </script>
+</body>
+
+</html>

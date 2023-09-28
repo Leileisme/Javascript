@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20230925.預習ch8(0925)</title>
+</head>
+
+<body>
+  <script>
+    // 迴傳是否有指定文字 或是在第幾個
+    let text = "Hello, welcome to the world of Javascript.hello~hello!"
+    let a = text.includes("Javascript")
+    console.log(a)
+
+    let b = text.match(/apple/i) //null?
+    console.log(b)
+
+    // g在找到之後會繼續配對
+    let c = text.matchAll(/hello/ig)
+    for (let cc of c) {
+      console.log(cc)
+    }
+
+    let d = text.indexOf("Javascript")
+    console.log(d)
+
+    let xmas = "Xmas"
+    let e = xmas.replace("Xmas", "Christmas")
+    console.log(e)
+
+    let f = xmas.replace(/xmas/ig, 'Christmas')
+    console.log(f)
+
+    // ??
+    let email = "aaa@bbb.com";
+    let emailReplace = email.replace(/([A-Za-z].*)@([A-Za-z].*)\.com/g, "$1@$2.tw")
+    console.log(email)
+
+    // yoyo
+
+
+
+
+
+  </script>
+</body>
+
+</html>

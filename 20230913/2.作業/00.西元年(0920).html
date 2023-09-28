@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西元年</title>
+</head>
+
+<body>
+    <script>
+        /*
+        使用者可以輸入西元年、月、日，三個 prompt()
+        顯示使用者輸入的是該年的第幾天
+        
+        以 3/5 為例，將前兩個月的天數加起來，再加上 5 天即可
+        需考慮閏年 +1
+        某些月份的天數是 30，某些月份的天數是 31
+        parseInt(變數或是數字的文字) 可以把文字轉數字
+        */
+
+        let year = parseInt(prompt('輸入年分'))
+        let month = parseInt(prompt('輸入月份'))
+        let date = parseInt(prompt('輸入日期'))
+        let sumDate = 0
+
+        for (i = 2; i <= month; i++) {
+            if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+                if (i === 5 || i === 7 || i === 10 || i === 12) {
+                    sumDate += 30
+                } else if (i === 3) {
+                    sumDate += 29
+                } else {
+                    sumDate += 31
+                }
+            } else if (year % 4 !== 0) {
+                if (i === 5 || i === 7 || i === 10 || i === 12) {
+                    sumDate += 30
+                } else if (i === 3) {
+                    sumDate += 28
+                } else {
+                    sumDate += 31
+                }
+            }
+        }
+        document.write(`西元${year}年${month}月${date}日，是該年的第${sumDate + date}天`)
+
+    </script>
+
+</body>
+
+</html>

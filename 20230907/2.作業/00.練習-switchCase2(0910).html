@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switchCase練習2</title>
+</head>
+<body>
+    <script>
+        //根據用戶輸入的評分（A、B、C、D、F），顯示相應的評語
+        //（例如，A 顯示 "優秀"，B 顯示 "良好"，C 顯示 "普通"，D 顯示 "不及格"，F 顯示 "極差"）
+
+        let feel = prompt('今天活動的體驗請給A-F評分，A代表優秀，Ｆ代表極差')
+        let score = ''
+        switch(true){
+            case (feel === 'A') :
+                score = '優秀'
+            break
+            case (feel === 'B') :
+                score = '良好'
+            break
+            case (feel === 'C' ) :
+                score = '普通'
+            break
+            case (feel === 'D') :
+                score = '不及格'
+            break
+            case (feel === 'F') :
+                score = '極差'
+            default :
+                score = '"輸入錯誤"'
+                break
+        }
+
+        document.write(`你對今天活動體驗的評分是 ${score}`)
+
+
+
+
+    </script>    
+</body>
+</html>

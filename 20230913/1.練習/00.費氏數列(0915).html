@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>費氏數列</title>
+</head>
+
+<body>
+    <script>
+
+        let first = 0
+        let second = prompt('輸入數字,得到該數的費氏數列', '1')
+        let n = prompt('你要得到幾個數字的數列?', '5')
+        second = parseInt(second)
+        n = parseInt(n)
+        document.write(`你從${second}開始的費氏數列是${first}、 ${second}、 `)
+
+        for (i = 1; i <= (n - 2); i++) {
+            let next = first + second
+            first = second
+            second = next
+            document.write(`${next}、 `)
+        } document.write(`...等`)
+
+
+
+
+
+    </script>
+</body>
+
+</html>

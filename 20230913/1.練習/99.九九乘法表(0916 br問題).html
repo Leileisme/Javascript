@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0915九九乘法</title>
+</head>
+
+<body>
+  <table border="1" bordercolor=" #f00 ">
+    <!-- border不支援邊框顏色 -->
+    <tr>
+      <td>1</td>
+    </tr>
+  </table>
+
+
+
+  <script>
+    document.write(`<table border="1px;"> `)
+
+    for (i = 1; i <= 9; i++) {
+      document.write(`<tr>`)
+      for (j = 1; j <= 9; j++) {
+        document.write(`<td>${i}x${j}=${i * j}</td> `)
+      } document.write(`</tr><br>`) //為什麼這邊加一個<br>表格會垂直置中？
+    }
+
+    document.write(`<table>`)
+
+  </script>
+
+</body>
+
+</html>

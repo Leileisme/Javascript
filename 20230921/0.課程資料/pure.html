@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Impure function
+    // 一樣的輸入，不一樣的輸出
+    // 改到 function 外的變數
+    let value = 0
+    const add = (data) => {
+      value += data
+      return value
+    }
+    console.log(add(2))   // 2
+    console.log(add(2))   // 4
+
+    // Pure function
+    // 一樣的輸入，一樣的輸出
+    // 不會改到 function 外的變數
+    const add2 = (data) => {
+      const value = 0
+      return value + data
+    }
+    console.log(add2(2))   // 2
+    console.log(add2(2))   // 2
+  </script>
+</body>
+</html>

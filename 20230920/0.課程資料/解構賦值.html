@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const array = [1, 2, 3, 4]
+    // let one = array[0]
+    // let two = array[1]
+    // ... 代表其他的分配給 otherNumbers
+    let [one, two, ...otherNumbers] = array
+    console.log(one)          // 1
+    console.log(two)          // 2
+    console.log(otherNumbers) // [3, 4]
+    // 解構是 pass by value，不會修改到原本陣列的內容
+    one = 100
+    console.log(one)          // 100
+    console.log(array)        // [1, 2, 3, 4]
+
+    const obj = { a: 1, b: 2, c: 3, d: 4, e: 5 }
+    // let a = obj.a
+    // let b = obj.b
+    // let cc = obj.c
+    // 物件解構必須用跟 key 相同的名稱當變數，或是用 : 重新命名
+    let { a, b, c: cc, ...others } = obj
+    console.log(a)            // 1
+    console.log(b)            // 2
+    console.log(cc)           // 3
+    console.log(others)       // { d: 4, e: 5 }
+    a = 100
+    console.log(a)            // 100
+    console.log(obj)          // { a: 1, b: 2, c: 3, d: 4, e: 5 }
+  </script>
+</body>
+</html>

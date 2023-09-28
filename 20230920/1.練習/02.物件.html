@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物件</title>
+  <style>
+    body {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    const word = {
+      classroom: '1114',
+      name: '前端技術',
+      students: 24,
+      year: 112,
+      semester: 2
+    }
+
+    // .key 名字
+    document.write(word.name + '<br>')
+
+    // [] 裡有 '' 是因為是文字
+    document.write(word['classroom'] + '<br>')
+
+    // [] 是變數值
+    const key = 'year'
+    document.write(word[key] + '<br>')
+
+    // 物件 .length 是在物件內找 length 的 key
+    // document.write(word.length)  //undefined
+
+
+
+    // Object. 把物件內所有 key 取出陣列
+    console.log(Object.keys(word))
+
+    // Object. 把物件內所有 values 取出陣列 
+    console.log(Object.values(word))
+
+
+
+    let keys = Object.keys(word)
+    // 解壓縮等於 keys = ['classroom', 'name', 'students', 'year', 'semester']
+
+
+    // console.log(word[keys])
+
+    for (let i = 0; i < keys.length; i++) {
+      console.log(keys[i], word[keys[i]])
+    }
+
+    // word[keys[i]] = word['classroom'] = 1114
+  </script>
+</body>
+
+</html>

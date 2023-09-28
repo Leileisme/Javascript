@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星星挑戰1</title>
+  <style>
+    .starTower {
+      text-align: center;
+      width: 100%;
+      line-height: 40px;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="starTower">
+    <h2>星星塔挑戰題目-第1張 版本1(寫死版)</h2>
+    <img src="./img/星星挑戰.png" style="width: 500px;">
+    <br>
+    <h2>JS打印的結果</h2>
+
+    <script>
+
+      ///&#32; 半形空格無效
+      //&nbsp;全形打印也無法對齊Q 先隨便塗法煉鋼對起來
+
+      for (i = 1; i <= 1; i++) {
+        for (j = 1; j <= 1; j++) {
+          document.write(`★★★★★★★`)
+        }
+        document.write(`<br>`)
+        for (j = 1; j <= 5; j++) {
+          document.write(`★ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;★ <br>`)
+        }
+
+        for (j = 1; j <= 7; j++) {
+          document.write(`★`)
+        }
+      }
+
+
+    </script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02.陣列0927</title>
+</head>
+
+<body>
+  <script>
+    const numbers = [1, 2, 3, 4, 5]
+    // 有些特殊的陣列不接受.forEach()
+
+    // function each() { }
+    // numbers.forEach(each)
+
+    // 陣列.forEach(function)
+    // 陣列迴圈
+    // function 有三個參數，名字自訂
+    // 第一個代表現在迴圈跑到的 - 值
+    // 第二個代表 現在迴圈跑到的 - 索引
+    // 第三個代表現在迴圈跑的 - 陣列本身
+    // 可以選放
+    numbers.forEach((value, index, array) => {
+      console.log(value, index, array)
+
+      // 沒辦法直接用 value 改值
+      // value *= 2
+
+      // 只能用索引修改值( 這邊是因為他在迴圈裡嗎???)
+      // 1 0 
+      // 2 1
+      // 3 2
+      // 第n次跑 陣列的位置 
+      array[index] *= 2
+      numbers[index] *= 2
+    })
+    console.log(numbers)
+
+
+    // 陣列.join(分隔文字)
+    // 用分隔文字將陣列串成文字
+    // 分隔文字預設是 ,，加別的可替換
+    console.log(numbers.join())
+
+    // 陣列.push()
+    // 新增內容到陣列後面
+    const texts = ['a', 'b', 'c']
+    texts.push('d')
+    console.log(texts)
+
+
+    // 陣列.unshift()
+    // 新增內容到陣列前面
+    texts.unshift('ㄅ')
+    texts.unshift('ㄆ', 'ㄇ')
+    console.log(texts)
+
+
+    // 陣列,pop()
+    // 移除並回傳最後一個
+    const text2 = ['ㄅ', 'ㄆ', 'ㄇ']
+    const lastText2 = text2.pop()
+    console.log(lastText2)
+    console.log(text2)
+
+    // 陣列.shift()
+    // 移除並回傳第一個
+    const firstText2 = text2.shift()
+    console.log(firstText2)
+    console.log(text2)
+
+
+    // 陣列.splice(開始位置,刪除數量,插入項目1,插入項目2....)
+    // 常用
+    const companies = ['apple', 'HTC', 'samsung', 'SONY']
+    companies.splice(1, 2, 'Nothing', 'Google')
+    console.log(companies)
+
+
+    // 陣列.reverse()
+    // 反轉陣列
+    companies.reverse()
+    console.log(companies)
+  </script>
+</body>
+
+</html>

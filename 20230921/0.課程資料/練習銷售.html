@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const prices = [12, 16, 10, 14, 15]
+    const data = [
+      [33, 32, 56, 45, 33],
+      [77, 33, 68, 45, 23],
+      [43, 55, 43, 67, 65]
+    ]
+
+    // console.log(data[0][0]) // 33
+    // for (let i in data) {
+    //   for (let j in data[i]) {
+    //     console.log(data[i][j])
+    //   }
+    // }
+
+    // let sales1 = 0
+    // for (let j in data[0]) {
+    //   sales1 += data[0][j] * prices[j]
+    // }
+    // console.log(sales1)
+
+    // let product1 = 0
+    // for (let i in data) {
+    //   product1 += data[i][0] * prices[0]
+    // }
+    // console.log(product1)
+
+    const salesTotal = [0, 0, 0]
+    const productTotal = [0, 0, 0, 0, 0]
+    for (let i = 0; i < data.length; i++) {
+      for (let j = 0; j < data[i].length; j++) {
+        const total = data[i][j] * prices[j]
+        productTotal[j] += total
+        salesTotal[i] += total
+      }
+    }
+    console.log(salesTotal)
+    console.log(productTotal)
+  </script>
+</body>
+</html>

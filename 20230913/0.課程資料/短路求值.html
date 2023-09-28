@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // || 回傳第一個 Boolean() 判斷是 true 的值
+    const x = null || 0 || undefined || 123 || 'abc'
+    console.log(x)
+    
+    // && 回傳第一個 Boolean() 判斷是 false 的值
+    const y = 123 && 'abc' && 0 && null && undefined
+    console.log(y)
+
+    // ?? 回傳第一個不是 null 也不是 undefined 的值
+    const z = undefined ?? null ?? 0 ?? '' ?? 'abc' ?? false
+    console.log(z)
+
+    // const player = prompt('請輸入玩家名稱') || '路人'
+    // console.log(player)
+
+    // let player = prompt('請輸入玩家名稱') 
+    // if (player === '' || player === null) {
+    //   player = '路人'
+    // }
+    // console.log(player)
+  </script>
+</body>
+</html>

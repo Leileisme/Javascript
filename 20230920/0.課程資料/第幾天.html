@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const year = parseInt(prompt('年'))
+    const month = parseInt(prompt('月'))
+    const date = parseInt(prompt('日'))
+
+    // 總天數
+    let days = 0
+
+    // 迴圈經過的月份
+    for (let i = 1; i <= month - 1; i++) {
+      // 二月
+      if (i === 2) {
+        // 400 的倍數
+        // 是 4 但不是 100 的倍數
+        if (
+          year % 400 === 0 ||
+          (year % 4 === 0 && year % 100 !== 0)
+        ) {
+          days += 29
+        } else {
+          days += 28
+        }
+      } else if (
+        (i <= 7 && i % 2 === 1) ||
+        (i >= 8 && i % 2 === 0)
+      ) {
+        days += 31
+      } else {
+        days += 30
+      }
+    }
+
+    // 加上日
+    days += date
+
+    document.write(days)
+  </script>
+</body>
+</html>

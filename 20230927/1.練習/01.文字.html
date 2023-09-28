@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01.文字</title>
+</head>
+
+<body>
+  <script>
+
+
+    let text = '   Aa  Erg '
+    console.log(text)
+    //  文字.trim()移除前後空白，回傳的是文字
+    text = text.trim()
+    console.log(text)
+
+    // 文字.toUpperCase()轉大寫，回傳是文字
+    text = text.toUpperCase()
+    console.log(text)
+
+    // 文字.toUpperCase()轉小寫，回傳是文字
+    text = text.toLowerCase()
+    console.log(text)
+
+    // 只要資料型態正確，就可以串在一起
+    text = text.trim().toUpperCase().toLowerCase()
+    console.log(text)
+
+
+
+    let text2 = '外賣 咖哩拌飯 咖哩潤餅'
+
+    // 文字.includes(尋找文字,從第幾個開始找)
+    // 是否有包含尋找文字，回傳是 boolean
+    // 不能一次找兩個條件
+    // 從第幾個開始找是選填，預設是0
+    let hasCurry = text2.includes('咖哩', 10)
+    console.log(hasCurry)
+
+
+    // 文字.indexOf(尋找文字,從第幾個開始找)
+    // 尋找文字，回傳索引，找不到是-1
+    // 不能一次找兩個條件
+    // 從第幾個開始找是選填，預設是0
+    // 找到的字是第幾個字
+    let indexCurry = text2.indexOf('1235')
+    console.log(indexCurry)
+
+    // 文字.match(Regex)正則表達式
+    // 把符合的結果用陣列回傳
+    // g = 回傳兩個以上的結果
+    0
+
+    // 文字.matchAll(Regex)正則表達式
+    // 把符合的結果用陣列回傳，RegEcpStringIterator 物件只能用迴圈取資料
+    // g = 回傳兩個以上的結果
+    let matchAll = text2.matchAll(/咖哩/g)
+    for (const match of matchAll) {
+      console.log(match)
+    }
+
+    // .replace(搜尋文字，取代文字)
+    // 只會取代第一個
+    let replaceCurry = text2.replace('咖哩', '三色豆')
+    console.log(replaceCurry)
+
+    // .replace(Regex，取代文字)
+    // 只會取代第一個
+    let replaceCurry2 = text2.replace(/咖哩/g, '三色豆')
+    console.log(replaceCurry)
+
+    let email = 'afdgd@gmail.com'
+    let emailMatch = email.match(/^[0-9a-zA-Z]+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+$/g)
+    console.log(emailMatch)
+
+    if (emailMatch) {
+      console.log('email 格式正確')
+    } else {
+      console.log('email 格式不正確')
+    }
+
+    // Regex的()代表群組
+    // 取代時可以用 $數字 代表第幾個群組的字
+    let emailRegexGroup = /^([0-9a-zA-Z]+)@([0-9a-zA-Z]+\.[0-9a-zA-Z]+)$/g
+    let emailReplace = email.replace(/^([0-9a-zA-Z]+)@([0-9a-zA-Z]+\.[0-9a-zA-Z]+)$/g, '帳號是 $1，網域是 $2')
+    console.log(emailReplace)
+
+    let emailMachAll = email.matchAll(emailRegexGroup)
+    for (const match of emailMachAll) {
+      console.log(match)
+    }
+
+    let emailRegexGroup2 = /^(?<account>[0-9a-zA-Z]+)@(?<domain>[0-9a-zA-Z]+\.[0-9a-zA-Z]+)$/g
+    let emilMatchAll2 = email.matchAll(emailRegexGroup2)
+    for (const match of emilMatchAll2) {
+      // 0: "afdgd@gmail.com"  找到符合的部分
+      // 1: "afdgd" 第一個群組
+      // 2: "gmail.com" 第二個群組
+      // groups: { account: 'afdgd', domain: 'gmail.com' } 設定的群組名
+      // index: 0 從第幾個字開始
+      // input: "afdgd@gmail.com" 全部的文字
+      // 因為這邊我們有設定^ $從頭到尾，所以 input = 0
+      console.log(match)
+    }
+
+
+    let text3 = 'abcdefg'
+    //           0123456
+    // 文字.substr(開始位置,長度)
+    // 位置可以放負數，代表倒數，-1是倒數第一的字
+    // text3.length = 7
+    // -2 => 7 - 2 = 5
+    // console.log(text3.substr(-2, 3)) = console.log(text3.substr(5, 3))
+    // 長度不寫會直接取到結尾
+    console.log(text3.substr(-2, 3))
+
+
+    // 文字.substring(開始位置,結束位置)
+    // 不包含結束
+    // 結束不寫會直接取到結尾
+    console.log(text3.substring(2, 6))
+
+
+    // 文字.slice(開始位置，結束位置)
+    // 不包含結束位置
+    // 結束位置不寫會直接取到結尾
+    // 位置可以放負數，代表倒數，-1 是倒數第一個字
+    console.log(text3.slice(2, 6))
+    console.log(text3.slice(-4, -2))
+
+    let num1 = '123456.789'
+    console.log(parseInt(num1))
+    console.log(parseFloat(num1))
+    console.log(num1 * 1)
+    console.log(Number(num1))
+
+    let num2 = 'abc'
+    // 都會是NaN
+    // NaN == NaN ?? => false
+    console.log(parseInt(num2))
+    console.log(parseFloat(num2))
+    console.log(num2 * 1)
+    console.log(Number(num2))
+
+    console.log(num2 * 1 === NaN) //false
+    console.log(isNaN(num2 * 1)) //true
+
+    // 用正則表達式也可以驗證
+    // \d是0-9的數字
+    // \d{9,}9個以上的數字
+    // \D非數字的
+
+
+    // .split(',') 用逗號區分 陣列[aaa,bbb,ccc]
+    // .split(' ') 每個字['a','a','a'...]
+    // .split() ['aaa,bbb,ccc,ddd']
+    let text4 = 'aaa,bbb,ccc,ddd'
+    console.log(text4.split())
+    console.log(email.split('@'))
+    let filename = 'rjgklr.wtrer.aer.artra..jpg'
+    let filenamearray = filename.split('.')
+    console.log(filenamearray)
+    // 取陣列的最後一個
+    // 可以取的檔案的副檔名，看是不是要的檔案
+    console.log(filenamearray[filenamearray.length - 1])
+    // .at也可用
+    console.log(filenamearray.at(-1))
+
+
+
+  </script>
+</body>
+
+</html>

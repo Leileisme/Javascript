@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const wdaf2e = {
+      classroom: '1114',
+      name: '前端技術',
+      students: 24,
+      year: 112,
+      semester: 2
+    }
+
+    // .key 名字
+    document.write(wdaf2e.name + '<br>')
+    // []
+    document.write(wdaf2e['classroom'] + '<br>')
+    // 變數值配 []
+    const key = 'year'
+    document.write(wdaf2e[key] + '<br>')
+
+    // 物件的 .length 是在物件內找 length 的 key
+    document.write(wdaf2e.length) // undefined
+
+    // Object.keys 把物件內所有 key 取出成陣列
+    console.log(Object.keys(wdaf2e))
+    // Object.values 把物件內所有 values 取出成陣列
+    console.log(Object.values(wdaf2e))
+
+    const keys = Object.keys(wdaf2e)
+    for (let i = 0; i < keys.length; i++) {
+      console.log(keys[i], wdaf2e[keys[i]])
+    }
+  </script>
+</body>
+</html>

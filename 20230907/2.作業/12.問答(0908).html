@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你是不是合格的泰山前端人</title>
+</head>
+
+<body>
+    <script>
+
+        let score = 0
+        alert('「你是不是合格的泰山前端人」，5題小測驗!!!')
+
+
+        const school = prompt('1.泰山職訓局在??科技大學(輸入"?"處答案)')
+        if (school == '明志') {
+            alert('不錯嘛!+20分')
+            score += 20
+        } else {
+            alert('錯ㄌ!!你每天都經過欸???-5分')
+            score -= 5
+        }
+
+        const study = prompt('2.前端網頁技術課總共?個月?')
+        if (study == 6) {
+            alert('唉唷!!!+20分')
+            score += 20
+        } else {
+            alert('你再看一次課表~~~ -10分')
+            score -= 10
+        }
+
+        const teacher = prompt('3.班導姓氏是?')
+        if (teacher == '蔡') {
+            alert('對滴!+100分')
+            score += 100
+        } else {
+            alert('班導表示：QQ? -100分')
+            score -= 100
+        }
+
+        const test = prompt('4.有沒有要考檢定證照?')
+        let test2 = (test == '有' || test == '是' || test == 'yes' || test == 'YES' || test == 'Yes') ? '沒ㄘㄨㄛˋ啦!+20分' : '咦? -10分'
+        alert(`${test2}`)
+        score += (test2 == '沒ㄘㄨㄛˋ啦!+20分') ? 20 : -10 // 這邊邏輯要多看幾次
+
+
+        const language = prompt('5.不當切板仔，要學好什麼語言?')
+        if (language == 'JS' || language == 'JavaScript') { //在 ||後面都要記得 X = ''的X
+            alert('年薪百萬!!+1000000分')
+            score += 1000000
+        } else {
+            alert('你是切板仔QQ')
+        }
+
+        if (score >= 1000000) {
+            document.write(`總得分 ${score} ，百萬工程師離你不遠了!!!`)
+        } else if (score >= 100) {
+            document.write(`總得分 ${score} ，你是合格的泰山前端人~~~`)
+        } else if (score < 100 && score > 0) {
+            document.write(`總得分 ${score} ，母湯ㄛ~~~`)
+        } else {
+            document.write(`總得分 ${score} ，你是不是走錯地方ㄌ????`)
+        }
+
+    </script>
+</body>
+
+</html>

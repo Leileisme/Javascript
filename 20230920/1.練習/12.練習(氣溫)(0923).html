@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12.氣溫(0923)</title>
+</head>
+
+<body>
+  <script>
+
+    let table = [
+      ['', '星期一', '星期二', '星期三', '星期四'],
+      ['時段一', 18.2, 17.3, 15, 13.4],
+      ['時段二', 23.8, 25.1, 20.6, 17.8],
+      ['時段三', 20.6, 21.5, 18.4, 15.7]
+    ]
+
+    let temperatures = [
+      [18.2, 17.3, 15, 13.4],
+      [23.8, 25.1, 20.6, 17.8],
+      [20.6, 21.5, 18.4, 15.7],
+    ]
+
+
+    // 印表格
+    document.write(`<table border="1">`)
+    for (let i in table) {
+      document.write(`<tr>`)
+      for (let j = 0; j < table[i].length; j++) {
+        document.write(`<td>${table[i][j]} </td>`)
+      } document.write(`</tr>`)
+    }
+    document.write(`</table>`)
+    document.write(`<hr>`)
+
+    // 星期平均
+
+    for (let i = 0; i < temperatures[0].length; i++) {
+      let dayAverage = 0
+      for (let j = 0; j < temperatures.length; j++) {
+        dayAverage += temperatures[j][i]
+      } document.write(`星期${i + 1}平均氣溫：${dayAverage / temperatures.length}<br>`)
+    }
+    document.write(`<hr>`)
+
+    // 時段平均
+
+    for (let i = 0; i < temperatures.length; i++) {
+      let timeAverage = 0
+      for (let j = 0; j < temperatures[0].length; j++) {
+        timeAverage += temperatures[i][j]
+      } document.write(`時段${i + 1}平均氣溫：${timeAverage / temperatures[0].length}<br>`)
+    }
+    document.write(`<hr>`)
+
+    // 溫度最高的日子與時段
+
+
+    let [max, min] = [temperatures[0][0], temperatures[0][0]]
+    let [week1, time1, week2, time2] = [0, 0, 0, 0] // 最大最小值的星期,時段
+
+
+    for (let i = 0; i < temperatures.length; i++) {
+      for (let j = 0; j < temperatures[0].length; j++) {
+        if (max < temperatures[i][j]) {
+          max = temperatures[i][j]
+          week1 = j + 1
+          time1 = i + 1
+        }
+      }
+    } document.write(`星期${week1}、時段${time1}：最大值${max}<br>`)
+
+    for (let i = 0; i < temperatures.length; i++) {
+      for (let j = 0; j < temperatures[0].length; j++) {
+        if (min > temperatures[i][j]) {
+          min = temperatures[i][j]
+          week2 = j + 1
+          time2 = i + 1
+        }
+      }
+    } document.write(`星期${week2}、時段${time2}：最小值${min}`)
+
+
+  </script>
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運算子練習</title>
+</head>
+
+<body>
+    <script>
+               // 練習一
+
+        /*const isFat = confirm('你是肥宅嗎')
+        const isGoodCode = confirm('你會寫Code嗎')
+        const money = confirm('你有錢嗎')
+        if ((!isFat && isGoodCode) || money) {
+            //console.log('有前途')
+            document.write('有前途')
+        } else {
+            //console.log('幫ＱＱＱＱ')
+            document.write('幫QQ')
+        }
+
+        console.log(typeof isFat)
+        console.log(typeof money)
+
+        */
+
+        const music = confirm('你喜歡音樂嗎')
+        const sing = confirm('你喜歡唱歌嗎')
+        const guitarPlayer = confirm('你會彈吉他嗎')
+        
+        if(music && sing && guitarPlayer){
+            console.log('你是自彈自唱的音樂人啊！')
+        } else if(!guitarPlayer && music && sing){
+            console.log('你是主唱呀～')
+        } else if (!sing && music && guitarPlayer){
+            console.log('你是酷炫吉他手')
+        } else if(!music && sing && guitarPlayer){
+            console.log('不喜歡音樂，但卻喜歡唱歌或彈吉他 \'what???\'')
+        } else if(music){
+            console.log('你好啊！音樂愛好者～')    
+        } else{
+            console.log('喔~~～!!?')
+        }
+        
+        let musicQA = (music && sing && guitarPlayer) ? '你是自彈自唱的音樂人啊！' :
+        (!guitarPlayer && music && sing) ? '你是主唱呀～' :
+        (!sing && music && guitarPlayer) ? '你是酷炫吉他手' :
+        (!music && sing && guitarPlayer) ? '不喜歡音樂，但卻喜歡唱歌或彈吉他 \'what???\'' :
+        (music) ? '你好啊！音樂愛好者～' :
+        '喔~~～!!?'
+
+        document.write(musicQA)
+        
+        </script>
+</body>
+
+</html>

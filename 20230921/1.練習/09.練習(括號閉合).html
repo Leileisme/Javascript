@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09.練習(括號閉合)</title>
+</head>
+
+<body>
+  <script>
+
+    const isClose = (text) => {
+      let n = text.length - 1
+      let i = 0
+
+      for (let i in text) {
+        if (text.length % 2 !== 0) {
+          return false
+        } else if (text[n] == text[0]) {
+          return false
+        } else if (text[n] !== text[0] && (n - i) == Math.abs(1)) {
+          return true
+        } else if (text[n] !== text[0]) {
+          n--
+          i++
+        }
+      }
+    }
+
+    const result = isClose(prompt('輸入文字'))
+    console.log(result)
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>迴圈們練習</title>
+</head>
+
+<body>
+
+
+
+  <script>
+    /*
+    let i = 1;
+    while (i <= 2) {
+      document.write(`@`)
+      i++
+    }
+
+    
+    let input = prompt('猜數字')
+    input = parseInt(input)
+
+    while (input != 10) {
+      if (input < 10) {
+        alert('太小了')
+      } else if (input > 10) {
+        alert('太大了')
+      }
+      input = prompt('猜到中才會停止')
+      input = parseInt(input
+      )
+    }
+    */
+
+    /*
+    let input = ''
+
+    do {
+      input = prompt('你喜歡我嗎？')
+    } while (input != '喜歡')
+
+    */
+
+
+    /*
+    let input = prompt('輸入數字')
+    Number(input)
+
+    do {
+      if (input < 8) {
+        alert('太小')
+      } else if (input > 8) {
+        alert('太大')
+      } else {
+        alert('這不是數字')
+      }
+      input = prompt('')
+      Number(input)
+    } while (input != 8)
+    */
+
+    let count = 1
+    let num = 22
+
+    while (true) {
+      let answer = prompt(`第${count}次猜秘密數字`)
+      if (answer == num) {
+        break;
+      } count++
+    } document.write(`猜了${count}就答對了喔!棒棒`)
+
+  </script>
+</body>
+
+</html>

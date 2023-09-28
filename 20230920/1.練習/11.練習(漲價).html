@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11.漲價</title>
+</head>
+
+<body>
+  <script>
+    let counts = [1, 8, 3, 4, 5, 6, 7, 2, 9, 10] // 饅頭數量
+    let moneys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 饅頭每天的錢
+    // 這邊可以用迴圈設定陣列嗎？（上）
+
+    let sumMoneys = 0
+    for (let i in counts) {
+      sumMoneys += counts[i] * moneys[i]
+    } document.write(`小明買饅頭總共花了$${sumMoneys}`)
+
+
+  </script>
+</body>
+
+</html>

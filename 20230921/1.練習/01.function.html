@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  
+  , initial-scale=1.0">
+  <title>01.function</title>
+</head>
+
+<body>
+  <script>
+    function GoodMorning() {
+      //   document.write('<p>早上好，現在我有冰淇淋</p>')
+    }
+    // GoodMorning()
+
+    function GoodMorning(time, item) {
+      // ['早上','冰淇淋']
+      console.log(arguments)
+      document.write(`<p>${time}好，現在我有${item}</p>`)
+    }
+    GoodMorning('早上', '冰淇淋')
+    GoodMorning('中午', '冰淇淋')
+
+
+    // const GoodMorning = function (time, item) {
+    //   document.write(`<p>${time}好，現在我有${item}</p>`)
+    // }
+    // GoodMorning('早上', '冰淇淋')
+
+
+    // 等於後面是預設值
+    // function GoodMorning(time = '早上', item = '冰淇淋') {
+    //   document.write(`<p>${time}好，現在我有${item}</p>`)
+    // }
+    // GoodMorning()
+    // GoodMorning('晚上')
+    // GoodMorning(undefined, '切爾西')
+
+
+    // function GoodMorning(time = '早上', item = '冰淇淋') {
+    //   return `${time}好，現在我有${item}`
+    //   // return後面的東西都不會執行
+    //   console.log(123) // 無效
+    // }
+    // const text = GoodMorning()
+    // console.log(text)
+    // document.write(`<h1>${GoodMorning('中午', '桂格超大便當')}</h1>`)
+
+    // 箭頭函式
+
+    // const GoodMorning = (time = '早上', item = '冰淇淋') => {
+    //   // Uncaught ReferenceError: arguments is not definedat GoodMorning
+    //   // console.log(arguments) 無「arguments」可用
+    //   return `${time}好，現在我有${item}`
+    // }
+    // document.write(`<h1>${GoodMorning('中午', '桂格超大便當')}</h1>`)
+
+    // 如果參數只有一個且沒有預設值，不用加()
+    // const GoodMorinig = time => {
+    //   return `${time} 好，現在我有冰淇淋`
+    // }
+
+    // 如果 function 內只有一行 return 且 return 的不是{ }，不用加 return 和{ }
+    // const GoodMornrnig = time => `${time} 好，現在我有冰淇淋`
+
+  </script>
+</body>
+
+</html>

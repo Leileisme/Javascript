@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球</title>
+</head>
+
+<body>
+    <script>
+
+        let ballTenth = 0
+        let sumBall = 0
+
+
+        for (let j = 1; j <= 10; j++) {
+            ballTenth = (100 * (0.5 ** j))
+            sumBall += ballTenth
+        } document.write(`第 10 次落地時共經過 ${(sumBall - ballTenth) * 2 + 100} 公尺 <br>`)
+        document.write(`第 10 次反彈 ${ballTenth} 公尺`)
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="星星" content="width=device-width, initial-scale=1.0">
+    <title>星星</title>
+
+
+    <style>
+        .starTower {
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="starTower">
+        <script>
+            const input = prompt('輸入數字')
+
+
+            // 宣告變數、迴圈執行條件、離開迴圈後執行的動作
+            for (i = 1; i <= input; i++) {
+                for (j = 1; j <= (i * 2 - 1); j++) {
+                    document.write(`★`)
+                }
+                document.write(`<br>`)
+            }
+
+        </script>
+    </div>
+
+</body>
+
+</html>

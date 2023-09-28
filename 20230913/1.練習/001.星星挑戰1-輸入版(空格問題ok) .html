@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星星挑戰1-2</title>
+  <style>
+    .starTower {
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="starTower">
+    <h2>星星塔挑戰題目-第1張 版本2(輸入版)</h2>
+    <img src="./img/星星挑戰.png" style="width: 500px;">
+    <br>
+    <h2>JS打印的結果</h2>
+    <script>
+
+      let input = prompt('輸入數字蓋數字塔')
+      input = parseInt(input)
+
+      //&#32; 半形空格無效
+      //&nbsp;全形打印也無法對齊Q
+      //0920老師說是字體不等寬
+
+      document.write(`你的${input}層星星塔<br><br>`)
+
+      for (let j = 1; j <= input; j++) {
+        document.write(`*`)
+      } document.write(`<br>`)
+
+      for (let j = 1; j <= (input - 2); j++) {
+        for (let k = 1; k <= 1; k++) {
+          document.write(`*`)
+        }
+
+        for (let k = 1; k <= (input - 2); k++) {
+          document.write('&nbsp;')
+        }
+        for (let k = 1; k <= 1; k++) {
+          document.write(`*<br>`)
+        }
+      }
+
+      for (j = 1; j <= input; j++) {
+        document.write(`*`)
+      }
+
+
+    </script>
+  </div>
+</body>
+
+</html>

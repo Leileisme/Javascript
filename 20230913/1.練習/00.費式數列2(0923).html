@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>00.費式數列2</title>
+</head>
+
+<body>
+  <script>
+
+    let num = parseInt(prompt('輸入數字,得到該數以前的「費氏數列」'))
+    let [first, second, next] = [0, 1, 0]
+
+
+    console.log(typeof num)
+
+    while (next < num) {
+      next = first + second
+      first = second
+      second = next
+      if (next <= num) {
+        document.write(`${next}、`)
+      }
+    }
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球</title>
+</head>
+
+<body>
+    <script>
+
+        let count = 0 //第X次落地反彈的高度
+        let sum = 0 // 第X次落地+反彈的全部總和
+
+
+        for (let i = 1; i <= 10; i++) {
+            count = 100 * (0.5 ** i)
+            sum += count
+        }
+        document.write(`第 10 次落地時共經過 ${(sum - count) * 2 + 100} 公尺 <br>`)
+        document.write(`第 10 次反彈 ${count} 公尺`)
+
+
+
+    </script>
+</body>
+
+</html>

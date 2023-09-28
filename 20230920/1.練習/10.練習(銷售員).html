@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10.銷售員</title>
+</head>
+
+<body>
+  <script>
+    let price = [
+      [33, 32, 56, 45, 33],
+      [77, 33, 68, 45, 23],
+      [43, 55, 43, 67, 65]
+    ]
+
+    // console.log(price[0])
+    // let priceA = 0
+
+    // for (let i in price[0]) {
+    //   priceA += price[0][i] * 33
+    // } document.write(`銷售員A總銷售額${priceA}<br>`)
+
+    let money = [12, 16, 10, 14, 15]
+
+    let one = 0
+    for (let i in price[0]) {
+      one += (price[0][i] * money[i])
+    } document.write(`銷售員1的銷售總金額${one}<br>`)
+
+    let two = 0
+    for (let i in price[1]) {
+      two += (price[1][i] * money[i])
+    } document.write(`銷售員2的銷售總金額${two}<br>`)
+
+    let three = 0
+    for (let i in price[2]) {
+      three += (price[2][i] * money[i])
+    } document.write(`銷售員3的銷售總金額${three}<br>`)
+
+
+
+    document.write('<hr>')
+
+    let A = price[0][0] + price[1][0] + price[2][0]
+    let B = price[0][1] + price[1][1] + price[2][1]
+    let C = price[0][2] + price[1][2] + price[2][2]
+    let D = price[0][3] + price[1][3] + price[2][3]
+    let E = price[0][4] + price[1][4] + price[2][4]
+
+    document.write(`
+    產品A銷售總金額是${A * 12}<br>
+    產品B銷售總金額是${B * 16}<br>
+    產品C銷售總金額是${C * 10}<br>
+    產品D銷售總金額是${D * 14}<br>
+    產品D銷售總金額是${E * 15}<br>
+    `)
+
+
+  </script>
+</body>
+
+</html>
