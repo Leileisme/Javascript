@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // setInterval重複計時器，語法跟計時器一樣，功能不一樣，會持續出現
+
+    const a = setInterval(() => { document.write('過一秒<br>') }, 1000)
+
+    setTimeout(() => { clearTimeout(a) }, 5000)
+
+
+  </script>
+
+</body>
+
+</html>

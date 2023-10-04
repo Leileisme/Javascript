@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .text-blue {
+      color: blue;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1 id="title">標題</h1>
+
+  <h2>
+    <i>111</i>
+  </h2>
+  <h2>
+    <i>222</i>
+  </h2>
+
+
+  <h3 class="text-red">1111</h3>
+  <h3 class="text-red">1111</h3>
+  <h3 class="text-red">1111</h3>
+  <h3 class="t-c">中間</h3>
+  <h3 class="t-c">中間</h3>
+  <h3 class="t-c">中間</h3>
+  <h3 class="text-blue">顏色</h3>
+  <h3 class="text-blue">顏色</h3>
+  <h3 class="text-blue">顏色</h3>
+
+
+
+  <script>
+    // 用 ID 抓元素
+    const title = document.getElementById('title')
+
+    console.log(title.innerText)
+    title.innerText = '改標題喔'
+
+
+    // 用標籤抓元素
+    const h2 = document.getElementsByTagName('h2')
+    //  .innerHTML = HTML 文字
+    for (let i = 0; i < h2.length; i++) {
+      console.log(h2[0].innerHTML)
+      h2[i].innerHTML = '<del>AAA</del>'
+    }
+    // 不能使用 .forEach 可以用for in 和 for of
+    // h2.forEach()
+
+    // 用 class 抓元素
+    const a = document.getElementsByClassName('text-red')
+    for (const element of a) {
+      // .style 行內樣式
+      element.style.color = 'red'
+    }
+
+    // 用 CSS 選擇器抓元素
+    // .querySelector -> 符合的第一個 回傳元素
+    // .querySelectorAll -> 符合的全部 回傳元素
+    const b = document.querySelectorAll('.t-c')
+    for (const element of b) {
+      element.style.textAlign = 'center'
+      element.style['text-align'] = 'center'
+    }
+
+
+    const blue = document.getElementsByClassName('text-blue')
+    for (const element of blue) {
+      // 空文字  因為樣式是 style 設定，不是行內
+      console.log(element.style.color)
+      // 使用 getComputedStyle 取最終顯示樣式
+      // getComputedStyle(元素,偽元素)
+      // getComputerStyle(element,'::before')
+      console.log(getComputedStyle(element).color)
+    }
+
+  </script>
+</body>
+
+</html>

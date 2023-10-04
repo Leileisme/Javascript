@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text-blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">標題</h1>
+    <h2>
+        <i>111</i>
+    </h2>
+    <h2>
+        <i>222</i>
+    </h2>
+    <h3 class="text-red">aaa</h3>
+    <h3 class="text-red">aaa</h3>
+    <h3 class="text-red">aaa</h3>
+    <h3 class="text-center">中間</h3>
+    <h3 class="text-center">中間</h3>
+    <h3 class="text-center">中間</h3>
+    <h3 class="text-blue">藍色</h3>
+    <h3 class="text-blue">藍色</h3>
+    <h3 class="text-blue">藍色</h3>
+    <script>
+        // 用 ID 抓元素
+        const title = document.getElementById('title')
+        // .innerText = 文字
+        console.log(title.innerText)
+        title.innerText = 'ABC標題'
+
+        // 用標籤抓元素
+        const h2 = document.getElementsByTagName('h2')
+        // .innerHTML = HTML 文字
+        console.log(h2[0].innerHTML)
+        for (let i = 0; i < h2.length; i++) {
+            console.log(h2[i].innerHTML)
+            h2[i].innerHTML = '<del>AAA</del>'
+        }
+        // 不能使用 .forEach，可以用 for in 和 for of
+        // h2.forEach()
+
+        // 用 class 抓元素
+        const red = document.getElementsByClassName('text-red')
+        for (const element of red) {
+            // .style 行內樣式
+            element.style.color = 'red'
+        }
+
+        // 用 CSS 選擇器抓元素
+        // .querySelector -> 符合的第一個，回傳元素
+        // .querySelectorAll -> 符合的全部，回傳陣列
+        const center = document.querySelectorAll('.text-center')
+        for (const element of center) {
+            element.style.textAlign = 'center'
+            element.style['text-align'] = 'center'
+        }
+
+        const blue = document.getElementsByClassName('text-blue')
+        for (const element of blue) {
+            // 空文字，因為樣式是 style 設定，不是行內
+            console.log(element.style.color)
+            // 使用 getComputedStyle 取最終顯示樣式
+            // getComputedStyle(元素, 偽元素)
+            // getComputedStyle(element, '::before')
+            console.log(getComputedStyle(element).color)
+        }
+    </script>
+</body>
+</html>

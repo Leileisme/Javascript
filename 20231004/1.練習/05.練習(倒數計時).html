@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05.練習(倒數計時)</title>
+</head>
+
+<body>
+  <script>
+
+
+    // const a = setInterval(() => {
+    //   for (let i = 10; i <= 1; i--) { document.write(i) }
+    // }, 1000)
+
+
+    // const a = setInterval(() => {
+    //   for (let i = 10; i >= 1; i--) {
+    //     document.write(i)
+    //   }
+    // }, 1000)
+
+
+    let i = 11
+
+
+    const a = setInterval(() => {
+      i--
+      document.write(i)
+    }
+      , 1000)
+
+
+    setTimeout(() => { clearTimeout(a) }, 10000)
+
+  </script>
+</body>
+
+</html>

@@ -12,11 +12,14 @@
 
 
     const num = (input) => {
-
+      let a = input - 1
       for (let i = 0; i < input; i++) {
-        if (input % (input - 1) == 1) {
-          console.log(a)
+        if (!input % a == 1) {
+          console.log(input)
+        } else {
+          a--
         }
+        console.log(input)
       }
     }
 

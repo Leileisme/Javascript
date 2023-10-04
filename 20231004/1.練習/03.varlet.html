@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1 2 3 4 5
+    // let 是區域變數，所以數字是會固定的
+    for (let i = 1; i <= 5; i++) {
+      setTimeout(() => { document.write(i) }, 3000)
+    }
+
+    // 6 6 6 6 6 
+    // var是全域變數，因為for比較快跑完，setTimeout比較慢，所以i都變完了才被打印出來
+    for (var i = 1; i <= 5; i++) {
+      setTimeout(() => { document.write(i) }, 3000)
+    }
+
+  </script>
+</body>
+
+</html>

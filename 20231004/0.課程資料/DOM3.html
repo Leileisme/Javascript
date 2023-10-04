@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p>guhjklm;,gyhbjlkmguhijokp</p>
+    </div>
+    <div id="div2">
+        <p>asjkdahsdlkajflksdjglksdhg</p>
+    </div>
+    <script>
+        const div1 = document.getElementById('div1')
+        // .insertAdjacentHTML(位置, HTML)
+        div1.insertAdjacentHTML('beforebegin', '<h1>beforebegin</h1>')
+        div1.insertAdjacentHTML('beforeend', '<h1>beforeend</h1>')
+        div1.insertAdjacentHTML('afterbegin', '<h1>afterbegin</h1>')
+        div1.insertAdjacentHTML('afterend', '<h1>afterend</h1>')
+
+        const div2 = document.getElementById('div2')
+        const image = document.createElement('img')
+        image.width = 100
+        image.height = 100
+        image.src = 'https://github.com/rogeraabbccdd.png'
+        // .prepend() 開始標籤後
+        // .append()　結尾標籤前
+        // .insertAdjacentElement(位置, 元素)
+        // 若元素不在 DOM 會新增，已經在 DOM 會移動位置
+        div2.prepend(image)
+        div2.append(image)
+        div2.insertAdjacentElement('beforebegin', image)
+
+        // .remove() 移除元素
+        // div2.remove()
+    </script>
+</body>
+</html>

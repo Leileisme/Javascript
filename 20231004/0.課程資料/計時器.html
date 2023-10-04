@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setTimeout(function () {})
+        // setTimeout(() => {})
+        // function hi () {}
+        // setTimeout(hi)
+
+        // setTimeout(() => {
+        //     document.write('三秒鐘')
+        // }, 3000)
+
+        // const write = () => {
+        //     document.write('三秒鐘')
+        // }
+        // setTimeout(write, 3000)
+
+        const write = (ms, text) => {
+            document.write(ms + '，' + text)
+        }
+        // setTimeout(function, 毫秒, function 參數)
+        setTimeout(write, 3000, 3000, 'abc')
+
+        const timer = setTimeout(() => {
+            document.write('aaaa')
+        }, 5000)
+        // 停止計時器
+        clearTimeout(timer)
+    </script>
+</body>
+</html>

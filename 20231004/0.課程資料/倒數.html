@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setTimeout(() => {
+        //     document.write(10)
+        // }, 1000)
+        // setTimeout(() => {
+        //     document.write(9)
+        // }, 2000)
+        // setTimeout(() => {
+        //     document.write(8)
+        // }, 3000)
+
+        // for (let i = 10; i >= 0; i--) {
+        //     setTimeout(() => {
+        //         document.write(i + '<br>')
+        //     }, 1000 * (11 - i))
+        // }
+
+        let number = 10
+        let timer = setInterval(() => {
+            document.write(number + '<br>')
+            number--
+            if (number < 0) {
+                clearInterval(timer)
+            }
+        }, 1000)
+    </script>
+</body>
+</html>

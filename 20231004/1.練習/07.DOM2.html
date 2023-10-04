@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .text-blue {
+      color: blue;
+    }
+
+    .border {
+      border: 1px solid black;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="links">
+    <a href="http://x.com">X</a>
+    <a href="http://github.com">Github</a>
+  </div>
+
+  <ul id="list1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+
+  <ul id="list2">
+    <li class="text-blue">1</li>
+    <li class="border">2</li>
+    <li id="list2-li3">3</li>
+    <li class="border">4</li>
+    <li class="text-blue">5</li>
+  </ul>
+
+  <script>
+    // .children 下一層所有元素
+    const links = document.getElementById('links').children
+    for (const x of links) {
+      console.log(x.href)
+      x.href = 'http://google.com'
+      x.target = '_blank'
+      x.innerText = 'google'
+    }
+
+    const list1 = document.getElementById('list1')
+    // firstElementChild 下一層的第一個
+    // .classList.add() 加上 class
+    list1.firstElementChild.classList.add('text-blue')
+    // .lastElementChild 下一層的最後一個
+    list1.lastElementChild.classList.add('text-blue', 'border')
+    // .classList.value 取所有 class 以空白隔開
+    console.log(list1.lastElementChild.classList.value)
+
+
+    // 參數有一個一個的逗號的都可以如下寫
+    const classes = ['text-blue', 'border']
+    list1.lastElementChild.classList.add(...classes)
+
+    const list2li3 = document.getElementById('list2-li3')
+    // previousElementSibling 同一層級前一個
+    // classList.remove() 移除 class 語法和.add() 相同
+    list2li3.previousElementSibling.classList.remove('border')
+
+    // 前一個的前一個的....如下
+    // list2li3.previousElementSibling.previousElementSibling.prefix.remove('text-blue')
+    // 可以用 for 迴圈去取
+    let el = document.getElementById('list2-li3')
+    for (let i = 0; i < 2; i++) {
+      el = el.previousElementSibling
+    }
+    // .classList.toggle( )切換class，沒有就新增，有就移除
+    el.classList.toggle('text-blue')
+
+    // .nextElementSibling 同一層的後一個
+    // .classList.replace(A,B)取代class A被B取代
+    list2li3.nextElementSibling.classList.replace('border', 'text-blue')
+
+    let el2 = document.getElementById('list2-li3')
+    for (let i = 0; i < 2; i++) {
+      el2 = el2.nextElementSibling
+    }
+    // .classList.contains()是否有包含 class
+    console.log(el2.classList.contains('border'))
+
+    list2li3.parentElement.style.backgroundColor = '#222'
+
+  </script>
+</body>
+
+</html>

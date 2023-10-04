@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 可以在延遲一段時間後執行function
+
+    // setTimeout(function(){})
+    // setTimeout(()=>{})
+    // function h1(){}
+    // setTimeout(h1)
+
+    setTimeout(() => { document.write('三秒鐘') }, 3000)
+
+    // function的格式????一百種???
+    const a = () => {
+      document.write('2秒鐘')
+    }
+
+    // setTimeout(a(), 2000)，a後面這邊不能在放小括號，因為他沒有return??
+    a()
+    setTimeout(a, 2000)
+
+    //
+    const b = (ms, text) => {
+      document.write(ms + '.' + text)
+    }
+
+    // 如果有變數的話，後面可放變數
+    // setTimeout(function,延遲的毫秒, function 參數-有幾個放幾個)
+    setTimeout(b, 4000, 3000, 'abc')
+
+
+    const c = setTimeout(() => { document.write('aaa') }, 5000)
+
+    // 停止計時
+
+    clearTimeout(c)
+  </script>
+</body>
+
+</html>

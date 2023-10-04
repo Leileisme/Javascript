@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="textH1" style="color: blue;">倒數<span id="time"></span>秒</h1>
+
+  <script>
+    let i = parseInt(prompt())
+
+    const a = setInterval(() => {
+      if (i >= 1) {
+        let timeNum = document.getElementById('time')
+        timeNum.innerHTML = i
+        i--
+      } else {
+        let text = document.getElementsByClassName('textH1')
+        text[0].innerHTML = '時間到'
+        text[0].style.color = 'red'
+
+
+        // document.getElementsByTagName('h1')
+        // h1[0].innerHTML = '時間到'
+        // h1[0].style.color = 'red'
+      }
+    }
+      , 1000)
+
+
+    // setTimeout(() => { clearTimeout(a) }, 10000)
+
+  </script>
+</body>
+
+</html>
