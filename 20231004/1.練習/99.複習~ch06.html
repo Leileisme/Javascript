@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99.複習 ~ch06</title>
+</head>
+
+
+<body>
+
+  <script>
+    // 短路求值 ch04
+
+    // || 回傳第一個是 true 的值，若全部是 false 則回傳最後一個值
+    let a = false
+    let b = undefined
+    let c = false
+    let x = ''
+    let y = null
+    let d = a || b || 3 || c || undefined
+    //  && 回傳第一個是 false．若全部都是 true 則回傳最後一個值
+    let e = 4 && 2 && false && '我'
+    // ?? 空值合併運算子，回傳第一個非 null 和非 undefined 的值，如果都沒有回傳最後一個值
+    let f = y ?? 2 ?? x ?? a
+    console.log(d)
+    console.log(e)
+    console.log(f)
+
+    let i = ''
+    let j = 100
+    let k = null
+    let l = k ?? i ?? j
+    console.log(l)
+
+
+
+    // ch04
+    // confirm 跳出一個確認視窗，可點擊確認或取消，為布林值
+    // const ans = confirm('1+1=2')
+    // if (ans) {
+    //   console.log('對低')
+    // } else {
+    //   console.log('錯低')
+    // }
+
+
+
+    // ch05 漸變迴圈★
+    // for (let i = 0, j = 255; i <= 255, j >= 0; i += 5, j -= 5) {
+    //   document.write(`<span style = "color:rgb(${i},0,${j});">★</span>`)
+    // }
+
+
+
+    // ch05 漸變背景九九乘法表
+    let aa = 0
+    let bb = 255
+
+    document.write(`<table border=1px >`)
+    for (let i = 1; i <= 9; i++) {
+      document.write(`<tr>`)
+      for (let j = 1; j <= 9; j++) {
+        document.write(`<td style="background-color:rgb(${aa},150,${bb})">${i}x${j}=${i * j}</td>`)
+        aa += 5
+        bb - +5
+      }
+      document.write(`</tr>`)
+    }
+    document.write(`</table>`)
+
+
+
+    // ch05 while
+    // let input = ''
+    // while (input !== '10') {
+    //   input = prompt('輸入10')
+    // }
+
+
+    // ch06 物件
+    let person = {
+      name: '小明',
+      age: 15,
+      like: '吃'
+    }
+
+    // 用 Object.keys(person) 可以得出 person 這個物件全部的key
+    console.log(Object.keys(person).length)
+    console.log(person.name)
+
+
+
+    // ch06 解構賦值
+    const object = { a1: 1, b1: 2, c1: 3, d1: 4 }
+    const { a1, b1: newValue, ...others } = object
+    console.log(newValue)
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
