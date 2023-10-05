@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="btn" class="btn">
+    <input type="button" value="btn" class="btn">
+    <input type="button" value="btn" class="btn">
+    <input type="button" value="unbind" id="btn-unbind">
+    <script>
+        const hi = () => {
+            alert('ABCD')
+        }
+
+        const btn = document.getElementsByClassName('btn')
+        for (const el of btn) {
+            // el.addEventListener('click', () => {
+            //     alert('ABCD')
+            // })
+            el.addEventListener('click', hi)
+        }
+
+        const btnUnbind = document.getElementById('btn-unbind')
+        btnUnbind.addEventListener('click', () => {
+            for (const el of btn) {
+                el.removeEventListener('click', hi)
+            }
+        })
+    </script>
+</body>
+</html>

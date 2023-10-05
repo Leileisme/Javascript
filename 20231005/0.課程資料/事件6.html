@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #out {
+            width: 300px;
+            height: 300px;
+            background: pink;
+        }
+        #in {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://x.com" id="link">X</a>
+    <div id="out">
+        <div id="in"></div>
+    </div>
+    <script>
+        const link = document.querySelector('#link')
+        link.addEventListener('click', (event) => {
+            event.preventDefault()
+        })
+
+        const inDiv = document.querySelector('#in')
+        const outDiv = document.querySelector('#out')
+        inDiv.addEventListener('click', (event) => {
+            event.stopPropagation()
+            console.log('in', event.target)
+        })
+        outDiv.addEventListener('click', (event) => {
+            console.log('out', event.target)
+        })
+    </script>
+</body>
+</html>

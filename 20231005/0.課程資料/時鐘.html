@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+        #clock {
+            width: 300px;
+            height: 300px;
+            background: black;
+            margin: auto;
+            border-radius: 50%;
+            position: relative;
+            top: calc(50% - 150px);
+        }
+        #hour {
+            width: 20%;
+            height: 10px;
+            background-color: aqua;
+            position: absolute;
+            top: calc(50% - 5px);
+            left: 30%;
+            border-radius: 5px;
+            transform-origin: right center;
+        }
+        #minute {
+            width: 40%;
+            height: 10px;
+            background-color: blueviolet;
+            position: absolute;
+            top: calc(50% - 5px);
+            left: 10%;
+            border-radius: 5px;
+            transform-origin: right center;
+        }
+        #second {
+            width: 45%;
+            height: 6px;
+            background-color: chartreuse;
+            position: absolute;
+            top: calc(50% - 3px);
+            left: 5%;
+            border-radius: 3px;
+            transform-origin: right center;
+        }
+        #text {
+            color: white;
+            text-align: center;
+            top: 60%;
+            position: absolute;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <p id="text">00:00:00</p>
+    </div>
+    <script>
+        const elHour = document.getElementById('hour')
+        const elMinute = document.getElementById('minute')
+        const elSecond = document.getElementById('second')
+        const elText = document.getElementById('text')
+        
+        const clock = () => {
+            const date = new Date()
+            const hour = date.getHours()
+            const minute = date.getMinutes()
+            const second = date.getSeconds()
+            elHour.style.transform = `rotate(${hour*30+90}deg)`
+            elMinute.style.transform = `rotate(${minute*6+90}deg)`
+            elSecond.style.transform = `rotate(${second*6+90}deg)`
+            elText.innerText = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`
+        }
+
+        setInterval(clock, 1000)
+        clock()
+    </script>
+</body>
+</html>
