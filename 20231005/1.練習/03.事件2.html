@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03.事件2</title>
+</head>
+
+
+<body>
+  <input type="button" value="btn1" id="btn1">
+
+  <hr>
+  <input type="button" value="btn" class="btn">
+  <input type="button" value="btn" class="btn">
+  <input type="button" value="btn" class="btn">
+  <hr>
+
+  <input type="button" value="btn2" class="btn2">
+  <input type="button" value="btn2" class="btn2">
+  <input type="button" value="btn2" class="btn2">
+
+  <hr>
+
+  <input type="button" value="btnUnbind" id="btnUnbind">
+
+  <script>
+    // 好處： 10個事件要做一樣的事情可以用 function
+
+    const btn1 = document.getElementById('btn1')
+    btn1.onclick = () => {
+      alert('hi')
+    }
+
+    const btn = document.getElementsByClassName('btn')
+    for (const el of btn) {
+      el.onclick = () => {
+        alert('ASDF')
+      }
+    }
+
+    const hi = () => {
+      alert('2222')
+    }
+
+    const btn2 = document.getElementsByClassName('btn2')
+    for (const el of btn2) {
+      el.onclick = hi
+    }
+
+    const btnUnbind = document.getElementById('btnUnbind')
+    btnUnbind.onclick = () => {
+      btn1.onclick = null
+      for (const el of btn) {
+        el.onclick = null
+      }
+      for (const el of btn2) {
+        el.onclick = null
+      }
+    }
+
+  </script>
+</body>
+
+</html>

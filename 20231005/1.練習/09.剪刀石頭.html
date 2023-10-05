@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09.剪刀石頭</title>
+</head>
+
+<body>
+  <input type="button" value="剪刀" id="but1">
+  <input type="button" value="石頭" id="but2">
+  <input type="button" value="布" id="but3">
+
+  <hr>
+  <p id="text">贏:0 輸:0 平手:0</p>
+
+  <ul id="ul">
+
+  </ul>
+
+  <script>
+    const but1 = document.getElementById('but1') // 1剪刀
+    const but2 = document.getElementById('but2') // 2石頭
+    const but3 = document.getElementById('but3') // 3布
+    const text = document.getElementById('text')
+    const ul = document.getElementById('ul')
+
+    let win = 0
+    let lose = 0
+    let same = 0
+
+    // let computer = (Math.round(Math.random() * 2 + 1))
+
+
+    let computer = () => {
+      return Math.round(Math.random() * 2 + 1)
+    }
+
+
+    but1.addEventListener('click', () => {
+      if (computer() == 1) {
+        alert('你出剪刀，電腦出剪刀，平手')
+        same++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出剪刀，電腦出剪刀，平手</li>`
+      } else if (computer() == 2) {
+        alert('你出剪刀，電腦出石頭，你輸')
+        lose++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出剪刀，電腦出石頭，你輸</li>`
+      } else {
+        alert('你出剪刀，電腦出布，你贏')
+        win++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出剪刀，電腦出布，你贏</li>`
+      }
+    })
+
+
+    but2.addEventListener('click', () => {
+      if (computer() == 1) {
+        alert('你出石頭，電腦出剪刀，你贏')
+        win++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出石頭，電腦出剪刀，你贏</li>`
+      } else if (computer() == 2) {
+        alert('你出石頭，電腦出石頭，平手')
+        same++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出石頭，電腦出石頭，平手</li>`
+      } else {
+        alert('你出石頭，電腦出布，你輸')
+        lose++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出石頭，電腦出布，你輸</li>`
+      }
+    })
+
+
+    but3.addEventListener('click', () => {
+      if (computer() == 1) {
+        alert('你出布，電腦出剪刀，你輸')
+        lose++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出布，電腦出剪刀，你輸</li>`
+      } else if (computer() == 2) {
+        alert('你出布，電腦出石頭，你贏')
+        win++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出布，電腦出石頭，你贏</li>`
+      } else {
+        alert('你出布，電腦出布，平手')
+        same++
+        text.innerText = (`贏:${win} 輸:${lose} 平手:${same}`)
+        ul.innerHTML += `<li>你出布，電腦出布，平手</li>`
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

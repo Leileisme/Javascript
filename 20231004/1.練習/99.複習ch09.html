@@ -5,10 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <!-- <style>
+    .a {
+      color: aqua;
+    }
+
+    .b {
+      background-color: bisque;
+    }
+  </style> -->
+
+
 </head>
 
 <body>
-
+  <h1 class="a" class="b">aaabbb</h1>
+  <h1 class="a">aaa</h1>
 
   <script>
 
@@ -19,7 +32,13 @@
     document.getElementsByClassName("myClass");
 
     // 取得所有 class 為 a 和 b 的元素
+    // 要同時有 class a 和 b 的元素才會被選取
     document.getElementsByClassName('a b');
+
+    const abs = document.getElementsByClassName('a b')
+    for (const ab of abs) {
+      ab.style.color = 'red'
+    }
 
 
     // 修改元素 這邊要再看

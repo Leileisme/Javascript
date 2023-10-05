@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04.事件3</title>
+</head>
+
+<body>
+  <input type="button" value="btn" class="btn">
+  <input type="button" value="btn" class="btn">
+  <input type="button" value="btn" class="btn">
+
+  <input type="button" value="btn-unBind" id="btn-unBind">
+
+
+
+  <script>
+
+    const hi = () => {
+      alert('555')
+    }
+
+    // .addEventListener 放的是事件名稱，「el.onclick = hi」這種是on+事件名稱
+    const btn = document.getElementsByClassName('btn')
+    for (const el of btn) {
+      // el.addEventListener('click', () => { alert('555') })
+      el.addEventListener('click', hi)
+    }
+
+
+    const btnUnBind = document.getElementById('btn-unBind')
+    btnUnBind.addEventListener('click', () => {
+      for (const el of btn) {
+        el.removeEventListener('click', hi)
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

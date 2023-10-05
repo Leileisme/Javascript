@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05.事件4</title>
+</head>
+
+<body>
+  <input type="button" value="on" id="btnOn">
+  <input type="button" value="listener" id="btnListener">
+
+  <script>
+    const btnOn = document.getElementById('btnOn')
+    const btnListener = document.getElementById('btnListener')
+
+    // 只會執行最後一個
+    btnOn.onclick = () => {
+      alert('on 1')
+    }
+
+    btnOn.onclick = () => {
+      alert('on 2')
+    }
+
+    // 可以綁定多個 依照順序執行
+    btnListener.addEventListener('click', () => {
+      alert('listener 1')
+    })
+
+
+    btnListener.addEventListener('click', () => {
+      alert('listener 2')
+    })
+
+
+  </script>
+</body>
+
+</html>

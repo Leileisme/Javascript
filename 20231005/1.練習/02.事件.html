@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02.事件</title>
+</head>
+
+<body>
+  <!-- 行內的JS -->
+  <!-- onclick=" "  是JS的範圍-->
+  <input type="button" value="按鈕" onclick="alert('123')">
+
+  <!-- this 指這個標籤 -->
+  <input type="button" value="0" onclick="this.value++">
+
+
+
+  <!-- 給它 function -->
+  <input type="button" value="按鈕" onclick="onBtnClick()">
+  <input type="button" value="按鈕" onclick="onBtnClick2('a')">
+  <input type="button" value="按鈕" onclick="onBtnClick3(this,'a')">
+
+
+  <script>
+    const onBtnClick = () => {
+      alert('點了按鈕')
+    }
+
+    const onBtnClick2 = (text) => {
+      alert(text)
+    }
+
+
+    const onBtnClick3 = (element, text) => {
+      element.value = text
+      alert(text)
+    }
+  </script>
+
+</body>
+
+</html>

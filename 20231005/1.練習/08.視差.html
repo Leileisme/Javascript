@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08.視差</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-image: url(../1.練習/premium_photo-1694825173871-7b5df4d57ba5.avif);
+      background-size: 200%;
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-attachment: fixed;
+    }
+
+    #content {
+      width: 100%;
+      height: 5000px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content"></div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      // documentElement = HTML
+      // scrollTop 元素被捲動的高度
+      const top = document.documentElement.scrollTop
+      console.log(top)
+      document.body.style.backgroundPosition = `center -${top / 100}px`
+    })
+  </script>
+</body>
+
+</html>
