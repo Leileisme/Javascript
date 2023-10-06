@@ -41,10 +41,18 @@
     // 若元素不在 DOM 會新增，已經在 DOM 會移動位置
     div2.prepend(image)
     div2.append(image)
-    div2.insertAdjacentElement('beforebegin', image)
+    div2.insertAdjacentElement('beforeend', image)
 
     // .remove(移除元素)
-    div2.remove()
+    // div2.remove()
+
+    const div3 = document.getElementById('div2')
+    const h1 = document.createElement('h1')
+    div3.prepend(h1)
+    h1.innerText = "赫赫赫"
+    h1.style.fontSize = "80px"
+
+
   </script>
 </body>
 
