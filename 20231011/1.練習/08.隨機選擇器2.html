@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #content {
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(0, 0, 0);
+      position: fixed;
+    }
+
+    #box {
+      width: 250px;
+      height: 100px;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #a {
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(45deg, #555, #f00);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div id="a"></div> -->
+
+  <div id="content">
+
+    <div id="box">
+
+      紅
+      <input type="range" value="0" min="0" max="255" step="1" class="range">
+      <span class="text">0</span>
+      <input type="button" value="隨機" class="btn">
+      <br>
+      綠
+      <input type="range" value="0" min="0" max="255" step="1" class="range">
+      <span class=" text">0</span>
+      <input type="button" value="隨機" class="btn">
+      <br>
+      藍
+      <input type="range" value="0" min="0" max="255" step="1" class="range">
+      <span class="text">0</span>
+      <input type="button" value="隨機" class="btn">
+      <br>
+      deg
+      <input type="range" value="0" min="0" max="360" step="1" class="range">
+      <span class="text">0</span>
+      <input type="button" value="隨機" class="btn">
+    </div>
+  </div>
+
+  <script>
+    const content = document.getElementById('content')
+    const range = document.getElementsByClassName('range')
+    const text = document.getElementsByClassName('text')
+    const btn = document.getElementsByClassName('btn')
+
+    for (let i = 0; i <= 3; i++) {
+      range[i].addEventListener('input', () => {
+        text[i].innerText = range[i].value
+        content.style.background = `rgb(${range[0].value},${range[1].value},${range[2].value})`
+        text[3].innerText = range[3].value
+        // content.style.background = `radial-gradient(${range[3].value}deg,rgb(${range[0].value},${range[1].value},${range[2].value}) 20%,rgb(${range[0].value},${range[1].value},${range[2].value}) 20% )`
+      })
+
+      btn[i].addEventListener('click', () => {
+        range[i].value = Math.round(Math.random() * 255)
+        text[i].innerText = range[i].value
+        content.style.background = `rgb(${range[0].value},${range[1].value},${range[2].value})`
+      })
+    }
+
+    // range[4].addEventListener('input', () => {
+    //   text[4].innerText = range[4].value
+    //   content.style.background = `radial-gradient(${range[4].value}deg)`
+    // })
+
+  </script>
+</body>
+
+</html>
