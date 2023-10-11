@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .padding {
+            height: 2000px;
+        }
+        #target {
+            background: red;
+            height: 100px;
+            outline: 100px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="padding"></div>
+    <div id="target"></div>
+    <div class="padding"></div>
+    <script>
+        const target = document.getElementById('target')
+
+        // new IntersectionObserver(function, 設定參數)
+        // function entries = 相交的元素
+        // function owner = IntersectionObserver 設定
+        const observer = new IntersectionObserver((entries, owner) => {
+            console.log(owner)
+            for (const entry of entries) {
+                console.log(entry)
+            }
+        }, {
+            // 以哪個元素為依據，預設瀏覽器視窗
+            root: null,
+            // 計算相交時的偏移量
+            // rootMargin: '100px',
+            // 觸發比例門檻
+            threshold: 0.5
+        })
+        observer.observe(target)
+    </script>
+</body>
+</html>

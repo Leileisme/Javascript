@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 300px;
+      height: 300px;
+      border: 3px solid #555;
+      background: rgb(0, 0, 0);
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+
+  <input type="range" id="range_R" min="0" max="255" step="1" value="0">
+  <span id="R-value">0</span>
+  <input type="button" value="隨機" id="R-btn">
+
+
+  <br>
+
+  <input type="range" id="range_G" min="0" max="255" step="1" value="0">
+  <span id="G-value">0</span>
+  <input type="button" value="隨機" id="G-btn">
+
+  <br>
+
+  <input type="range" id="range_B" min="0" max="255" step="1" value="0">
+  <span id="B-value">0</span>
+  <input type="button" value="隨機" id="B-btn">
+
+  <script>
+
+    const box = document.getElementById('box')
+    const range_R = document.getElementById('range_R')
+    const R_value = document.getElementById('R-value')
+    const R_btn = document.getElementById('R-btn')
+
+
+
+    range_R.addEventListener('input', (event) => {
+      R_value.innerText = event.target.value
+      box.style.backgroundColor = `rgb(${event.target.value}, 0, 0)`
+    })
+
+
+    R_btn.addEventListener('click', () => {
+      range_R.value = (Math.round(Math.random() * 255))
+      R_value.innerText = range_R.value
+    })
+
+
+
+    // let Random = () => { return (Math.round(Math.random() * 256)) }
+
+
+  </script>
+</body>
+
+</html>

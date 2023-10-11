@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        const div = document.getElementById('div')
+
+        const observer = new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                console.log(mutation)
+            }
+        })
+        observer.observe(div, {
+            // 是否觀察屬性
+            attributes: true,
+            // 是否觀察下一層
+            childList: true,
+            // 所有內層
+            subtree: true,
+            // 內容變動
+            characterData: true,
+            // 紀錄舊屬性
+            attributeOldValue: true,
+            // 記錄舊內容
+            characterDataOldValue: true,
+            // 指定屬性名稱
+            attributeFilter: ['href']
+        })
+        // 停止觀察
+        // observer.disconnect()
+
+        div.style.width = '100px'
+        div.style.height = '100px'
+        div.style.background = 'gray'
+        div.innerText = '123'
+
+    </script>
+</body>
+</html>
