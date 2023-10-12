@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 有 form 就可用 Enter，搭配 input submit 才可點擊按鈕本人  -->
+    <!-- submit 點擊時會觸發上層 from 的 submit 事件(預設動作是重整頁面) -->
+
+    <form id="form">
+        <input type="text" id="text">
+        <br>
+        <input type="submit" id="btn" value="新增">
+    </form>
+    <br>
+    <ul id="list"></ul>
+
+
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        // button的寫法
+        // $('#btn').on('click',function(){
+        //     $('#list').prepend(`<li>${$('#text').val()}<input type="button"  value="X"></li> `)
+        //     $('#text').val('')
+        // })
+
+        $('#form').submit(function (event) {
+            // 停止 form 送出時的預設跳頁動作
+            event.preventDefault()
+            $('#list').prepend(`<li>${$('#text').val()}<input type="button"  value="X"></li> `)
+            $('#text').val('')
+        })
+
+        $('#list').on('click', 'input', function () {
+            $(this).closest('li').remove()
+        })
+
+
+    </script>
+</body>
+
+</html>

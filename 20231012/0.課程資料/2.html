@@ -1,0 +1,85 @@
+<html>
+	<head></head>
+	<body>
+		<div id="list">
+			<ul>
+				<li>A</li>
+				<li>B</li>
+				<li>C</li>
+			</ul>
+		</div>
+		<div id="list2">
+			<p>asdasd</p>
+			<ul>
+				<li>A</li>
+				<li>B</li>
+				<li>C</li>
+			</ul>
+		</div>
+		<div id="list3">
+			<ul>
+				<li id="list3A">A</li>
+				<li id="list3B">B</li>
+				<li id="list3C">C</li>
+				<li id="list3D">D</li>
+				<li id="list3E">E</li>
+			</ul>
+		</div>
+		<div id="list4">
+			<ul>
+				<li>A</li>
+				<li id="list4B">B</li>
+				<li>C</li>
+			</ul>
+		</div>
+		<script src="./jquery-3.7.1.min.js"></script>
+		<script>
+			// .find(選擇器)
+			// 往下層尋找符合選擇器的東西，可以尋找好幾層
+			$('#list').find('li').eq(1).css('color', 'red')
+			// document.getElementById('list').getElementsByTagName('li')[1].style.color = 'red'
+			
+			// .children(選擇器)
+			// 往下一層找符合選擇器的東西
+			// 不一定要寫選擇器，沒寫就是全部
+			$('#list2').children('li').text('123')
+			$('#list2').children('p').css('color', 'red')
+			$('#list2').children().css('background', 'gray')
+			
+			// .prev() 同一層前一個，可以放選擇器過濾
+			// .prevAll() 同一層前面所有，可以放選擇器過濾
+			// .prevUntil(選擇器) 同一層前面直到選擇器間的東西，不含頭尾
+			// .next() 同一層後一個，可以放選擇器過濾
+			// .nextAll() 同一層後面所有，可以放選擇器過濾
+			// .nextUntil(選擇器) 同一層後面直到選擇器間的東西，不含頭尾
+			// .siblings() 同一層其他所有，可以放選擇器過濾
+			$('#list3C').prev().css('color', 'red')
+			$('#list3C').next().css('color', 'red')
+			$('#list3C').prevAll().css('background', 'gray')
+			$('#list3C').nextAll().css('background', 'gray')
+			$('#list3C').prevUntil('#list3A').css('text-align', 'center')
+			$('#list3C').nextUntil('#list3E').css('text-align', 'center')
+			$('#list3C').siblings().css('font-style', 'italic')
+			
+			// .parent() 上一層，可以放選擇器過濾
+			// .parents() 所有上層直到 <html>，可以放選擇器過濾
+			// .closest(選擇器) 往上層找符合選擇器的第一個
+			// .parentsUntil(選擇器) 往上層找直到選擇器間的東西
+			const list4B = $('#list4B')
+			list4B.parent().css('background', 'gray')
+			list4B.parents().css('color', 'orange')
+			list4B.closest('div').css('border', '1px solid black')
+			list4B.parentsUntil('body').css('font-weight', 'bold')
+		</script>
+	</body>
+<html>
+
+
+
+
+
+
+
+
+
+

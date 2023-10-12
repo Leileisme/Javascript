@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="list">
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ul>
+    </div>
+
+    <div id="list2">
+        <p>56435108</p>
+        <ul>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+        </div>
+
+        <div id="list3">
+            <ul>
+                <li>a</li>
+                <li id="list3B">b</li>
+                <li id="list3C">c</li>
+                <li id="list3D">d</li>
+                <li>e</li>
+
+            </ul>
+            </div>
+
+
+            <div id="list4">
+                <ul>
+                    <li>a</li>
+                    <li id="list4B">b</li>
+                    <li>c</li>
+                </ul>
+                </div>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+        // .find(選擇器)
+        // 往下層(ALL)尋找符合選擇器的東西，可以尋找好幾層
+        $('#list').find('li').eq(1).css('color','red')
+
+        // .childeren(選擇器)
+        // 往子層找符合符合選擇器的東西
+        // 不一定要寫選擇器，沒寫就是全部
+        $('#list2').children('li').eq(1).css('color','red')
+        $('#list2').children('p').css('color','red')
+        $('#list2').children().css('background','gray')
+
+        // .prev(選擇器) 同一層前一個 可以放選擇器過濾
+        // .prevAll(選擇器) 同一層前面所有 可以放選擇器過濾
+        // .preUntil(選擇器) 同一層前面直到選擇器間的東西 不含頭尾
+        // .next(選擇器) 同一層後面一個 可以放選擇器過濾
+        // .nextAll(選擇器) 同一層後面所有 可以放選擇器過濾
+        // .nextUntil(選擇器) 同一層後面直到選擇器間的東西 不含頭尾
+        // .siblings() 同一層其他所有 可以放選擇器過濾
+        $('#list3C').prev().css('color','red')
+        $('#list3C').next().css('color','blue')
+        $('#list3C').prevAll().css('background','#000')
+        $('#list3C').nextAll().css('background','#ff0')
+        $('#list3B').nextUntil('#list3D').css('text-align','center')
+        $('#list3C').siblings().css('font-style','italic')
+
+
+        // .parent() 上一層，可以放選擇器過濾器
+        // .parents() 所有上層 直到<html>，可以放選擇器過濾器
+        // .closest(選擇器) 往上層找符合選擇器的第一個
+        // .parentsUntil(選擇器) 往上層找直到選擇器中間的東西
+        const list4B = $('#list4B')
+        list4B.parent().css('background','gray')
+        list4B.parents().css('color','orange')
+        list4B.closest('div').css('border','1px solid black')
+        list4B.parentsUntil('body').css('font-weight', 'bold')
+
+
+    </script>
+</body>
+</html>

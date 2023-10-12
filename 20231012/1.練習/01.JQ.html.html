@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .text-red{
+        color: red;
+    }
+
+    .text-center{
+        text-align: center;
+    }
+
+    .bg-black{
+        background: black;
+    }
+</style>
+
+</head>
+<body>
+<h1 id="title">111aaa</h1>
+<p class="text">111</p>
+<p class="text">222</p>
+<div id="div">
+    <p>54354325</p>
+</div>
+
+
+<br>
+<ui id="list1">
+    <li class="a">1</li>
+    <li class="b">2</li>
+    <li class="c">3</li>
+</ui>
+
+<br>
+<ui id="list2">
+    <li class="a">1</li>
+    <li class="b">2</li>
+    <li class="c">3</li>
+    <li class="d">4</li>
+    <li class="e">5</li>
+</ui>
+
+<a href="" id="link">4560</a>
+
+<p id="test">6+565+013
+<p id="test2">5016</p>
+</p>
+
+
+    <script src="./jquery-3.7.1.min.js"> </script>
+    <script>
+        // $（選擇器）
+        // .text()
+        // ()內有字 改
+        // ()內無字 取
+
+        console.log($('#title').text())
+        $('#title').text('222bbb')
+
+        // 如果選擇器有多個
+        // .text() 會把所有字連在一起
+        // 修改也會一起改
+        console.log($('.text').text())
+        $('.text').text('acbjy56+')
+
+        // .html()
+        // ()內有字 改
+        // ()內無字 取
+        console.log($('#div').html())
+        $('#div').html('<a href="#">123</a>')
+        console.log($('#div').html())
+
+        // .filter(選擇器)
+        // 過濾
+        $('#list1 li').filter('.a').text('111')
+
+        // .not(選擇器)
+        // 不是
+        $('#list1 li').not('.a').text('222')
+
+
+        // .length 取數量
+        // 無法用[0]直接取
+        console.log($('#list2 li').length)
+        // 如果用 [] 會變成原生 JS 語法混在一起
+        console.log($('#list2 li')[0].innerText)
+        // .eq(取第幾個)
+        console.log($('#list2 li').eq(0).text())
+
+        // .first() 第一個
+        // .last() 最後一個
+        console.log($('#list2 li').first().text())
+        console.log($('#list2 li').last().text())
+
+
+
+        // attr(屬性名) 取
+        // attr(屬性名,值) 改
+        // attr({屬性名:值,屬性名:值}) 改
+
+        $('#link').attr('href','http://x.com')
+        console.log($('#link').attr('href'))
+
+        // 物件名不一定要加''
+        $('#link').attr({href:'http://x.com',target:'_blank'})
+
+
+        // css(屬性名) 取
+        // css(屬性名,值) 改
+        // css({屬性名:值,屬性名:值}) 改
+
+        $('#test').css('color','red')
+        console.log($('#test').css('color'))
+        $('#test').css({color:'red','text-align':'center',fontSize:'20px'})
+
+
+        // .addClass() 新增，空白分隔多個
+        // .removeClass()移除，空白分隔多個
+        // .hasClass() 判斷有沒有
+        // .toggleClass()，切換
+        $('#test2').addClass('text-red text-center bg-black')
+        $('#test2').removeClass('text-center')
+        console.log( $('#test2').hasClass('text-center'))
+        $('#test2').toggleClass('text-red text-center bg-black')
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<style>
+			.text-red {
+				color: red;
+			}
+			.text-center {
+				text-align: center;
+			}
+			.bg-black {
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="title">111aaa</h1>
+		<p class="text">1111</p>
+		<p class="text">2222</p>
+		<div id="div">
+			<p>asdasd</p>
+		</div>
+		<ul id="list1">
+			<li class="a">1</li>
+			<li class="b">2</li>
+			<li class="c">3</li>
+		</ul>
+		<ul id="list2">
+			<li class="a">1</li>
+			<li class="b">2</li>
+			<li class="c">3</li>
+			<li class="d">4</li>
+			<li class="e">5</li>
+		</ul>
+		<a id="link">asd</a>
+		<p id="test">SDLKFSJHDFLJDSFLKDSAJFL</p>
+		<p id="test2">dszflksdjflksdjf</p>
+		<script src="./jquery-3.7.1.min.js"></script>
+		<script>
+			// $(選擇器)
+			// .text()
+			// () 內有字 --> 改
+			// () 內沒字 --> 取
+			console.log($('#title').text())
+			$('#title').text('222bbb')
+			
+			// 如果選擇器有多個
+			// .text() 會把所有字連在一起
+			// 修改也會一起改
+			console.log($('.text').text())
+			$('.text').text('asdf123')
+			
+			// .html()
+			// () 內有字 --> 改
+			// () 內沒字 --> 取
+			console.log($('#div').html())
+			$('#div').html('<a href="#">111</a>')
+			
+			// .filter(選擇器)
+			// 過濾
+			$('#list1 li').filter('.a').text('111')
+			// .not(選擇器)
+			// 不是
+			$('#list1 li').not('.a').text('222')
+			
+			// .length 取數量
+			console.log($('#list2 li').length)
+			// .eq() 取第幾個
+			// 如果用 [] 會變回原生 JS 語法
+			console.log($('#list2 li')[0].innerText)
+			console.log($('#list2 li').eq(0).text())
+			// .first() 第一個
+			// .last() 最後一個
+			console.log($('#list2 li').first().text())
+			console.log($('#list2 li').last().text())
+			
+			// .attr(屬性名) --> 取
+			// .attr(屬性名, 值) --> 改
+			// .attr({屬性名: 值, 屬性名: 值}) --> 改
+			$('#link').attr('href', 'https://google.com')
+			console.log($('#link').attr('href'))
+			$('#link').attr({href: 'https://google.com', target: '_blank'})
+			
+			// .css(樣式名) --> 取
+			// .css(樣式名, 值) --> 改
+			// .css({樣式名: 值, 樣式名: 值}) --> 改
+			$('#test').css('color', 'red')
+			console.log($('#test').css('color'))
+			$('#test').css({ color: 'red', 'text-align': 'center', fontSize: '20px' })
+			
+			// .addClass() 新增，空白分隔加多個
+			// .removeClass() 移除，空白分隔刪多個
+			// .hasClass() 判斷有沒有，空白分隔同時判斷多個
+			// .toggleClass() 切換，空白分隔同時處理多個
+			$('#test2').addClass('text-red text-center bg-black')
+			$('#test2').removeClass('bg-black')
+			console.log($('#test2').hasClass('bg-black'))
+			$('#test2').toggleClass('bg-black text-red')
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+

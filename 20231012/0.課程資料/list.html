@@ -1,0 +1,39 @@
+<html>
+	<head></head>
+	<body>
+		<form id="form">
+			<!-- 輸入欄位包在 form 裡面，按 enter 時觸發上層 form 的 submit 事件 -->
+			<input type="text" id="text">
+			<!-- input type submit 點擊時觸發上層 form 的 submit 事件 -->
+			<input type="submit" value="新增" id="btn">
+		</form>
+		<ul id="list"></ul>
+		<script src="./jquery-3.7.1.min.js"></script>
+		<script>
+			$('#form').submit(function (event) {
+				// 停止 form 送出時的預設跳頁動作
+				event.preventDefault()
+				$('#list').append(`
+					<li>
+						${ $('#text').val() }
+						<input type="button" value="x" class="del">
+					</li>
+				`)
+				$('#text').val('')
+			})
+			$('#list').on('click', '.del', function () {
+				$(this).parent().remove()
+			})
+		</script>
+	</body>
+<html>
+
+
+
+
+
+
+
+
+
+

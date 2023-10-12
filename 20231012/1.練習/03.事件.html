@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <input type="button" name="" id="btn" value="點">
+    <br>
+    <input type="button" name="" id="btn-text" value="解綁">
+    <input type="text" id="inText">
+    <p id="text"></p>
+    <br>
+    <input type="button" id="btn-add" value="新增">
+    <div id="target">
+        <p>6503205048
+        </p>
+    </div>
+
+    <div id="btns">
+    <input type="button" class="btn" value="按鈕">
+    <input type="button" class="btn" value="按鈕">
+    <input type="button" class="btn" value="按鈕">
+    </div>
+
+
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script>
+    // .click(function) 綁定事件
+    // .click()觸發事件
+    // .on('click',function) 綁定事件
+    
+    $('#btn').click(function(event){
+        //.val() 輸入欄位值
+        // ()有東西改值 沒東西取值
+        // 事件內的 $(this) 指的是觸發事件的東西
+    
+        $(this).val('aaa')
+    })
+
+
+    $('#inText').on('input',function(){
+        $('#text').text($(this).val())
+    })
+
+    $('#btn-text').on('click',function(){
+        // .off(事件,function)解綁事件
+        $('#inText').off('input')
+    })
+
+
+    $('#btn-add').click(function(){
+// .append() 裡面的後面
+// .prepend() 裡面的前面
+// .insertBefore() 同一層前面
+// .insertAfter() 同一層後面
+// ()放現有的元素是移動位置 放 html 是新增
+
+        $('#target').append('<p>append</p>')
+        $('#target').prepend('<p>prepend</p>')
+        $('#btn').insertBefore('#target')
+        $('<p>insertafter</p>').insertAfter('#target')
+    })
+
+// 只有頁面載入時綁定已有的按鈕，新增的不會綁到
+    // $('.btn').click(function(){
+    //     $('#btns').append(` <input type="button" class="btn" value="按鈕">`)
+    // })
+
+// 點到 3btns 裡面的 .btn 執行function
+    $('#btns').on('click','.btn',function(){
+        $('#btns').append(` <input type="button" class="btn" value="按鈕">`)
+    })
+    </script>
+</body>
+</html>
