@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <div id="box">
+    <input type="button" name="a" value="1" class="aa">
+    <input type="button" name="a" value="2" class="aa">
+    <input type="button" name="a" value="3" class="aa">
+    <input type="button" name="a" value="4" class="aa">
+
+    <div id="box1" class="bb">一</div>
+    <div id="box2" class="bb">二</div>
+    <div id="box3" class="bb">三</div>
+    <div id="box4" class="bb">四</div>
+
+  </div>
+
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+    integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+    crossorigin='anonymous'></script>
+  <script>
+
+
+    $(`.aa`).click(function () {
+      $('.bb').hide()
+      $(`.bb`).eq($(this).index('.aa')).show()
+    })
+
+
+    $(`.aa`).eq(0).click()
+
+
+
+    // $('.aa').each(function (index, a) {
+    //   console.log($(`.bb[${1}]`))
+    //   $('.bb').hide()
+    //   $(a).click(function () {
+    //     $(`.bb[${index}]`).show()
+    //   })
+    // })
+
+
+  </script>
+</body>
+
+</html>

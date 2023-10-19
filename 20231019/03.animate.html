@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #img {
+      position: relative;
+    }
+  </style>
+
+</head>
+
+<body>
+  <input type="button" value="變小" id="btn1">
+
+  <input type="button" value="往右" id="btn2">
+  <input type="button" value="往右下" id="btn3">
+  <input type="button" value="停止" id="btn4">
+
+  <input type="button" value="淡入" id="btn5">
+  <input type="button" value="淡出" id="btn6">
+  <input type="button" value="半透明" id="btn7">
+  <input type="button" value="淡入淡出" id="btn8">
+
+
+  <input type="button" value="滑入" id="btn9">
+  <input type="button" value="滑出" id="btn10">
+  <input type="button" value="滑入滑出" id="btn11">
+
+  <hr>
+
+  <img src="https://picsum.photos/500/500/?random=10" id="img">
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+    integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+    crossorigin='anonymous'></script>
+
+  <script>
+    $('#btn1').click(function () {
+      // animate({CSS樣式:值},動畫時間,"linear",動畫播完的 function)
+      // 只有第一個必填
+      // "linear" 不填預設是 swing
+      // 動畫時間預設 400ms、fast(200)，slow(600)
+      $('#img').animate(
+        {
+          width: '100px',
+          height: '100px'
+        }, function () {
+          console.log('變小了');
+        }
+      )
+    })
+
+    $('#btn2').click(function () {
+      $('#img')
+        .animate({
+          left: '+=50'
+        })
+    })
+
+
+    $('#btn3').click(function () {
+      $('#img')
+        .animate({
+          left: '+=50',
+        }, 2000, "linear")
+        .animate({
+          top: '+=50'
+        }, 2000, "linear"
+        )
+    })
+
+    $('#btn4').click(function () {
+      // .stop(是否停止知的動畫，是否跳到目前動畫結束)
+      // 如果第二個值是 true，第一個必須是 true
+      // 都沒預設都是 false
+      $('#img').stop(false)
+    })
+
+    $('#btn5').click(function () {
+      //.fadeIn(時間,'linear',動畫播完的 function)
+      $('#img').fadeIn()
+    })
+
+
+    $('#btn6').click(function () {
+      //.fadeOut(時間,'linear',動畫播完的 function)
+      // 淡出後會 display none (可能造成跑版)
+      $('#img').fadeOut()
+    })
+
+    $('#btn7').click(function () {
+      //.fadeTo(時間,不透明度，'linear',動畫播完的 function)
+      // 時間和不透明度必填
+      $('#img').fadeTo(1000, 0.3)
+    })
+
+
+    $('#btn8').click(function () {
+      //.fadeToggle(時間,'linear',動畫播完的 function)
+      // 時間和不透明度必填
+      // 如果有就淡出 沒有就淡入
+      $('#img').fadeToggle()
+    })
+
+    $('#btn9').click(function () {
+      //.slideDown(時間,'linear',動畫播完的 function)
+
+      $('#img').slideDown()
+    })
+
+    $('#btn10').click(function () {
+      //.slideUp(時間,'linear',動畫播完的 function)
+      // 滑出後會 display none (可能造成跑版)
+      $('#img').slideUp()
+    })
+
+    $('#btn11').click(function () {
+      //.slideDown(時間,'linear',動畫播完的 function)
+      // 滑出後會 display none (可能造成跑版)
+      $('#img').slideToggle()
+    })
+  </script>
+</body>
+
+</html>

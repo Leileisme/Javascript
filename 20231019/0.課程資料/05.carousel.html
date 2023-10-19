@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 500px;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #imgs {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 2000px;
+    }
+
+    #imgs img {
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box">
+    <div id="imgs">
+      <img src="https://picsum.photos/500/?random=1">
+      <img src="https://picsum.photos/500/?random=2">
+      <img src="https://picsum.photos/500/?random=3">
+      <img src="https://picsum.photos/500/?random=4">
+    </div>
+  </div>
+
+  <input type="button" value="&lt;" id="left">
+  <input type="button" value="&gt;" id="right">
+
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+    integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+    crossorigin='anonymous'></script>
+
+  <script>
+    // 目前顯示的圖片索引
+    let nowIndex = 0
+
+    $('#right').click(function () {
+      if (nowIndex < 3) {
+        nowIndex++
+        $('#imgs')
+          .stop(true, true)
+
+          .animate({ left: nowIndex * -500 - 25 })
+          .animate({ left: nowIndex * -500 })
+      }
+    })
+
+    $('#left').click(function () {
+      if (nowIndex > 0) {
+        nowIndex--
+        $('#imgs')
+          .stop(true, true)
+          .animate({ left: nowIndex * -500 + 25 })
+          .animate({ left: nowIndex * -500 })
+      }
+    })
+
+  </script>
+</body>
+
+</html>

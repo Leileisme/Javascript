@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li id="li">2</li>
+        <li>3</li>
+    </ul>
+    <p></p>
+    <p id="p"></p>
+    <p></p>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
+    <script>
+        // .index() 這個元素在同層的第幾個，從 0 開始，找不到就是 -1
+        // .index(選擇器) 相對選擇器的位置
+        console.log( $('#li').index() )         // 1
+        console.log( $('#p').index('p') )       // 1
+        console.log( $('#p').index() )        // 2
+    </script>
+</body>
+</html>
