@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="table01">
+    <caption>
+      <span id="title"></span>
+      <br>
+      <span id="updated"></span>
+    </caption>
+    <tr>
+      <th>標題</th>
+      <th>摘要</th>
+      <th>內容</th>
+      <th>作者</th>
+      <th>連結</th>
+    </tr>
+
+  </table>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js'
+    integrity='sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    const title = document.getElementById('title')
+    const updated = document.getElementById('updated')
+    const table01 = document.getElementById('table01')
+
+
+    const kkixt = async () => {
+      try {
+        const { data } = await axios.get('https://kktix.com/events.json')
+        console.log(data)
+        title.innerText = data.title
+        updated.innerText = new Date(data.updated).toLocaleString()
+
+        // console.log(data.entry.length)
+
+        for (let i = 0; i < data.entry.length; i++) {
+          table01.innerHTML += `
+            <tr>
+          <td>${data.entry[i].title}</td>
+          <td>${data.entry[i].summary}</td>
+          <td>${data.entry[i].content}</td>
+          <td><a href="${data.entry[i].author.uri}" target="_blank">${data.entry[i].author.name}</a></td>
+          <td><a href="${data.entry[i].url}" target="_blank">連結</td>
+        </tr>
+            `
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    kkixt()
+
+  </script>
+
+</body>
+
+</html>
