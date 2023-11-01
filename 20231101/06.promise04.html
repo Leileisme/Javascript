@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const wait = (ms, ok) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (ok) {
+            resolve(`OK，過了${ms}毫秒`)
+          } else {
+            reject(`錯誤，過了${ms}毫秒`)
+          }
+        }, ms)
+      })
+    }
+
+
+    // Promise.all(Promise 陣列)
+    // 陣列內每個都 resolve 時。才會 .then()
+    // 只要陣列內有一個 reject ，就會直接 .catch 並收到那個錯誤
+
+    Promise.all([
+      wait(1000, true),
+      wait(2000, false),
+      wait(3000, false),
+    ])
+      .then(result => {
+        console.log(result + '，all')
+      })
+      .catch(error => {
+        console.log(error + '，all')
+      })
+
+
+
+    // Promise.allSettled(Promise 陣列)
+    // 陣列內每個都 resolve 或 reject 時，一起把狀態和結果放入 .then
+    // .then 為各 Promise 執行結果物件陣列
+    // status 為 'fulfilled'(成功) 或 'rejected'(失敗)
+    //  value 為成功的結果
+    //  reason 為失敗的錯誤
+
+    Promise.allSettled([
+      wait(1000, true),
+      wait(2000, false),
+      wait(3000, true),
+    ]).then(result => {
+      console.log(result)
+    })
+
+
+    // Promise.race(Promise 陣列)
+    // 收到陣列內第一個有結果的 Promise
+    // 如果是 resolve 就 .then
+    // 如果是 reject 就 .catch
+
+
+    Promise.race([
+      wait(1000, true),
+      wait(2000, false),
+      wait(3000, true)
+    ])
+      .then(result => {
+        console.log(result + '，race')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+
+    // Promise.any(Promise 陣列)
+    // .then 收到的是第一個 resole 的 promise 結果
+    // .catch 當所有的 promise 都 reject 時，會收到 AggregateError:All promise were rejected
+
+    Promise.any([
+      wait(1000, true),
+      wait(2000, false),
+      wait(3000, true)
+    ])
+      .then(result => {
+        console.log(result + '，any')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const wait = (ms, ok) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (ok) {
+            resolve(`OK，過了${ms}毫秒`)
+          } else {
+            reject(`錯誤，過了${ms}毫秒`)
+          }
+        }, ms)
+      })
+    }
+
+    // const aaa = wait(5000, true)
+    // console.log(aaa)
+    // Promise<pending> 因為 5 秒還沒到就 console.log
+
+    // 複雜的寫法?
+
+    wait(5000, true)
+      .then(result => {
+        console.log(result)
+      })
+      .catch(error => {
+        console.log(i, error)
+      })
+
+
+    const main = async () => {
+      try {
+        // await 非同步，原本是一起執行，變成一步一步執行
+        // await 等待 Promise 結束，resole 或 reject
+        // 條件1： await 後面只能接 Promise
+        // 條件2： await 只能放在 async function 裡面
+        // async function 也是一種 Promise
+
+        // 變數 = await Promise
+        // 變數會試 Promise resolve 的結果
+        // 如果 Promise reject 會直接跳到 catch
+        const result1 = await wait(1000, true)
+        console.log(result1)
+
+        const result2 = await wait(1000, false)
+        console.log(result2)
+
+        // 因為中間跳到 catch 所以不會執行了
+        const result3 = await wait(1000, true)
+        console.log(result3)
+      } catch (error) {
+        console.log(error)
+      }
+      // finally {
+      //   console.log(123)
+      // }
+    }
+
+    main()
+
+
+
+
+  </script>
+</body>
+
+</html>

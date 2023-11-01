@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const getMoney = (pass) => {
+      return new Promise((resolve, reject) => {
+        if (pass) {
+          resolve('恭喜')
+        } else {
+          reject(new Error('QQ'))
+        }
+      })
+    }
+
+    const data = [true, true, true, false]
+
+    for (let i = 0; i < data.length; i++) {
+      getMoney(data[i])
+        //  Promise resolve 時執行 .then()
+        //  result 會是 resolve() 內的東西
+        .then(result => {
+          console.log(result)
+        })
+        //  Promise reject 時執行 .catch()
+        // catch 會是 reject() 內的東西
+        .catch(error => {
+          console.log(error)
+        })
+      // .finally 可加可不加
+    }
+  </script>
+</body>
+
+</html>
