@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>00.複習1(funcition)</title>
+</head>
+
+<body>
+  <script>
+    function time() {
+      document.write(`555~<br>`)
+    }
+    time()
+
+
+    function name(a, b) {
+      console.log(arguments)
+      return `我是${a}、你是${b}`
+    }
+    console.log(name(`ya`, ` oh`))
+
+    const name2 = function (c, d) {
+      console.log(arguments)
+      document.write(`他是${c}，誰是${d} <br>`)
+    }
+
+    name2(`你`, `我`)
+
+    const name3 = (a) => {
+      return `you r ${a} sunshine`
+    }
+
+    console.log(name3(`Amy's`))
+
+    /**
+     * 歌詞填空
+     * @return{number}
+    */
+
+    const name4 = q => `你是我的寶，我曾經為你感動${q}`
+    document.write(name4(`驕傲`))
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99.練習(括號閉合2)</title>
+</head>
+
+<body>
+  <script>
+    const isClose = (text) => {
+      let s = 0
+      let n = text.length - 1
+      // if ((text[s] !== '(') || (text[s] !== ')')) {
+      //   continue
+      // }
+
+      for (let i in text) {
+        if ((text[s] !== '(') || (text[s] == text[n])) {
+          return false
+        } else if (text[s] !== text[n] && (n - s == 1)) {
+          return true
+        } else {
+          s++
+          n--
+        }
+      }
+    }
+
+    const result = isClose(prompt('輸入文字'))
+    console.log(result)
+  </script>
+</body>
+
+</html>

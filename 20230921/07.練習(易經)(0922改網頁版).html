@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07.練習(易經)</title>
+</head>
+
+<body>
+
+  <script>
+    alert(`想一個想問卦的 然後輸入三組數字（不限大小）就會得出結果`)
+
+    const gua = (array) => {
+      let result = [
+        ['乾', '兌', '離', '震', '巽', '坎', '艮', '坤'],
+        ['乾', '兌', '離', '震', '巽', '坎', '艮', '坤'],
+        ['一', '二', '三', '四', '五', '六']
+      ]
+
+      let [a, b, c] = [0, 0, 0]
+
+      if (num1 > 8 && num1 % 8 !== 0) {
+        a = (num1 % 8 - 1)
+      } else if (num1 > 8 && num1 % 8 == 0) {
+        a = 7
+      } else {
+        a = (num1 - 1)
+      }
+
+      if (num2 > 8 && num2 % 8 !== 0) {
+        b = (num2 % 8 - 1)
+      } else if (num2 > 8 && num2 % 8 == 0) {
+        b = 7
+      } else {
+        b = (num2 - 1)
+      }
+
+      if (num3 > 6 && num3 % 6 !== 0) {
+        c = (num3 % 6 - 1)
+      } else if (num3 > 6 && num3 % 6 == 0) {
+        c = 5
+      } else {
+        c = (num3 - 1)
+      }
+
+      return [result[0][a], result[1][b], (result[2][c])]
+    }
+
+    const num1 = parseInt(prompt('第一個數字'))
+    const num2 = parseInt(prompt('第二個數字'))
+    const num3 = parseInt(prompt('第三個數字'))
+    const numbers = [num1, num2, num3]
+    const result = gua(numbers)
+    document.write(`下卦:${result[0]}<br>`)
+    document.write(`上卦:${result[1]}<br>`)
+    document.write(`第${result[2]}爻`)
+
+
+  </script>
+
+</body>
+
+</html>

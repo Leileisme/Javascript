@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>00.練習1(輸入數字相加)</title>
+</head>
+
+<body>
+  <script>
+    let arr = [parseInt(prompt('輸入數字')), parseInt(prompt('輸入數字'))]
+
+    if ((isNaN(arr[0])) || (isNaN(arr[1]))) {
+      alert('不是數字')
+    } else {
+      document.write(arr[0] + arr[1])
+    }
+
+  </script>
+</body>
+
+</html>

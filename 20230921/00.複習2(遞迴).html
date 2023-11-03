@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>00.複習2(遞迴)</title>
+</head>
+
+<body>
+  <script>
+    const sum = (n) => {
+      if (n === 1) {
+        return 1
+      } else {
+        return n + sum(n - 1)
+      }
+    }
+
+    const sum2 = (n2) => {
+      if (n2 === 0) {
+        return 1
+      } else {
+        return n * sum2(n2 - 1)
+      }
+    }
+
+    const MrF = (f) => {
+      if (f < 2) {
+        return 1
+      } else {
+        return MrF(f - 1) + MrF(f - 2)
+      }
+    }
+
+    const data = (a, b) => {
+      if (a % b) {
+        return b
+      } else {
+        return data(b, (a % b))
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

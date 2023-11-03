@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06.迴圈猜數字</title>
+</head>
+
+<body>
+    <script>
+        const number = 589900
+        let count = 0
+        let input = ''
+
+        while (input != number) {
+            input = prompt('iphone 15 多少錢？')
+            count++
+            if (input > number) {
+                alert('太多')
+            } else if (input < number) {
+                alert('太少')
+            }
+        }
+        document.write(`猜了${count}次`)
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
