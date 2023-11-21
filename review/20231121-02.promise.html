@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <script>
+    const wait = (ms, ok) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (ok) {
+            resolve(`時間到，過了${ms}`)
+          } else {
+            reject(new Error('錯誤'))
+          }
+        }, ms)
+      })
+    }
+
+
+    // 沒有 return 在 async ()  =>Promise 的一種
+    // 就會是這種  (resolve, reject) 的輸出
+    // 也可以加 return
+    const waitFunction = async () => {
+      try {
+        let a = await wait(2000, true)
+        // console.log(a)
+        let b = await wait(1000, true)
+        console.log(b)
+        // return a + '/' + b
+      } catch (err) {
+        console.log(err)
+        return err
+      }
+    }
+    waitFunction().then(res => {
+      console.log(res)
+    }).catch(rel => {
+      console.log(rel)
+    })
+
+
+    // waitFunction()
+
+
+
+
+    // wait(5000, true).then(res => {
+    //   console.log(res)
+    // }).catch(rel => {
+    //   console.log(rel)
+    // })
+
+
+    // const data = [true, true, false, true]
+    // const ans = passed => {
+    //   return new Promise((resolve, reject) => {
+    //     if (passed) {
+    //       resolve('過關')
+    //     } else {
+    //       reject(new Error('false'))
+    //     }
+    //   })
+    // }
+
+    // for (let i = 0; i < data.length; i++) {
+    //   ans(data[i])
+    //     .then(res => {
+    //       console.log(res)
+    //     }).catch(rel => {
+    //       console.log(rel)
+    //     })
+    // }
+
+  </script>
+</body>
+
+</html>

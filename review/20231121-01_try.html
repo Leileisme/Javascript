@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    
+    const prom = passed => {
+      return new Promise((resolve, reject) => {
+        if (passed) {
+          resolve('過關')
+        } else {
+          reject(new Error('沒過關'))
+        }
+      })
+    }
+
+  prom(true).then(res=>{
+    console.log(res)
+  }).catch(rel=>{
+    console.log(rel)
+  })
+
+  // let passed = false
+
+    // const prom = new Promise((y, n) => {
+    //   if (passed) {
+    //     y('通過')
+    //   } else {
+    //     n(new Error('沒通過'))
+    //   }
+    // })
+    // prom.then(res => {
+    //   console.log(res)
+    // }).catch(rej => {
+    //   console.log(rej)
+    // })
+
+
+
+    // try catch
+    // let ans = prompt()
+    const isNumber = (input) => {
+      try {
+        if (isNaN(input)) throw new Error('try/catch，不是數字')
+        console.log(`數字是 ${input}`)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    isNumber()
+  </script>
+</body>
+
+</html>
