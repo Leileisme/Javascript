@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>練習</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="input" :style="{border:borderColor}">　
+      <input type="submit" value="新增">
+    </form>
+    <hr>
+    <input type="button" value="全部標為已完成" @click="allChecked">
+    <input type="button" value="全部標為未完成" @click="allNotChecked">
+    <input type="button" value="顯示全部" @click="all">
+    <input type="button" value="顯示已完成" @click="onlyChecked">
+    <input type="button" value="顯示未完成" @click="onlyNotChecked">
+    <input type="button" value="清除全部" @click="allDel">
+    <input type="button" value="清除已完成" @click="DelChecked">
+    <input type="button" value="清除未完成" @click="DelNotChecked">
+    <br>
+    <hr>
+    <p>{{text}}</p>
+    <ul>
+      <template v-for="(item,index) in items">
+        <li v-if="item.show">
+          <input type="checkbox" v-model="item.done">
+          <del v-if="item.done" @dblclick="">{{item.text}}</del>
+          <span v-else>{{item.text}}</span>
+          <input type="button" value="x" @click="delItem(item.id)">
+        </li>
+      </template>
+    </ul>
+
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          input: '',
+          items: [],
+          id: 1,
+          // 這邊數值 undefined
+          text: `目前顯示:全部共${this.itemShow}個`
+        }
+      }
+      , methods: {
+        addItem() {
+          if (this.input.length > 2) {
+            this.items.push({
+              done: false,
+              text: this.input,
+              id: this.id++,
+              show: true
+            })
+          } else {
+            return
+          }
+
+          this.input = ''
+        },
+        delItem(delId) {
+          const delItemI_index = this.items.findIndex(item => {
+            return item.id = delId
+          })
+          this.items.splice(delItemI_index, 1)
+        },
+        allChecked() {
+          for (let item of this.items) {
+            item.done = true
+          }
+        }, allNotChecked() {
+          for (let item of this.items) {
+            item.done = false
+          }
+        },
+        all() {
+          for (let item of this.items) {
+            item.show = true
+          }
+        },
+        onlyChecked() {
+          for (let item of this.items) {
+            item.show = true
+          }
+
+          const doneFalse = this.items.filter(item => {
+            return item.done === false
+          })
+
+          for (let item of doneFalse) {
+            item.show = false
+          }
+        }, onlyNotChecked() {
+          for (let item of this.items) {
+            item.show = true
+          }
+          const doneTrue = this.items.filter(item => {
+            return item.done === true
+          })
+          for (let item of doneTrue) {
+            item.show = false
+          }
+        },
+        allDel() {
+          this.items.splice(0, this.items.length)
+        },
+        DelChecked() {
+          // 這邊沒改到原本的值
+          const doneTrue = this.items.filter(item => {
+            return item.done === true
+          })
+          doneTrue.splice(0, doneTrue.length)
+        },
+        DelNotChecked() {
+          // 這邊沒改到原本的值
+          const doneFalse = this.items.filter(item => {
+            return item.done === false
+          })
+          doneFalse.splice(0, doneFalse.length)
+        }
+      },
+      computed: {
+        borderColor() {
+          if (this.input.length == '') {
+            return '8px solid black'
+          } else if (this.input.length <= 2) {
+            return '8px solid red'
+          } else {
+            return '8px solid blue'
+          }
+        },
+        itemShow() {
+          return this.items.filter(item => {
+            return item.show === true
+          }).length
+        }
+      },
+      watch: {
+        items: {
+          handler(newV, oldV) {
+            console.log(newV, oldV)
+            localStorage.doList = JSON.stringify(newV)
+          }, deep: true
+        }
+      },
+      mounted() {
+        const localItems = JSON.parse(localStorage.doList || '[]')
+        this.items = localItems
+        if (this.items.length > 0) {
+          this.id = this.items[this.items.length - 1].id + 1
+        }
+      }
+    }).mount('#app')
+
+
+
+  </script>
+</body>
+
+</html>

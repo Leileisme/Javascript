@@ -14,20 +14,19 @@
       <!-- 如果用  form submit 新增不用綁事件，不然會送出兩次-->
       <input type="submit" value="新增">
     </form>
+
     <hr>
     <input type="text" v-model="search">
+
     <ul>
       <!-- <li v-for="el in items"> -->
-      <!-- ??? -->
       <li v-for="(el,i) in filterItems">
-
         <input type="checkbox" @input="el.done=!el.done" :checked="el.done">
         <!--這邊?? -->
         <!-- <input type="checkbox" v-model="el.done"> -->
         <del v-if="el.done">{{el.text}}</del>
         <span v-else>{{el.text}}</span>
         <input type="button" value="x" @click="delItem(el.id)">
-
       </li>
     </ul>
   </div>
@@ -63,7 +62,6 @@
           const i = this.items.findIndex(el => {
             return el.id === id
           })
-          // 後面的1???刪除一個
           this.items.splice(i, 1)
         }
       },
@@ -100,7 +98,7 @@
         }
       },
       mounted() {
-        const items = JSON.parse(localStorage.vueTodo || [])
+        const items = JSON.parse(localStorage.vueTodo || '[]')
         this.items = items
         if (this.items.length > 0) {
           // ???

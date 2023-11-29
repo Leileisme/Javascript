@@ -31,8 +31,8 @@
        fontStyle:num>10?'italic':'normal'
     },">ABCDEFG</p>
 
+    <!-- 綁定 class 可以綁陣列或物件，陣列每個都會套用，物件只有 true 會套用 -->
     <p :class="textClassArray">123456</p>
-     <!-- 綁定 class 可以綁陣列或物件，陣列每個都會套用，物件只有 true 會套用 -->
     <p :class="textClassObj">123456</p>
 
   </div>
@@ -53,7 +53,6 @@
             color: 'red',
             textAlign: 'center'
           },
-
           textColor: 'red',
           textBg: 'gray',
           textClassArray: ['text-red', 'text-center'],
