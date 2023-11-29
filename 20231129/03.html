@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 文字輸入欄位用 v-model 代表使用者輸入的值 -->
+    <input type="text" v-model="form.text">
+    <p>{{form.text}}</p>
+    <!-- v-model 加上 .number 會讓綁定的值收到的資料型態變成數字 -->
+    <input type="number" v-model.number="form.num">
+    <input type="text" v-model.number="form.num">
+    <br>
+    <!-- radio 以 v-model 分組，
+      一樣的 v-model 可以變成一個群組，不用再給 name
+      v-model 代表使用者選擇的值，
+      value 是欄位本身的值
+      value 沒有使用 v-bind 的話，資料型態都是文字
+    -->
+    <input type="radio" v-model="form.radio" value="1">
+    <input type="radio" v-model="form.radio" value="2">
+    <input type="radio" v-model="form.radio" value="3">
+    <br>
+    <input type="radio" v-model="form.radio2" :value="1">
+    <input type="radio" v-model="form.radio2" :value="2">
+    <input type="radio" v-model="form.radio2" :value="3">
+    <br><br>
+    <ul>
+      <li v-for="option in radioOptions">
+        <label :for="'radio-'+option.value">{{option.label}}</label>
+        <input type="radio" v-model="form.radio3" :value="option.value" :id="'radio-'+option.value">
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="op in checkOptions">
+        <label :for="'check-'+op.vaule">{{op.label}}</label>
+        <input type="checkbox" v-model="form.check" :value="op.value" :id="'check-'+op.vaule">
+      </li>
+    </ul>
+
+    <ul>
+      <select v-model="form.select">
+        <option v-for="el in SelectOptions" :value="el.value">{{el.label}}</option>
+      </select>
+    </ul>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          form: {
+            text: '',
+            num: 0,
+            radio: undefined,
+            radio2: undefined,
+            // 預設值 可以寫 Taro
+            radio3: 'Taro',
+            check: [],
+            select: ''
+          },
+          radioOptions: [
+            { value: 'Taro', label: '清原' },
+            { value: 'KBK', label: '可不可' },
+          ],
+          checkOptions: [
+            { value: 'Apple', label: '蘋果' },
+            { value: 'Banana', label: '香蕉' },
+          ],
+          SelectOptions: [
+            { value: 'v', label: 'Vue' },
+            { value: 'a', label: 'Angular' },
+            { value: 'r', label: 'React' },
+
+          ]
+        }
+      }
+    }).mount('#app')
+
+  </script>
+</body>
+
+</html>

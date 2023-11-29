@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1 id="title" ref="title">{{title}}</h1>
+    <p ref="title2">555</p>
+    <input type="button" :value="num" @click="plus" ref="btn">
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      // data 、 mounted 順序不影響
+      data() {
+        return {
+          title: 'AAA',
+          num: 0
+        }
+        // mounted 當 Vue編譯完 並放進 DOM後執行
+        // 如擃要存取 HTML 元素。一定要在 mounted 後
+      }, methods: {
+        async plus() {
+          this.num++
+          // 由於 V 資料更新後不會立即渲染DOM，所以還是舊的值
+          // 按下去 -> console.log -> DOM才更新
+          console.log(this.$refs.btn.value)
+          // 等下次 Vue 重新渲染完鼻 再加上去  $nextTick() 這個是固定的用法
+          await this.$nextTick()
+          // console.log(this.$refs.btn.value)
+        }
+      }, mounted() {
+        console.log(document.getElementById('title').innerText)
+        console.log(this.$refs.title2.innerText)
+      },
+    }).mount('#app')
+
+  </script>
+</body>
+
+</html>

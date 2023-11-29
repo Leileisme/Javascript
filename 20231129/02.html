@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .text-red {
+      color: red;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 綁定標籤屬性 v-bind -->
+    <img v-bind:src="img" height="100">
+    <img :src="img" height="100">
+    <a :href="link.url">{{link.text}}</a>
+    <!-- 綁定 style 要綁定物件 -->
+    <p :style="textStyle">ABCDEFG</p>
+
+    <p :style="{color:textColor,
+       background:textBg,
+       textAlign:'center',
+       fontStyle:num>10?'italic':'normal'
+    },">ABCDEFG</p>
+
+    <p :class="textClassArray">123456</p>
+     <!-- 綁定 class 可以綁陣列或物件，陣列每個都會套用，物件只有 true 會套用 -->
+    <p :class="textClassObj">123456</p>
+
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          num: 10,
+          img: 'https://github.com/vuejs.png',
+          link: {
+            url: 'https://google.com',
+            text: 'Google'
+          },
+          textStyle: {
+            color: 'red',
+            textAlign: 'center'
+          },
+
+          textColor: 'red',
+          textBg: 'gray',
+          textClassArray: ['text-red', 'text-center'],
+          textClassObj: {
+            'text-red': true,
+            'text-center': false,
+          }
+        }
+      }
+    }).mount('#app')
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="input" :style="{ border: inputBorder }">
+      <input type="submit" value="新增">
+    </form>
+    <hr>
+    <input type="text" v-model="search">
+    <ul>
+      <li v-for="(item, i) in filteredItems">
+        <!-- <input type="checkbox" @input="item.done = !item.done" :checked="item.done"> -->
+        <input type="checkbox" v-model="item.done">
+        <del v-if="item.done">{{ item.text }}</del>
+        <span v-else>{{ item.text }}</span>
+        <input type="button" value="x" @click="delItem(item.id)">
+      </li>
+    </ul>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data () {
+        return {
+          input: '',
+          items: [],
+          search: '',
+          id: 1
+        }
+      },
+      methods: {
+        addItem () {
+          if (this.input.length <= 2) return
+
+          this.items.push({
+            done: false,
+            text: this.input,
+            id: this.id++
+          })
+
+          this.input = ''
+        },
+        delItem (id) {
+          const i = this.items.findIndex(item => {
+            return item.id === id
+          })
+          this.items.splice(i, 1)
+        }
+      },
+      computed: {
+        inputBorder () {
+          if (this.input.length === 0) {
+            return ''
+          } else if (this.input.length > 2) {
+            return '5px solid green'
+          } else {
+            return '5px solid red'
+          }
+        },
+        filteredItems () {
+          return this.items.filter(item => {
+            return item.text.includes(this.search)
+          })
+        }
+      },
+      watch: {
+        // 以資料名稱為 key
+        items: {
+          // handler 當偵測變更時執行的 function
+          handler (newValue, oldValue) {
+            // 當設定 deep true 時，newValue 和 oldValue 都是新的值
+            console.log(newValue, oldValue)
+            localStorage.vueTodo = JSON.stringify(newValue)
+          },
+          // 陣列或物件使用深層監聽
+          deep: true
+        }
+      },
+      mounted () {
+        const items = JSON.parse(localStorage.vueTodo || '[]')
+        this.items = items
+        if (this.items.length > 0) {
+          this.id = this.items[this.items.length - 1].id + 1
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

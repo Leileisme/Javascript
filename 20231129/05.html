@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" :value="num" @click="num++">
+    <br>
+    姓：<input type="text" v-model="lastName">
+    <br>
+    名: <input type="text" v-model="firstName">
+    <br>
+    全名： {{fullName}} {{fullNameMethod()}}
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          firstName: '',
+          lastName: '',
+          num: 0
+        }
+      },
+      // 只要有呼叫就有更新 只要頁面上有變動就跑一次
+      methods: {
+        fullNameMethod() {
+          console.log(' methods資料更新')
+          return this.lastName + this.firstName
+        }
+      },
+      // 經過計算之後產生出來的資料，一定要有 function、return
+      // 計算屬性 只有相應的資料更新才會更新
+      computed: {
+        fullName() {
+          console.log('computed資料更新')
+          return this.lastName + this.firstName
+        }
+      },
+      // 偵測到資料變更時執行 function，當作監聽
+      watch: {
+        // 把資料名稱當作 function
+        firstName(newValue, oldValue) {
+          console.log(`firstName:${oldValue}-->${newValue}`)
+        }
+      }
+    }).mount('#app')
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 顯示文字 -->
+    <h1>{{ text }}</h1>
+    <h1 v-text="text"></h1>
+    <!-- 顯示 HTML -->
+    <div v-html="html"></div>
+    <!-- {{ }} 和 v-text 會印出 HTML 文字 -->
+    {{ html }}
+    <div v-text="html"></div>
+    <!-- 判斷式，符合條件才會出現在 DOM -->
+    <p v-if="num === 10">數字是 10</p>
+    <p v-else-if="num > 10">數字大於 10</p>
+    <p v-else>數字小於 10</p>
+    <!-- 判斷式，不符合時會 display: none -->
+    <p v-show="num === 10">數字是 10</p>
+    <ul>
+      <!-- v-for="值 in 陣列" -->
+      <li v-for="value in lunch">{{ value }}</li>
+    </ul>
+    <ul>
+      <!-- v-for="(值, 索引) in 陣列" -->
+      <li v-for="(value, index) in lunch">{{ index + 1 }}: {{ value }}</li>
+    </ul>
+    <ul>
+      <!-- v-for 和 v-if 不能放在一起 -->
+      <!-- 可以使用 template 標籤拆開 -->
+      <template v-for="value in lunch">
+        <li v-if="value !== '太師傅'">{{ value }}</li>
+      </template>
+    </ul>
+    <ul>
+      <!-- v-for 和 v-if 不能放在一起 -->
+      <!-- 可以使用 template 標籤拆開 -->
+      <template v-if="num > 10">
+        <li v-for="value in lunch">{{ value }}</li>
+      </template>
+    </ul>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      // 資料
+      data () {
+        return {
+          text: 'abc',
+          html: '<img src="https://picsum.photos/300/200/?random=10">',
+          num: 10,
+          lunch: ['太師傅', '花蓮扁食', '九零年代']
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 這兩種寫法都可 -->
+    <input type="button" value="notify" v-on:click="notify">
+    <input type="button" value="notify" @click="notify">
+    <input type="button" value="notify2('456')" @click="notify2('456')">
+    <input type="button" value="notify3($event,'789')" @click="notify2($event,'789')">
+
+    <!-- 下面3個不用記 -->
+    <input type="button" value="event =>notify(event)" @click="event=>notify(event)">
+    <input type="button" value="()=>notify2('456')" @click="()=>notify2('456')">
+    <input type="button" value="event=>notify3(event,'789')" @click="event=>notify3(event,'789')">
+
+    <!-- .once 只能觸發一次 -->
+    <input type="button" value="notify once" @click.once="notify">
+    <!-- 滑鼠類事件可以用 .left .right .middle -->
+    <input type="button" value="notify right" @click.right.once="notify">
+    <input type="button" value="notify left" @click.left.once="notify">
+    <!-- @click.middle.once 有 bug -->
+    <input type="button" value="notify middle" @click.middle="notify">
+
+
+    <!-- 這個不能XD -->
+    <!-- <input type="button" value="notify right left" @click.right.once.left="notify"> -->
+
+    <!-- 按下「鍵」 打出它的名稱 EX:shift、enter -->
+    <input type="text" v-model="input" @keydown.enter="add">
+    <ul>
+      <li v-for="v in array">{{v}}</li>
+    </ul>
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          array: [],
+          input: ''
+        }
+      },
+      // 這個元件會用到的 function
+      methods: {
+        notify(event) {
+          console.log(event)
+          alert('123')
+        },
+        notify2(text) {
+          alert(text)
+        },
+        notify3(event, text) {
+          console.log(event)
+          alert(text)
+        }, add() {
+          this.array.push(this.input)
+          this.input = ''
+        }
+      }
+    }
+    ).mount('#app')
+  </script>
+</body>
+
+</html>

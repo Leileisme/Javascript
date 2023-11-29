@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="notify" v-on:click="notify">
+    <input type="button" value="notify" @click="notify">
+    <input type="button" value="notify2('456')" @click="notify2('456')">
+    <input type="button" value="notify3($event,'789')" @click="notify3($event,'789')">
+
+    <input type="button" value="event => notify(event)" @click="event => notify(event)">
+    <input type="button" value="() => notify2('456')" @click="() => notify2('456')">
+    <input type="button" value="event => notify3(event, '789')" @click="event => notify3(event, '789')">
+
+    <!-- .once，只能觸發一次 -->
+    <input type="button" value="notify once" @click.once="notify">
+    <!-- 滑鼠類事件可以用 .left .right .middle 指定按鍵 -->
+    <input type="button" value="notify right once" @click.right.once="notify">
+    <input type="button" value="notify middle" @click.middle="notify">
+
+    <input type="text" v-model="input" @keydown.enter="add">
+    <ul>
+      <li v-for="value in array">{{ value }}</li>
+    </ul>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data () {
+        return {
+          array: [],
+          input: ''
+        }
+      },
+      methods: {
+        notify (event) {
+          console.log(event)
+          alert('123')
+        },
+        notify2 (text) {
+          alert(text)
+        },
+        notify3 (event, text) {
+          console.log(event)
+          alert(text)
+        },
+        add () {
+          // 用 this 指到這個元件的 data、methods 等
+          this.array.push(this.input)
+          this.input = ''
+          this.notify()
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

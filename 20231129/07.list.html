@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="input" :style="{border:inputBorder}">
+      <!-- 如果用  form submit 新增不用綁事件，不然會送出兩次-->
+      <input type="submit" value="新增">
+    </form>
+    <hr>
+    <input type="text" v-model="search">
+    <ul>
+      <!-- <li v-for="el in items"> -->
+      <!-- ??? -->
+      <li v-for="(el,i) in filterItems">
+
+        <input type="checkbox" @input="el.done=!el.done" :checked="el.done">
+        <!--這邊?? -->
+        <!-- <input type="checkbox" v-model="el.done"> -->
+        <del v-if="el.done">{{el.text}}</del>
+        <span v-else>{{el.text}}</span>
+        <input type="button" value="x" @click="delItem(el.id)">
+
+      </li>
+    </ul>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          input: '',
+          items: [],
+          search: '',
+          id: 1
+        }
+      }, methods: {
+        addItem() {
+          if (this.input.length <= 2) return
+
+          this.items.push({
+            done: false,
+            text: this.input,
+            // 每一次 每一個id都++
+            id: this.id++
+          })
+
+          this.input = ''
+        },
+        // delItem(id)的id是??
+        delItem(id) {
+          // ????
+          const i = this.items.findIndex(el => {
+            return el.id === id
+          })
+          // 後面的1???刪除一個
+          this.items.splice(i, 1)
+        }
+      },
+      computed: {
+        inputBorder() {
+          if (this.input.length === 0) {
+            return ''
+          } else if (this.input.length > 2) {
+            return '5px solid green'
+          } else {
+            return '5px solid red'
+          }
+        },
+        filterItems() {
+          return this.items.filter(el => {
+            return el.text.includes(this.search)
+          })
+        }
+      },
+
+      watch: {
+        // 以資料名稱為key 
+        items: {
+          // handler 當偵測變更時執行的 function
+          handler(newValue, oldValue) {
+            // 當設定 deep true 時，newValue 和 oldValue 都會是新的值
+            console.log(newValue, oldValue)
+            // 這邊東西沒出來???
+            localStorage.vueTodo = JSON.stringify(newValue)
+            // localStorage.vueTodo = JSON.stringify(this.items)
+          },
+          // 陣列或物件使用來深層監聽
+          deep: true
+        }
+      },
+      mounted() {
+        const items = JSON.parse(localStorage.vueTodo || [])
+        this.items = items
+        if (this.items.length > 0) {
+          // ???
+          this.id = this.items[this.items.length - 1].id + 1
+        }
+      }
+    }).mount('#app')
+
+  </script>
+</body>
+
+</html>
