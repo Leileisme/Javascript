@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="input" :style="{ border: inputBorder }">
+      <input type="submit" value="新增">
+    </form>
+    <hr>
+    <input type="text" v-model="search">
+    <ul>
+      <li v-for="(item, i) in filteredItems">
+        <!-- <input type="checkbox" @input="item.done = !item.done" :checked="item.done"> -->
+        <input type="checkbox" v-model="item.done">
+        <del v-if="item.done">{{ item.text }}</del>
+        <span v-else>{{ item.text }}</span>
+        <input type="button" value="x" @click="delItem(item.id)">
+      </li>
+    </ul>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script>
+    // ref, reactive 這個是 data 那種
+
+    const { createApp, ref, reactive, computed, watch, onMounted } = Vue
+    createApp({
+      setup() {
+        // ref 所有資料型態都可以用，使用時加 .value 不會深層監聽陣列和物件
+        // reactive 只有物件陣列可以用，不用加 .value 可以深層監聽
+        // let a = 1 (這個就沒有響應式)
+        const input = ref('')
+        const items = reactive([])
+        const search = ref('')
+        // HTML 不會用到。所以不需要響應式，用一般變數就好
+        let id = 1
+
+        const addItem = () => {
+          if (input.value.length <= 2) return
+
+          items.push({
+            done: false,
+            text: input.value,
+            id: id++
+          })
+
+          input.value = ''
+        }
+
+        const delItem = (id) => {
+          const i = items.findIndex(items => {
+            return item.id === id
+          }
+          )
+
+          items.splice(i, 1)
+        }
+
+        const inputBorder = () => {
+          if (input.value.length === 0) {
+            return ''
+          } else if (input.value.length > 2) {
+            return '5px solid green'
+          } else {
+            return '5px solid red'
+          }
+        }
+
+        const filteredItems = () => {
+          return items.filter(item => {
+            return item.text.includes(search.value)
+          })
+        }
+
+        onMounted(() => {
+          const data = JSON.parse(localStorage.vueTodo || '[]')
+          // const items ->不這樣寫，因為 items 是 const
+          // items = data -> 不這樣寫
+
+          // 1.
+          // 可以用 .splice(目標索引,刪除項目,插入項目一,插入項目二) 就是用後面的插入值
+          // ...data 把陣列攤平成正常的參數(簡寫)
+          // 因為一開始網頁本來就沒資料，所以刪除 items.length ，或寫0都可
+          // items.splice(0,items.length,...data)???
+
+          // 2.
+          // Object.assign(A, B) 物件合併，將 B 合併進 A
+
+
+          Object.assign(items, data)
+          if (items.length > 0) {
+            this.id = items[items.length - 1].id + 1
+          }
+        })
+
+        // watch有很多種寫法，講義上可看
+        // (要監聽的物件,?)
+        // 物件本身已經有深層監聽，不需再加 deep
+        // watch(變數, () => { }, { deep: true })
+
+        watch(items, () => {
+          localStorage.vueTodo = JSON.stringify(items)
+        })
+
+
+
+        // 把上面會用到的 return 出去
+        return {
+          input,
+          items,
+          search,
+          addItem,
+          delItem,
+          inputBorder,
+          filteredItems
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

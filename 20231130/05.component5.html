@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <Btn></Btn>
+    <Btn>ABCD</Btn>
+    <Btn>
+      <img src="./img/1.jpg" width="50">
+    </Btn>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script type="text/x-template" id="btn">
+    <button>
+      按鈕
+      <br>
+      <!--
+        插槽，沒有名字所以是預設插槽
+        插槽內的東西會是預設顯示內容
+      -->
+      <slot>123</slot>
+    </button>
+  </script>
+  <script>
+    Vue.createApp({
+
+    })
+      .component('Btn', {
+        template: '#btn'
+      })
+      .mount('#app')
+  </script>
+</body>
+
+</html>

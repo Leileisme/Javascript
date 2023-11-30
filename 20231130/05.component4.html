@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+  <script type="text/x-template" id="plus">
+    <input type="button" :value='number' @click='change'>
+  </script>
+
+  <script>
+    Vue.createApp({
+      setup() {
+        const num = ref(0)
+        // 外層提供一個名為 number 的資料，值為num
+        // 老師檔案有另一種寫法
+        provide('number', num)
+      }
+    })
+      .component('Plus', {
+        temple: '#plus',
+        set() {
+          // 內層注入名為 number 的資料
+          const number = inject('number')
+          const change = () => {
+            number.value = 500
+          }
+          return { number, change }
+        }
+      })
+      .mount('#app')
+  </script>
+</body>
+
+</html>

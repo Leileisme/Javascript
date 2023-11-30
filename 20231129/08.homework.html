@@ -11,15 +11,20 @@
   <div id="app">
 
     <form @submit.prevent="addItem">
-      <input type="text" v-model="input" :style="{border:borderColor}">　
+      <!-- trim 把資料的前後空白移除 -->
+      <!-- lazy 邊打 vue 的 input 不會變，點旁邊後才更新值，外框設定要點旁邊才會顯示(故不用) -->
+      <!-- 加 lazy 這個他送出後框框內還有字?? -->
+      <input type="text" v-model.trim="input" :style="{border:borderColor}">　
       <input type="submit" value="新增">
     </form>
     <hr>
     <input type="button" value="全部標為已完成" @click="allChecked">
     <input type="button" value="全部標為未完成" @click="allNotChecked">
+    <br>
     <input type="button" value="顯示全部" @click="all">
     <input type="button" value="顯示已完成" @click="onlyChecked">
     <input type="button" value="顯示未完成" @click="onlyNotChecked">
+    <br>
     <input type="button" value="清除全部" @click="allDel">
     <input type="button" value="清除已完成" @click="DelChecked">
     <input type="button" value="清除未完成" @click="DelNotChecked">
@@ -36,6 +41,40 @@
         </li>
       </template>
     </ul>
+    <hr>
+    <!-- 老師的寫法 -->
+    <input type="button" value="(T)全部標為已完成" @click="">
+    <input type="button" value="(T)全部標為未完成" @click="">
+    <br>
+    <input type="button" value="(T)顯示全部" @click="filter='全部'">
+    <input type="button" value="(T)顯示已完成" @click="filter='已完成'">
+    <input type="button" value="(T)顯示未完成" @click="filter='未完成'">
+    <br>
+    <input type="button" value="(T)清除全部" @click="">
+    <input type="button" value="(T)清除已完成" @click="">
+    <input type="button" value="(T)清除未完成" @click="">
+    <hr>
+
+    (T)目前顯示{{filter}}，共{{filteredItem.length}}個
+
+    <!-- key 配合 v-for 使用，綁定唯一值 -->
+    <!-- 讓 Vue 能區分過濾後陣列內的每個東西跟過濾前的關係 -->
+    <ul>
+      <li v-for="(item,index) in filteredItem" :key="item.id">
+        <input type="checkbox" v-model="items.done">
+        <!-- 編輯中的欄位 -->
+        <!-- ref這個???? -->
+        <span v-show="item.edit">
+          <input type="text" v-model="item.editInput" ref="inputs">
+        </span>
+        <!-- 非編輯中欄位 -->
+        <span v-show="!item.edit" @dblclick="editItem(item.id,index)">
+          <del v-if="item.done">{{item.text}}</del>
+          <span else>{{item.text}}</span>
+        </span>
+        <input type="button" value="x" @click="delItem(item.id,index)">
+      </li>
+    </ul>
 
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
@@ -49,7 +88,9 @@
           items: [],
           id: 1,
           // 這邊數值 undefined
-          text: `目前顯示:全部共${this.itemShow}個`
+          text: `目前顯示:全部共0個`,
+          // 老師拿來過濾的值
+          filter: '全部',
         }
       }
       , methods: {
@@ -59,7 +100,12 @@
               done: false,
               text: this.input,
               id: this.id++,
-              show: true
+              show: true,
+
+              // 是否編輯中
+              edit: false,
+              // 給輸入欄位用
+              editInput: this.input
             })
           } else {
             return
@@ -68,10 +114,10 @@
           this.input = ''
         },
         delItem(delId) {
-          const delItemI_index = this.items.findIndex(item => {
+          const delItem_index = this.items.findIndex(item => {
             return item.id = delId
           })
-          this.items.splice(delItemI_index, 1)
+          this.items.splice(delItem_index, 1)
         },
         allChecked() {
           for (let item of this.items) {
@@ -126,22 +172,42 @@
             return item.done === false
           })
           doneFalse.splice(0, doneFalse.length)
+        },
+        // 這個 function 要在使用它的前面?沒差
+        findItemsIdIndexById(id) {
+          // 這邊的 id 是由下方 呼叫它的 function 傳入的
+          // findIndex 數組中滿足指定條件的第一個元素，並傳回該元素的索引
+          return this.items.findIndex(item => item.id === id)
+        }
+        ,
+        async editItem(editID, index) {
+          const item_Index = this.findItemsIdIndexById(editID)
+          console.log(item_Index)
+          this.items[item_Index].edit = true
+          await this.$nextTick()
+          // focus() 點到它才能改
+          this.$refs.inputs[item_Index].focus()
         }
       },
       computed: {
         borderColor() {
-          if (this.input.length == '') {
-            return '8px solid black'
-          } else if (this.input.length <= 2) {
-            return '8px solid red'
-          } else {
-            return '8px solid blue'
-          }
+          if (this.input.length == '') return '8px solid black'
+          else if (this.input.length <= 2) return '8px solid red'
+          else return '8px solid blue'
+
         },
         itemShow() {
           return this.items.filter(item => {
             return item.show === true
           }).length
+        },
+        // 過濾的(老師的寫法)
+        filteredItem() {
+          return this.items.filter(item => {
+            if (this.input.filter === '全部') return true
+            else if (this.input.filter === '已完成') return item.done
+            else return !item.done
+          })
         }
       },
       watch: {

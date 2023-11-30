@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 這個是直接提取  .createApp   setup() 的資料-->
+    <Card title="商品" img="./img/1.jpg" :price="1000"></Card>
+
+    <!-- 資料怎麼來源???????? -->
+    <Card v-for="card in cards" :title="card.title" :img="card.img" :price="card.price" :sell="card.sell"> </Card>
+  </div>
+  <!-- 當資料物件的 key 與元件的 props 名稱一樣時，可以使用 v-bind 一次綁定 -->
+  <Card v-for="card in cards" v-bind="card"> </Card>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+
+
+  <script type="text/x-template" id="card">
+      <!-- vue2 有些語法不能放兩個html元素 所以用div包 -->
+  <div>
+    <img :src="img" alt="">
+    <h1>{{title}}</h1>
+    <p>{{price}} </p>
+    <p v-if="!sell">已下架</p>
+    <input type="button" value="看資料" @click="info">
+  </div>
+  </script>
+
+  <script>
+    const { reactive } = Vue
+    //  傳給外層的資料(HTML　#app　那塊)
+    Vue.createApp({
+      setup() {
+        const cards = reactive([
+          {
+            img: './img/1.jpg',
+            title: '米霍克',
+            sell: true,
+            prompt: 1000
+          },
+          {
+            img: './img.2.jpg',
+            title: '索隆',
+            sell: true,
+            prompt: 1000
+          }
+        ])
+        return {
+          cards
+        }
+      }
+    })
+
+      //  傳給內層的資料(script的部分)
+
+      .component('Card', {
+        template: '#card',
+        // 定義元件接收的資料
+        // 指定接受的資料名稱
+        // props:['img','title']
+        props: {
+          // 指定名稱與資料型態
+          sell: Boolean,
+          price: Number,
+          // 指定名稱、資料型態一定要有
+          img: {
+            type: String,
+            required: true
+          },
+          // 指定名稱、資料型態、自訂資料驗證、當沒有時使用的預設值
+
+          title: {
+            type: String,
+            default() {
+              return '標題'
+            },
+            validator(value) {
+              return value.length > 1
+            }
+          }
+        },
+        // 傳資料進元件??????????
+        setup(props) {
+
+        }
+      })
+      .mount('#app')
+  </script>
+</body>
+
+</html>

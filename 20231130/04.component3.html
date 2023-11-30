@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Apple事件是  @click='change' 的 function，所以click的時候會觸發-->
+    <!-- 若沒寫 onPlusApple 則是：emit告訴外面我要改值，但沒經過 .createApp({
+      setup() 就無法改到外面的值-->
+    <Plus :number="num" @apple="onPlusApple"></Plus>
+
+    <!-- 
+      如果元件名稱是大駝峰，需要手動改格式
+      這個問題只有瀏覽器會有
+    -->
+    <plus-new v-model:number="num"></plus-new>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+
+  <script type="text/x-template" id="plus">
+    <input type=button :value="number" @click='change'>
+  </script>
+
+  <script type="text/x-template" id="plus">
+    <input type=button :value="n" @click='change'>
+  </script>
+
+
+  <script>
+    const { ref, computed } = Vue
+    Vue.createApp({
+      setup() {
+        const num = ref(100)
+        return { num }
+
+        // @apple 的事件
+        const onPlusApple = (event) => {
+          num.value = event
+        }
+      }
+    })
+      .component('Plus', {
+        template: '#plus',
+        props: ['number'],
+        // setup 裡面就是 function?
+        // 這邊有一個??? 我們抓解構 emit 出來用
+        setup(props, { emit }) {
+          const change = () => {
+            // 無法直接修改 props，因為傳入的資料在元件中都是唯讀
+            // props的資料是單向的
+            // 所以不能 props.num += 100
+
+            // 告訴外面要改資料，觸發一個自訂的事件，就可以在外層使用，然後傳出一個資料
+            emit('apple', props.numbers + 100)
+          }
+          return { change }
+        }
+      })
+
+
+      .component('PlusNews', {
+        template: '#plus-news',
+        props: ['number'],
+        setup(props, { emit }) {
+          const n = computed({
+            // 資料怎麼產生
+            get() {
+              return props.number
+            },
+            // 更新 props number 的值
+            // 固定格式，一定要配合 v-model 使用
+            // 'update:__props.number事件的名稱__'
+            // 語法糖
+            set(value) {
+              emit('update:number', 500)
+            }
+          })
+          const change = () => {
+            n.value = 500
+          }
+          return { n, change }
+        }
+      })
+
+      // 另一種寫法(複製貼上，要再看)
+      // computed: {
+      //   n: {
+      //     get () {
+      //       this.number
+      //     },
+      //     set (value) {
+      //       this.$emit('update:number', 500)
+      //     }
+      //   }
+      // },
+      // methods: {
+      //   change () {
+      //     this.n = 500
+      //   }
+      // }
+      .mount('#app')
+  </script>
+</body>
+
+</html>
