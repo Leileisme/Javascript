@@ -13,6 +13,9 @@
     <input type="text" v-model="form.text">
     <p>{{form.text}}</p>
     <!-- v-model 加上 .number 會讓綁定的值收到的資料型態變成數字 -->
+    <!-- v-model  「表單/元素」的雙向綁定 ，結合 v-bind 和 v-on -->
+    <!-- v-bind 初始綁定與呈現資料 -->
+    <!-- v-on 監聽事件來做資料更新 -->
     <input type="number" v-model.number="form.num">
     <input type="text" v-model.number="form.num">
     <br>

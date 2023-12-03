@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="form.input" :style="{ border:borderColor }">
+      <input type="submit" value="新增">
+    </form>
+
+    <hr>
+    <input type="button" value="全部標示為已完成" @click="mark(true)">
+    <input type="button" value="全部標示為未完成" @click="mark(false)">
+    <br>
+    <input type="button" value="顯示全部" @click="form.filter='全部'">
+    <input type="button" value="顯示已完成" @click="form.filter='已完成'">
+    <input type="button" value="顯示未完成" @click="form.filter='未完成'">
+    <br>
+    <input type="button" value="清除全部" @click="clear('全部')">
+    <input type="button" value="清除已完成" @click="clear('已完成')">
+    <input type="button" value="清除未完成" @click="clear('未完成')">
+    <hr>
+    目前顯示：{{form.filter}}，共{{filterItems.length}}個
+    <ul>
+      <li v-for="(item,index) in filterItems" :key="item.id">
+        <input type="checkbox" v-model="item.done">
+        <!-- 編輯中 -->
+        <span v-show="item.edit">
+          <input type="text" v-model="item.editText" ref="editInputs" @keydown.esc="cancel(item.id)"
+            @keydown.enter="save(item.id,$event)">
+        </span>
+        <!-- 未編輯中 -->
+        <span v-show="!item.edit" @dblclick="editItem(item.id,index)">
+          <span v-if="!item.done">{{item.text}}</span>
+          <del v-else>{{item.text}}</del>
+        </span>
+        <input type="button" value="x" @click="delItem(item.id)">
+      </li>
+    </ul>
+
+
+  </div>
+
+  <!-- Vue框架 -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- Vue選項式程式? -->
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          form: {
+            input: '',
+            items: [],
+            id: 1,
+            filter: '全部'
+          }
+        }
+      },
+      methods: {
+        addItem() {
+          if (this.form.input.length <= 2) return
+
+          this.form.items.push({
+            id: this.form.id++,
+            text: this.form.input,
+            done: false,
+            edit: false,
+            editText: this.form.input
+          })
+
+          this.form.input = ''
+        },
+        findIdIndex(id) {
+          return this.form.items.findIndex(item => item.id === id)
+        },
+        delItem(id) {
+          const idIndex = this.findIdIndex(id)
+          this.form.items.splice(idIndex, 1)
+        },
+        async editItem(id, i) {
+          const idIndex = this.findIdIndex(id)
+          this.form.items[idIndex].edit = true
+          // 開啟編輯後等待下一次渲染，出現輸入欄位後才能 focus
+          await this.$nextTick()
+          this.$refs.editInputs[i].focus()
+        },
+        cancel(id) {
+          const idIndex = this.findIdIndex(id)
+          this.form.items[idIndex].editText = this.form.items[idIndex].text
+          this.form.items[idIndex].edit = false
+        },
+        save(id, e) {
+
+          const idIndex = this.findIdIndex(id)
+          this.form.items[idIndex].text = this.form.items[idIndex].editText
+          this.form.items[idIndex].edit = false
+          console.log(e)
+        },
+        mark(value) {
+          return this.form.items.map(item => {
+            item.done = value
+          }
+          )
+        },
+        clear(value) {
+          this.form.items = this.form.items.filter(item => {
+            if (value === '全部') return false
+            else if (value === '已完成') return !item.done
+            else return item.done
+          })
+        }
+      },
+      computed: {
+        borderColor() {
+          if (this.form.input.length === 0) return '8px solid black'
+          else if (this.form.input.length <= 2) return '8px solid red'
+          else return '8px solid blue'
+        },
+        filterItems() {
+          return this.form.items.filter(item => {
+            if (this.form.filter === '全部') return true
+            else if (this.form.filter === '已完成') return item.done
+            else return !item.done
+          })
+        }
+      }, watch: {
+        // 存本地失敗
+        items: {
+          handler() {
+            localStorage.toDo = JSON.stringify(this.form.items)
+          },
+          deep: true
+        }
+      },
+      // 等存本地OK後再寫
+      mounted() {
+
+      }
+    }).mount('#app')
+
+
+  </script>
+</body>
+
+</html>

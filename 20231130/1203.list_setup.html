@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="add">
+      <input type="text" v-model="input" :style="{border:borderColor}">
+      <input type="submit" value="新增">
+    </form>
+    <hr>
+    <input type="button" value="全部標示為已完成" @click="mark(true)">
+    <input type="button" value="全部標示為未完成" @click="mark(false)">
+    <br>
+    <input type="button" value=" 顯示全部" @click="filter='全部'">
+    <input type="button" value=" 顯示已完成" @click="filter='已完成'">
+    <input type="button" value=" 顯示未完成" @click="filter='未完成'">
+    <br>
+    <input type="button" value=" 清除全部" @click="clear('全部')">
+    <input type="button" value=" 清除已完成" @click="clear('已完成')">
+    <input type="button" value=" 清除未完成" @click="clear('未完成')">
+    <hr>
+    目前顯示 {{filter}} ，共有 {{filterItems.length}} 個
+
+    <ul>
+      <li v-for="(item,i) in filterItems" :key="item.id">
+        <input type="checkbox" v-model="item.done">
+
+        <span v-show="item.edit">
+          <input type="text" v-model="item.editText" ref="editInputs" @keydown.esc="cancel(item.id)"
+            @keydown.enter="save(item.id)">
+        </span>
+
+        <span v-show="!item.edit" @dblclick="editItem(item.id)">
+          <span v-if="!item.done">{{item.text}}</span>
+          <del v-else>{{item.text}}</del>
+        </span>
+
+        <input type="button" value="X" @click="del(item.id)">
+      </li>
+    </ul>
+
+
+
+  </div>
+
+  <!-- Vue cdn -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.js'
+    integrity='sha512-rZVBiobP9TNCnEh7rZJ50hl7F9NS9kVlucG8yIOmHrNvSqT71K7KiP/xz+27w01T4zUWEww8nAj3cjAHvCkGLQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- Vue -->
+  <script>
+    const { createApp, ref, reactive, computed, watch, onMounted } = Vue
+
+    createApp({
+      setup() {
+        const input = ref('')
+        const items = reactive([])
+        let id = 1
+        let filter = ref('全部')
+
+        const add = () => {
+          if (input.value.length <= 2) return
+
+          items.push({
+            text: input.value,
+            done: false,
+            edit: false,
+            editText: input.value,
+            id: id++
+          })
+          input.value = ''
+        }
+
+        const filterItems = computed(() => {
+          return items.filter(item => {
+            if (filter.value === '全部') return true
+            else if (filter.value === '已完成') return item.done
+            else return !item.done
+          })
+        })
+
+        const borderColor = computed(() => {
+          if (input.value.length === 0) return 'solid 5px black'
+          else if (input.value.length <= 2) return 'solid 5px red'
+          else return 'solid 5px blue'
+        })
+
+        const findIdIndex = (id) => {
+          return items.findIndex(item =>
+            item.id === id
+          )
+        }
+
+        const del = (id) => {
+          const idIndex = findIdIndex(id)
+          items.splice(idIndex, 1)
+        }
+
+        const mark = (value) => {
+          return items.map(item => {
+            item.done = value
+          })
+        }
+
+        // 因為 items 是 const，items = ... 會失去響應性
+        const clear = (value) => {
+          const data = items.filter(item => {
+            if (value === '全部') return false
+            else if (value === '已完成') return !item.done
+            else return item.done
+          })
+
+          items.splice(0, items.length, ...data)
+        }
+
+
+        watch(items, () => {
+          localStorage.toDo_setUP = JSON.stringify(items)
+        })
+
+        onMounted(() => {
+          const data = JSON.parse(localStorage.toDo_setUP || '[]')
+          items.splice(0, items.length, ...data)
+          if (items.length > 0)
+            id = items[items.length - 1].id + 1
+        })
+
+
+
+        return {
+          input,
+          items,
+          id,
+          add,
+          borderColor,
+          filterItems,
+          del,
+          mark,
+          clear,
+          filter
+        }
+      }
+    }).mount('#app')
+
+
+  </script>
+</body>
+
+</html>

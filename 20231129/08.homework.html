@@ -160,18 +160,19 @@
           this.items.splice(0, this.items.length)
         },
         DelChecked() {
-          // 這邊沒改到原本的值
-          const doneTrue = this.items.filter(item => {
-            return item.done === true
+
+          this.items = this.items.filter(item => {
+            return item.done === false
           })
-          doneTrue.splice(0, doneTrue.length)
+
+
         },
         DelNotChecked() {
           // 這邊沒改到原本的值
-          const doneFalse = this.items.filter(item => {
-            return item.done === false
+          this.items = this.items.filter(item => {
+            return item.done === true
           })
-          doneFalse.splice(0, doneFalse.length)
+
         },
         // 這個 function 要在使用它的前面?沒差
         findItemsIdIndexById(id) {
