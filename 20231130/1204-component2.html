@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./CSS/bootstrap.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .box {
+      height: 100%;
+      width: 100%;
+      background-color: rgb(255, 237, 211);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      border: 1px solid rgb(87, 87, 87);
+    }
+
+    .card img {
+      height: 80%;
+      width: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- Vue HTML -->
+  <div id="app">
+
+    <div class="box">
+      <div class="container text-center">
+        <div class="row ">
+          <h1>Vue元件 - 卡片</h1>
+          <Card v-for="card in cards" :img="card.img" :title="card.title" :price="card.price" :sell="card.sell"></Card>
+        </div>
+        <div class="row">
+          <Card v-for="card in cards" v-bind="card"></Card>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Vue cdn -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- Vue 元件 -->
+  <script type="text/x-template" id="card">
+    <div class="card col m-2 p-2 text-center" >
+        <img :src="img" :alt="title+'替代文字'" class="  text-light">
+        <h1>{{title}}</h1>
+        <span>{{price}}</span>
+        <div>
+          <span>商品狀態：</span>
+          <span v-if="sell">有庫存</span>
+          <span v-else>已售完</span>
+        </div>
+        <input type="button" value="商品資訊" @click="info" >
+    </div>
+  </script>
+
+
+  <!-- Vur 程式碼 -->
+  <script>
+    const { ref, reactive } = Vue
+    Vue.createApp({
+      setup() {
+        const cards = reactive([{
+          img: './img/1.jpg',
+          title: '商品A',
+          price: 1000,
+          sell: true
+        },
+        {
+          img: './img/2.jpg',
+          title: '商品B',
+          price: 500,
+          sell: false
+        },
+        {
+          img: 'https://picsum.photos/300/200/?random=10',
+          title: '商品C',
+          price: 700,
+          sell: false
+        }
+        ])
+
+        return { cards }
+      }
+    })
+
+      .component('Card', {
+        template: '#card',
+
+        props: {
+          img: {
+            type: String,
+            required: true
+          },
+          title: {
+            type: String,
+            // 沒有資料時的預設
+            default() {
+              return '輸入標題'
+            },
+            // 驗證輸入的資料長度
+            validator(value) {
+              return value.length > 1
+            }
+          },
+          price: Number,
+          sell: Boolean
+        }
+
+        , setup(props) {
+          const info = () => {
+            console.log(props.title)
+          }
+
+          return {
+            info
+          }
+        }
+      })
+      .mount('#app')
+
+
+
+  </script>
+
+</body>
+
+</html>

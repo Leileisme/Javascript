@@ -10,7 +10,8 @@
 <body>
   <!-- html -->
   <div id="app">
-    <Plus :number="num" @apple="onPlusApple"></Plus>
+
+    <Btn :number="num" @apple="onApple"></Btn>
   </div>
 
   <!-- cdn -->
@@ -18,45 +19,43 @@
     integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
     crossorigin='anonymous'></script>
 
-  <!-- 元件 -->
-  <script type="text/x-template" id="plus">
-    <input type="button" :value="number" @click="change">
-  </script>
 
+  <!-- 元件 -->
+  <script type="text/x-template" id="btn">
+<input type="button" :value="number" @click="change">
+
+  </script>
+  <!-- 程式碼 -->
   <script>
     const { ref } = Vue
     Vue.createApp({
       setup() {
         const num = ref(100)
-        // 處理 Plus 元件發生的 apple 事件
-        // event 指事件帶出的資料
-        const onPlusApple = (event) => {
+
+
+        const onApple = (event) => {
           num.value = event
         }
-        return { num, onPlusApple }
+
+        return { num, onApple }
       }
     })
-      .component('Plus', {
-        template: '#plus',
+      // 有一個 number 的警告 是甚麼意思?
+      .component('Btn', {
+        template: '#btn',
         props: ['number'],
 
         setup(props, { emit }) {
           const change = () => {
-            // 無法直接修改 props，因為傳入的資料在元件中都是唯讀
-            // props.number += 100
-            // 需要告訴外面要改資料，觸發一個自訂的 apple 事件，傳出一個資料
-            emit('apple', 500)
+            emit('apple', props.number += 100)
           }
           return { change }
-        },
-        // methods: {
-        //   change () {
-        //     this.$emit('apple', this.number + 100)
-        //   }
-        // }
+        }
       })
       .mount('#app')
+
   </script>
+
 </body>
 
 </html>

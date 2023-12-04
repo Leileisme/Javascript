@@ -10,34 +10,28 @@
 <body>
   <!-- Vue html -->
   <div id="app">
-    <Counter></Counter>
-    <Counter></Counter>
-    <Counter></Counter>
-    <Counter></Counter>
+    <!-- 自定義元件 不支持駝峰是命名，要用 -  來寫 -->
+    <Btn-add></Btn-add>
+
   </div>
 
-
-  <!-- cdn Vue -->
+  <!-- Vue cdn -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
     integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
     crossorigin='anonymous'></script>
 
-  <!-- 元件 -->
-  <script type="text/x-template" id="counter">
-    <input type="button" :value="num" @click='num++'>
-</script>
+  <!-- Vue 元件 -->
+  <!-- Vue3   type="text/x-template  改成 text/template ???-->
+  <script type="text/x-template" id="btnApp">
+<input type="button" :value="num" @click="num++">
+  </script>
 
+  <!-- Vue 程式碼 -->
   <script>
     const { ref } = Vue
-    Vue.createApp({
-
-    })
-      // .component(元件名稱, {
-      //  template: HTML 文字或是 #id
-      // })
-      .component('Counter', {
-        // template: `<input type="button" :value="num" @click='num++'>`,
-        template: '#counter',
+    Vue.createApp({})
+      .component('BtnAdd', {
+        template: '#btnApp',
         setup() {
           const num = ref(0)
           return {
@@ -46,6 +40,8 @@
         }
       })
       .mount('#app')
+
+
   </script>
 </body>
 
