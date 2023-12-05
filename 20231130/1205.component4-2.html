@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- HTML -->
+  <div id="app">
+    <Add></Add>
+  </div>
+
+
+  <!-- cdn -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.10/vue.global.min.js'
+    integrity='sha512-es4vSPtFlEKtmABZjNbGIagxq+4vAymgRWKhEt4C7Z+R8nHasGt/1H5JCBnUILChOXg1i1bImtqHul/LM7UxlQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- 元件 -->
+  <script type="text/x-template" id="add">
+    <input type="button" :value="num" @click="change" >
+  </script>
+
+  <!-- 程式碼 -->
+  <script>
+    const { ref, provide, inject } = Vue
+    Vue.createApp({
+      setup() {
+        const a = ref(0)
+        provide('num', a)
+
+      }
+    })
+      .component('Add', {
+        template: '#add',
+
+        setup() {
+          const num = inject('num')
+          const change = () => {
+            num.value += 100
+          }
+
+          return { num, change }
+        }
+      })
+      .mount('#app')
+
+  </script>
+
+</body>
+
+</html>
