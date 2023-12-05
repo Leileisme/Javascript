@@ -11,6 +11,7 @@
   <!-- HTML -->
   <div id="app">
     <Add></Add>
+    <Add2 :num2="a2"></Add2>
   </div>
 
 
@@ -24,6 +25,10 @@
     <input type="button" :value="num" @click="change" >
   </script>
 
+  <script type="text/x-template" id="add2">
+    <input type="button" :value="num2" @click="change2" >
+  </script>
+
   <!-- 程式碼 -->
   <script>
     const { ref, provide, inject } = Vue
@@ -32,6 +37,8 @@
         const a = ref(0)
         provide('num', a)
 
+        const a2 = ref(100)
+        return { a2 }
       }
     })
       .component('Add', {
@@ -44,6 +51,22 @@
           }
 
           return { num, change }
+        }
+
+        //  inject 可以單獨使用嗎?有查到說可以的，但好像不能?
+      }).component('Add2', {
+        template: '#add2',
+        props: {
+          num2: Number
+        },
+
+        setup() {
+          const num2 = inject('num2')
+          const change2 = () => {
+            num2.value += 100
+          }
+
+          return { num2, change2 }
         }
       })
       .mount('#app')

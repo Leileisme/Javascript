@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .card {
+      width: 300px;
+      height: 500px;
+      border: 1px dashed #555;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- html -->
+  <div id="app">
+
+    <Btn></Btn>
+    <Btn>ohya</Btn>
+    <Btn>coco</Btn>
+    <hr>
+
+    <Card>
+      <p>這邊是內容區(無名slot)</p>
+      <template v-slot:title>
+        <h1>大標題</h1>
+      </template>
+      <template #footer>
+        <input type="button" value="頁尾來囉">
+      </template>
+    </Card>
+
+    <hr>
+
+    <Box>
+      <template v-slot="data">
+        <h1>{{data.title}}</h1>
+        <p>{{data.price}}</p>
+      </template>
+
+      <template #footer="{info}">
+        <input type="button" value="點我看log資訊" @click="info">
+      </template>
+
+    </Box>
+
+  </div>
+
+
+  <!-- cdn -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.10/vue.global.min.js'
+    integrity='sha512-es4vSPtFlEKtmABZjNbGIagxq+4vAymgRWKhEt4C7Z+R8nHasGt/1H5JCBnUILChOXg1i1bImtqHul/LM7UxlQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- 元件1 -->
+  <script type="text/x-template" id="btn">
+    <button>
+      <slot>預設slot內容</slot>
+    </button>
+  </script>
+
+  <!-- 元件2 -->
+  <script type="text/x-template" id="card">
+    <div class="card">
+      <div class="card-title">
+        <slot name="title"></slot>
+      </div>
+    
+    <div class="card-body">
+    <slot></slot>
+    </div>
+
+    <div class="card-footer"></div>
+    <slot name="footer"></slot>
+    </div>
+  </script>
+
+  <!-- 元件3 -->
+  <script type="text/x-template" id="box">
+    <div class="box">
+
+      <div class="titile">
+        <slot  :title="title" :price="price"></slot>
+      </div>
+
+      <div class="footer">
+        <slot name="footer" :info="info"></slot>
+      </div>
+
+      </div>
+  </script>
+
+  <!-- 程式碼 -->
+  <script>
+    const { ref } = Vue
+
+    Vue.createApp({
+
+    })
+      .component('Btn', {
+        template: '#btn'
+      })
+      .component('Card', {
+        template: '#card'
+      })
+      .component('Box', {
+        template: '#box',
+
+        setup() {
+          const title = ref('商品名稱')
+          const price = ref(100)
+          const info = () => {
+            console.log(title.value)
+          }
+          return {
+            title, price, info
+          }
+        }
+      })
+      .mount('#app')
+
+  </script>
+
+</body>
+
+</html>

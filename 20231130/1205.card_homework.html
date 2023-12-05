@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./CSS/bootstrap.css">
+  <style>
+    .card img {
+      width: 100%;
+      height: 65%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML -->
+  <div id="app">
+    <div class="container text-center mt-5">
+
+      <!-- :good-length="goodLength" 這邊原本 props: oodLength 要改為 - 來銜接，不能用駝峰-->
+      <Card-title :good-length="goodLength">
+        <h1>卡片收集冊</h1>
+        <template #num>
+          <p>你按了 {{ goodLength }} 個讚</p>
+        </template>
+      </Card-title>
+
+      <div class="row">
+        <Card v-for="card in cards" v-bind="card" :key="card.id"></Card>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <!-- cdn -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.10/vue.global.min.js'
+    integrity='sha512-es4vSPtFlEKtmABZjNbGIagxq+4vAymgRWKhEt4C7Z+R8nHasGt/1H5JCBnUILChOXg1i1bImtqHul/LM7UxlQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- 元件 - 標題+讚 -->
+  <script type="text/x-template" id="cardTitle">
+    <slot>大標題</slot>
+    <!-- 用 slot 顯示 -->
+    <!-- <p>你按了 {{ goodLength }} 個讚</p> -->
+    <slot name="num"></slot>
+  </script>
+
+  <!-- 元件 - card -->
+  <script type="text/x-template" id="card">
+    <div class="col-4 card mb-2 ">
+    <img :src="img" class="mb-4 mt-3">
+    
+    <slot>
+    <h2> {{cardTitle}}</h2>
+    </slot>
+    
+    <span class="fs-3 mt-3">
+      <span v-if="good">
+        <input type="button" value="已按讚" @click="notGood">
+      </span>
+      <span v-else if="!good">
+        <input type="button" value="讚" @click="doGood(card.id)">
+      </span>
+    </span>
+
+  </div>
+  </script>
+
+  <!-- 程式碼 -->
+  <script>
+    const { ref, reactive } = Vue
+    Vue.createApp({
+      setup() {
+        let id = 1
+
+
+        const cards = reactive([{
+          img: 'https://picsum.photos/600/800/?random=1',
+          cardTitle: '皮卡丘',
+          good: false,
+          id: id++
+        },
+        {
+          img: 'https://picsum.photos/600/800/?random=2',
+          cardTitle: '傑尼龜',
+          good: false,
+          id: id++
+        }, {
+          img: 'https://picsum.photos/600/800/?random=3',
+          cardTitle: '小火龍',
+          good: false,
+          id: id++
+        }, {
+          img: 'https://picsum.photos/600/800/?random=4',
+          cardTitle: '妙蛙種子',
+          good: false,
+          id: id++
+        }, {
+          img: 'https://picsum.photos/600/800/?random=5',
+          cardTitle: '菊草葉',
+          good: false,
+          id: id++
+        }, {
+          img: 'https://picsum.photos/600/800/?random=6',
+          cardTitle: '伊布',
+          good: false,
+          id: id++
+        }
+        ])
+
+        let goodLength = ref(cards.filter(card => card.good).length)
+
+        const findIdIndex = (id) => {
+          return cards.findIndex(card => {
+            return card.id === id
+          })
+        }
+
+        // 找不到 id
+        const doGood = (id) => {
+          const idx = findIdIndex(id)
+          cards[idx].good = true
+        }
+
+        return {
+          cards, doGood, goodLength
+        }
+      }
+    })
+      .component('Card', {
+        template: '#card',
+
+        props: {
+          img: String,
+          cardTitle: {
+            type: String,
+            default() {
+              return '卡片標題'
+            },
+            validator(value) {
+              return value.length > 1
+            }
+          },
+          good: Boolean,
+          id: Number,
+          doGood: Function,
+          notGood: Function
+        }
+
+      })
+      .component('CardTitle', {
+        template: '#cardTitle',
+        props: {
+          goodLength: Number
+        }
+
+      })
+      .mount('#app')
+
+
+
+  </script>
+
+</body>
+
+</html>
