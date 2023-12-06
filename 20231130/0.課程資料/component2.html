@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    .card {
-      background-color: aquamarine;
-      border: 1px solid #f00;
-    }
-  </style>
 </head>
-
 <body>
   <div id="app">
     <!-- 
@@ -22,16 +14,20 @@
       布林值只要寫名字，有就是 true，沒有就是 false
     -->
     <Card title="商品" img="./img/1.jpg" :price="1000" sell></Card>
-
-    <Card v-for="card in cards" :title="card.title" :img="card.img" :price="card.price" :sell="card.sell"></Card>
+    <Card
+      v-for="card in cards"
+      :title="card.title"
+      :img="card.img"
+      :price="card.price"
+      :sell="card.sell"
+    ></Card>
     <!-- 當資料物件的 key 與元件的 props 名稱一樣時，可以使用 v-bind 一次綁定 -->
-    <Card v-for="card in cards" v-bind="card"></Card>!
+    <Card
+      v-for="card in cards"
+      v-bind="card"
+    ></Card>
   </div>
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
-    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
-    crossorigin='anonymous'></script>
-
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
   <script type="text/x-template" id="card">
     <div class="card">
       <img :src="img" alt="">
@@ -41,11 +37,10 @@
       <input type="button" value="看資料" @click="info">
     </div>
   </script>
-
   <script>
     const { reactive, toRefs, toRef } = Vue
     Vue.createApp({
-      setup() {
+      setup () {
         const cards = reactive([
           {
             img: './img/1.jpg',
@@ -82,15 +77,15 @@
           // 指定名稱、資料型態、自訂資料驗證、當沒有時使用的預設值
           title: {
             type: String,
-            default() {
+            default () {
               return '標題'
             },
-            validator(value) {
+            validator (value) {
               return value.length > 1
             }
           },
         },
-        setup(props) {
+        setup (props) {
           // 直接解構會失去響應性，外面變更了，卻還是舊的值
           const { title } = props
           // 解構需要 toRef 與 toRefs 輔助才會有響應性
@@ -119,5 +114,4 @@
       .mount('#app')
   </script>
 </body>
-
 </html>

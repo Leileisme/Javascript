@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <li v-for="(item, i) in filteredItems" :key="item.id">
+      <input 
+        type="text"
+        v-model="item.model"
+        ref="inputs"
+        @keydown.enter="saveItem(item.id)"
+        @keydown.esc="cancelItem(item.id)"
+      >
+    </li>
+  </div>
+  <script>
+    const { nextTick, ref } = Vue
+    Vue.createApp({
+      setup () {
+        // setup 的元素 ref 寫法，宣告同名資料
+        // 如果 ref 在 v-for 裡預設值就是陣列，不在就是 null
+        const inputs = ref([])
+        const test = async () => {
+          // setup 的 nextTick 寫法
+          await nextTick()
+        }
+        return {
+          inputs, test
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

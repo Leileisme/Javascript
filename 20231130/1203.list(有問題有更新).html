@@ -134,7 +134,8 @@
         }
       }, watch: {
         // 存本地失敗
-        items: {
+        // 選項式 如果有兩層要寫 'form.items'
+        'form.items': {
           handler() {
             localStorage.toDo = JSON.stringify(this.form.items)
           },

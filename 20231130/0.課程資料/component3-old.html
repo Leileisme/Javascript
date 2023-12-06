@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- html -->
+  <div id="app">
+    <Plus :number="num" @apple="onPlusApple"></Plus>
+  </div>
+
+  <!-- cdn -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- 元件 -->
+  <script type="text/x-template" id="plus">
+    <input type="button" :value="number" @click="change">
+  </script>
+
+  <script>
+    const { ref } = Vue
+    Vue.createApp({
+      setup() {
+        const num = ref(100)
+        // 處理 Plus 元件發生的 apple 事件
+        // event 指事件帶出的資料
+        const onPlusApple = (event) => {
+          num.value = event
+        }
+        return { num, onPlusApple }
+      }
+    })
+      .component('Plus', {
+        template: '#plus',
+        props: ['number'],
+
+        setup(props, { emit }) {
+          const change = () => {
+            // 無法直接修改 props，因為傳入的資料在元件中都是唯讀
+            // props.number += 100
+            // 需要告訴外面要改資料，觸發一個自訂的 apple 事件，傳出一個資料
+            emit('apple', 500)
+          }
+          return { change }
+        },
+        // methods: {
+        //   change () {
+        //     this.$emit('apple', this.number + 100)
+        //   }
+        // }
+      })
+      .mount('#app')
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>總共 {{ totalGoods }} 個讚</p>
+    <Card v-for="card in cards" v-bind="card" @good="card.good = !card.good"></Card>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  <script type="text/x-template" id="card">
+    <div class="card">
+      <img :src="img" alt="">
+      <p>{{ text }}</p>
+      <input type="button" :value="good ? '收回讚' : '讚'" @click="onBtnClick">
+    </div>
+  </script>
+  <script>
+    const { reactive, computed } = Vue
+    Vue
+      .createApp({
+        setup () {
+          const cards = reactive([
+            { img: 'https://picsum.photos/100/?random=1', text: 'AAA', good: false },
+            { img: 'https://picsum.photos/100/?random=2', text: 'BBB', good: false },
+            { img: 'https://picsum.photos/100/?random=3', text: 'CCC', good: false },
+            { img: 'https://picsum.photos/100/?random=4', text: 'DDD', good: false },
+            { img: 'https://picsum.photos/100/?random=5', text: 'EEE', good: false }
+          ])
+
+          const totalGoods = computed(() => {
+            return cards.filter(card => {
+              return card.good
+            }).length
+          })
+
+          return {
+            cards,
+            totalGoods
+          }
+        }
+      })
+      .component('Card', {
+        template: '#card',
+        props: ['img', 'text', 'good'],
+        setup (props, { emit }) {
+          const onBtnClick = () => {
+            emit('good')
+          }
+          return {
+            onBtnClick
+          }
+        }
+      })
+      .mount('#app')
+  </script>
+</body>
+</html>

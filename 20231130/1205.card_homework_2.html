@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1</title>
+  <title>2</title>
   <link rel="stylesheet" href="./CSS/bootstrap.css">
   <style>
     .card img {
@@ -29,19 +29,8 @@
       </Card-title>
 
       <div class="row">
-        <Card v-for="card in cards" v-bind="card" :key="card.id">
 
-          <template #a111={id,good}>
-            <span class="fs-3 mt-3">
-              <span v-if="good">
-                <input type="button" value="已按讚" @click="notGood">
-              </span>
-              <span v-else if="!good">
-                <input type="button" value="讚" @click="doGood(id)">
-              </span>
-            </span>
-          </template>
-
+        <Card v-for="card in cards" v-bind="card" :key="card.id" @do-good="card.good=!card.good">
         </Card>
       </div>
 
@@ -72,27 +61,21 @@
     <h2> {{cardTitle}}</h2>
     </slot>
 
-    <slot name="a111" :id="id" :good="good">
-    <!-- <span class="fs-3 mt-3">
-      <span v-if="good">
-        <input type="button" value="已按讚" @click="notGood">
-      </span>
-      <span v-else if="!good">
-        <input type="button" value="讚" @click="doGood(id)">
-      </span> -->
-    </slot>
-    </span>
+    <input type="button" :value="good?'收回讚':'讚'" @click="onBtn">
+
+    <slot name="card"></slot>
+
+
 
   </div>
   </script>
 
   <!-- 程式碼 -->
   <script>
-    const { ref, reactive } = Vue
+    const { ref, reactive, emit, computed } = Vue
     Vue.createApp({
       setup() {
         let id = 1
-
 
         const cards = reactive([{
           img: 'https://picsum.photos/600/800/?random=1',
@@ -126,26 +109,15 @@
           good: false,
           id: id++
         }
-
         ])
 
-        let goodLength = ref(cards.filter(card => card.good).length)
-
-
-        const findIdIndex = (id) => {
-          return cards.findIndex(card => {
-            return card.id === id
-          })
-        }
-
-        // 找不到 id
-        const doGood = (id) => {
-          const idx = findIdIndex(id)
-          cards[idx].good = true
-        }
+        // 這個長度不見了??原本是用ref不會改值
+        let goodLength = computed(() => {
+          return cards.filter(card => card.good).length
+        })
 
         return {
-          cards, doGood, goodLength
+          cards, goodLength
         }
       }
     })
@@ -165,33 +137,26 @@
           },
           good: Boolean,
           id: Number,
-          doGood: Function,
-          notGood: Function
+
         },
-        // 只能用emit感
+        setup(props, { emit }) {
+          const onBtn = () => {
+            emit('doGood')
+          }
 
-        // setup() {
-        //   const findIdIndex = (id) => {
-        //     return cards.findIndex(card => {
-        //       return card.id === id
-        //     })
-        //   }
-
-        //   // 找不到 id
-        //   const doGood = (id) => {
-        //     const idx = findIdIndex(id)
-        //     cards[idx].good = true
-        //   }
-
-        //   return { doGood }
-        // }
+          return {
+            onBtn
+          }
+        }
 
       })
       .component('CardTitle', {
         template: '#cardTitle',
         props: {
           goodLength: Number
-        }
+        },
+
+
 
       })
       .mount('#app')

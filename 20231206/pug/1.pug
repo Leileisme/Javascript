@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    //- 要在變成標籤style.
+    style.
+      h1{
+        color:red
+      }
+  
+  body 
+    h1 AAA 
+    a(href="http://google.com") Google 
+    h2#title.text-center
+    //- 有class或id 就可以div可以省略標籤名稱
+    //- 沒有則要打div 
+    // 會編譯到 HTML 的註解
+    //- 不會編譯到 HTML 的註解
+    .row.justify-center
+      .col-12
+        | aaa 
+        br
+        | bbb
+        
+    
+    script.
+    
+      const title = a
+    //- pug  (檔案名稱或資料夾) -w(偵測變更產生HTML) -P(自動格式化排版輸出的HTML) -o(指定輸出的資料夾/可以不用加)
+
+

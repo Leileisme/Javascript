@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .number {
+      display: inline-block;
+      width: 100px;
+      margin: 10px;
+    }
+
+    /* 預設的顏色 */
+    /* svg 的填滿是 fill */
+    .number path,
+    .number circle {
+      fill: rgb(255, 182, 182)
+    }
+
+    /* 有 on 的時候??他是標籤? */
+    .number path.on,
+    .number circle.on {
+      fill: #f00
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML -->
+  <div id="app">
+    <!-- 這個值是為了class刻板 -->
+    <!-- <Number data="0"></Number>
+    <Number data="1"></Number>
+    <Number data="2"></Number>
+    <Number data="3"></Number>
+    <Number data="4"></Number>
+    <Number data="5"></Number>
+    <Number data="6"></Number>
+    <Number data="7"></Number>
+    <Number data="8"></Number>
+    <Number data="9"></Number>
+    <Number data=":"></Number> -->
+
+    <!-- 用文字跑回圈   :data="da" 後面的 da 是前面的da-->
+    <Number v-for="da in display" :data="da"></Number>
+
+
+    <input type="button" value="開始" @click="start">
+    <input type="button" value="停止" @click="stop">
+    <input type="button" value="重設" @click="reset">
+
+
+  </div>
+  <!-- cnd -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.10/vue.global.prod.min.js'
+    integrity='sha512-upaRpuNBvxprbIb1A2T2aKaP/UK4Qyv2yhGMfIr53UsdoSlqCeHKkYvbWFuebKnjLVwPjjf+pzmnOK6cQhvPvw=='
+    crossorigin='anonymous'></script>
+
+  <!-- 元件 -->
+  <script type="text/x-template" id="number">
+
+    <div class="number">
+      <!-- 這邊的SVG的寬高要拿掉 -->
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 222.309 392.65" enable-background="new 0 0 222.309 392.65"
+         xml:space="preserve">
+      
+         <!-- 在SVG裡代表群組<g></g> -->
+         <g v-if="data !== ':'">
+         <!-- B -->
+         <path :class="{on:'045689'.includes(data)}" d="M11.657,180.262c0,3.218-2.609,5.828-5.829,5.828l0,0c-3.219,0-5.828-2.61-5.828-5.828V11.657
+        c0-3.219,2.609-5.828,5.828-5.828l0,0c3.219,0,5.829,2.609,5.829,5.828V180.262z"/>
+      
+        <!-- A 以 on 為 key 值???這個?? -->
+        <path :class="{on:'02356789'.includes(data) }" d="M26.852,11.657c-3.219,0-5.828-2.609-5.828-5.828l0,0C21.023,2.609,23.633,0,26.852,0h168.605
+        c3.219,0,5.828,2.609,5.828,5.829l0,0c0,3.219-2.609,5.828-5.828,5.828H26.852z"/>
+      
+        <!-- G -->
+        <path :class="{on:'0235689'.includes(data)}" d="M26.852,392.65c-3.219,0-5.828-2.609-5.828-5.828l0,0c0-3.219,2.609-5.828,5.828-5.828h168.605
+        c3.219,0,5.828,2.609,5.828,5.828l0,0c0,3.219-2.609,5.828-5.828,5.828H26.852z"/>
+     
+        <!-- E -->
+        <path :class="{on:'0268'.includes(data) }" d="M11.657,386.822c0,3.218-2.609,5.828-5.829,5.828l0,0c-3.219,0-5.828-2.61-5.828-5.828V218.216
+        c0-3.219,2.609-5.828,5.828-5.828l0,0c3.219,0,5.829,2.609,5.829,5.828V386.822z"/>
+      
+        <!-- D -->
+        <path :class="{on:'2345689'.includes(data)}" d="M26.852,202.153c-3.219,0-5.828-2.607-5.828-5.826l0,0c0-3.219,2.609-5.83,5.828-5.83h168.605
+        c3.219,0,5.828,2.611,5.828,5.83l0,0c0,3.219-2.609,5.826-5.828,5.826H26.852z"/>
+      
+        <!-- C -->
+        <path :class="{on:'01234789'.includes(data)}"  d="M222.309,180.262c0,3.218-2.609,5.828-5.828,5.828l0,0c-3.219,0-5.829-2.61-5.829-5.828V11.657
+        c0-3.219,2.609-5.828,5.829-5.828l0,0c3.219,0,5.828,2.609,5.828,5.828V180.262z"/>
+     
+        <!-- F -->
+        <path :class="{on:'013456789'.includes(data)}" d="M222.309,386.822c0,3.218-2.608,5.828-5.827,5.828l0,0c-3.219,0-5.829-2.61-5.829-5.828V218.216
+        c0-3.219,2.609-5.828,5.829-5.828l0,0c3.219,0,5.827,2.609,5.827,5.828V386.822z"/>
+      </g>
+      
+      <!-- 這邊要再看一下 -->
+      <g v-else>
+        <circle class="on" cx="111.154" cy="95.959" r="13"/>
+      <circle class="on" cx="111.154" cy="302.519" r="13"/>
+      </g>
+      </svg>
+    </div>
+
+  </script>
+
+  <!-- 程式碼 -->
+  <script>
+    const { ref, computed } = Vue
+    Vue.createApp({
+      setup() {
+        const counter = ref(0)
+        const counting = ref(false)
+
+        // 這邊是timer = 0? 給他一個變數
+        let timer = 0
+        const start = () => {
+          timer = setInterval(() => {
+            counter.value++
+          }, 10)
+        }
+
+        const stop = () => {
+          clearInterval(timer)
+        }
+
+        const reset = () => {
+          stop()
+          counter.value = 0
+        }
+
+        // 這邊刻板的概念是???
+        const display = computed(() => {
+          // padStart(2,0) 補成兩位數，用0去補 (從前面補)
+          return Math.floor(counter.value / 100).toString() + ':' + (counter.value % 100).toString().padStart(2, 0)
+
+        })
+
+
+        return {
+          counter, timer, start, stop, reset, display
+        }
+      }
+    })
+      .component('Number', {
+        template: '#number',
+        props: ['data']
+      })
+      .mount('#app')
+
+
+  </script>
+</body>
+
+</html>

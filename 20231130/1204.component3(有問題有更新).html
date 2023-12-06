@@ -47,7 +47,8 @@
 
         setup(props, { emit }) {
           const change = () => {
-            emit('apple', props.number += 100)
+            // 不能直接改props的值
+            emit('apple', props.number + 100)
           }
           return { change }
         }
