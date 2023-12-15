@@ -1,0 +1,31 @@
+{
+  "name": "pomodoro",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@mdi/font": "7.0.96",
+    "@vueuse/core": "^10.7.0",
+    "pinia": "^2.0.23",
+    "pinia-plugin-persistedstate": "^3.2.0",
+    "roboto-fontface": "*",
+    "vue": "^3.2.0",
+    "vue-router": "^4.0.0",
+    "vuetify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/eslint-config-standard": "^8.0.1",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "unplugin-fonts": "^1.0.3",
+    "vite": "^4.2.0",
+    "vite-plugin-pwa": "^0.17.4",
+    "vite-plugin-radar": "^0.9.2",
+    "vite-plugin-vuetify": "^1.0.0"
+  }
+}
