@@ -1,0 +1,29 @@
+{
+  "type": "module",
+  "name": "linebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "distance.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.54.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.3.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "linebot": "^1.6.1",
+    "lodash": "^4.17.21",
+    "node-schedule": "^2.1.1",
+    "puppeteer": "^21.5.2"
+  }
+}

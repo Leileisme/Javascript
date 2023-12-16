@@ -1,0 +1,1469 @@
+[
+  {
+    "type": "flex",
+    "altText": "蔬果時價",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/FB11/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "花椰菜-青梗",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "44 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "22.1 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/FB1/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "花椰菜-青梗",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "31 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "15.3 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LB21/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "小白菜-蚵仔白",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "29 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "14.5 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LI2/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "萵苣菜-結球萵",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "23 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "11.3 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/FM1/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "菜豆-白色",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "29 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "14.6 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "type": "flex",
+    "altText": "蔬果時價",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LT3/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "海菜-水蓮",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "95 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "47.7 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LB22/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "小白菜-蚵仔白",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "24 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "12.2 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/SX1/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "芽菜類-綠豆芽",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "16 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "8 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LI5/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "萵苣菜-油麥菜",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "21 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "10.7 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LF1/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "蕹菜-大葉",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "18 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "9.1 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "type": "flex",
+    "altText": "蔬果時價",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LJ3/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "芥菜-大芥菜",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "21 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "10.3 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LK3/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "芥藍菜-芥藍芽",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "58 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "29.1 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LG1/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "芹菜-青梗",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "40 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "19.9 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/LI3/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "萵苣菜-本島圓葉",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "40 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "20 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://www.twfood.cc/img/code/SX2/_.jpg",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#212529",
+            "contents": [
+              {
+                "type": "text",
+                "text": "芽菜類-黃豆芽",
+                "weight": "bold",
+                "color": "#ffffff",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "預估零售價",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "33 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "平均批發價(本周)",
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 6
+                      },
+                      {
+                        "type": "text",
+                        "text": "16.5 ",
+                        "wrap": true,
+                        "color": "#ffc107",
+                        "weight": "bold",
+                        "size": "lg",
+                        "flex": 3,
+                        "margin": "xxl"
+                      },
+                      {
+                        "type": "text",
+                        "text": "元 /台斤",
+                        "wrap": true,
+                        "color": "#cccccc",
+                        "size": "sm",
+                        "flex": 3
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

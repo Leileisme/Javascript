@@ -1,0 +1,7 @@
+.env
+# 外掛程式很大不要
+node_modules
+# 忽略掉dump裡面的所有東西
+dump/*.json
+# 為了讓git保留這料夾，要建立的檔案
+!dump/.gitkeep
