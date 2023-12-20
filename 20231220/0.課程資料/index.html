@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <form @submit.prevent="create">
+      <input type="text" v-model="form.account">
+      <input type="email" v-model="form.email">
+      <input type="submit" value="新增">
+    </form>
+    <table border="1">
+      <tr v-for="(user, i) in users" :key="user._id">
+        <td>{{ user.account }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <input type="button" value="x" @click="del(i)">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js' integrity='sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==' crossorigin='anonymous'></script>
+  <script>
+    const { createApp, reactive, onMounted } = Vue
+
+    createApp({
+      setup () {
+        const users = reactive([])
+        const form = reactive({
+          account: '',
+          email: ''
+        })
+
+        const create = async () => {
+          try {
+            const { data } = await axios.post('http://localhost:4000', form)
+            users.push(data.result)
+          } catch (error) {
+            console.log(error)
+          }
+        }
+
+        const del = async (i) => {
+          try {
+            await axios.delete('http://localhost:4000/' + users[i]._id)
+            users.splice(i, 1)
+          } catch (error) {
+            console.log(error)
+          }
+        }
+
+        onMounted(async () => {
+          try {
+            const { data } = await axios.get('http://localhost:4000')
+            users.push(...data.result)
+          } catch (error) {
+            console.log(error)
+          }
+        })
+
+        return {
+          users,
+          form,
+          create,
+          del
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
