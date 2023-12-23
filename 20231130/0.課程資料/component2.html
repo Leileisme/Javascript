@@ -28,6 +28,7 @@
     ></Card>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  
   <script type="text/x-template" id="card">
     <div class="card">
       <img :src="img" alt="">
@@ -37,6 +38,7 @@
       <input type="button" value="看資料" @click="info">
     </div>
   </script>
+  
   <script>
     const { reactive, toRefs, toRef } = Vue
     Vue.createApp({

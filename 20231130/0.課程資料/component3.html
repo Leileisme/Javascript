@@ -6,6 +6,7 @@
   <title>Document</title>
 </head>
 <body>
+ 
   <div id="app">
     <Plus :number="num" @apple="onPlusApple"></Plus>
     <!-- 
@@ -14,18 +15,24 @@
     -->
     <plus-new v-model:number="num"></plus-new>
   </div>
+  
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+  
   <script type="text/x-template" id="plus">
     <input type="button" :value="number" @click="change">
   </script>
+
+
   <script type="text/x-template" id="plus-new">
     <input type="button" :value="n" @click="change">
   </script>
+  
   <script>
     const { ref, computed } = Vue
     Vue.createApp({
       setup () {
         const num = ref(100)
+        
         // 處理 Plus 元件發生的 apple 事件
         // event 指事件帶出的資料
         const onPlusApple = (event) => {

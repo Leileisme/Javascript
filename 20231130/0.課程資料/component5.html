@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
     <Btn></Btn>
@@ -12,6 +14,7 @@
     <Btn>
       <img src="./img/1.jpg" width="50">
     </Btn>
+
     <Card>
       <!-- 沒有 template 標籤，就會放到預設插槽 -->
       <h1>內容</h1>
@@ -20,6 +23,8 @@
       <!-- 將 template 內的內容放到名為 footer 的插槽 -->
       <template #footer>底部</template>
     </Card>
+
+
     <Product>
       <!-- 
         使用預設插槽，並取出插槽提供的資料，命名為 data
@@ -30,13 +35,20 @@
         <p>{{ data.price }}</p>
       </template>
       <!-- 使用名為 footer 的插槽，將插槽提供名為 info 的資料取出 -->
-      <template #footer="{ info }">
+      <template #footer="{ info,title }">
         <!-- 點按鈕執行元件內的 info function -->
+        <h1>{{title}}</h1>
         <input type="button" value="按鈕" @click="info">
       </template>
     </Product>
   </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js' integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ==' crossorigin='anonymous'></script>
+
+  <!-- Vue -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
+    crossorigin='anonymous'></script>
+
+  <!-- template -->
   <script type="text/x-template" id="btn">
     <button>
       按鈕
@@ -48,6 +60,7 @@
       <slot>123</slot>
     </button>
   </script>
+
   <script type="text/x-template" id="card">
     <div class="card">
       <div class="card-title">
@@ -64,6 +77,7 @@
       </div>
     </div>
   </script>
+
   <script type="text/x-template" id="product">
     <div class="product">
       商品
@@ -75,13 +89,14 @@
       <!-- 
         插槽名為 footer，提供名為 info 的資料，值是元件內的 function
       -->
-      <slot name="footer" :info="info"></slot>
+      <slot name="footer" :info="info" :title="title"></slot>
     </div>
   </script>
+
   <script>
     const { ref } = Vue
     Vue.createApp({
-      
+
     })
       .component('Btn', {
         template: '#btn'
@@ -91,7 +106,7 @@
       })
       .component('Product', {
         template: '#product',
-        setup () {
+        setup() {
           const title = ref('商品')
           const price = ref(100)
           const info = () => {
@@ -103,4 +118,5 @@
       .mount('#app')
   </script>
 </body>
+
 </html>

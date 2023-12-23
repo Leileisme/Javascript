@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <Plus01 :number="num" @apple="onApple"></Plus01>
+    <Plus02 v-model:number="num2"></Plus02>
+    <Plus03 v-model:number="num3"></Plus03>
+  </div>
+
+
+  <!-- Vue -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.13/vue.global.min.js'
+    integrity='sha512-3uydLDwuIAN29hgNdpLr1JG62FexPLeC52NahjCt1H7lHG/EYprZl3ibkwe668/KIQuqBmLPFVZaTxlUmN5Q3Q=='
+    crossorigin='anonymous'></script>
+
+  <!-- template -->
+  <script type="text/x-template" id="plus01">
+    <input type="button" :value="number" @click="change">
+  </script>
+
+  <script type="text/x-template" id="plus02">
+    <input type="button" :value="n" @click="change">
+  </script>
+
+  <script type="text/x-template" id="plus03">
+    <input type="button" :value="n2" @click="change">
+  </script>
+
+
+
+  <!-- 程式碼 -->
+  <script>
+    const { ref, computed } = Vue
+    Vue.createApp({
+      setup() {
+        const num = ref(100)
+        const num2 = ref(100)
+        const num3 = ref(100)
+
+
+        const onApple = (e) => {
+          num.value = e
+        }
+        return { num, num2, num3, onApple }
+      }
+    })
+
+      .component('Plus01', {
+        template: '#plus01',
+        props: ['number'],
+        setup(props, { emit }) {
+          const change = () => {
+            emit('apple', props.number + 100)
+          }
+          return { change }
+        }
+      })
+
+
+      .component('Plus02', {
+        template: '#plus02',
+        props: ['number'],
+        setup(props, { emit }) {
+          const n = computed({
+            get() {
+              return props.number
+            },
+            // set(value) {
+            //   emit('update:number', value + 200)
+            // }
+          })
+          const change = () => {
+            emit('update:number', n.value + 200)
+          }
+          return { n, change }
+        }
+      })
+
+      .component('Plus03', {
+        template: '#plus03',
+        props: ['number'],
+        setup(props, { emit }) {
+          const n2 = computed({
+            get() {
+              return props.number
+            },
+            set(value) {
+              emit('update:number', value)
+            }
+          })
+          const change = () => {
+            n2.value += 300
+          }
+          return { n2, change }
+        }
+      })
+      .mount('#app')
+
+
+  </script>
+</body>
+
+</html>
