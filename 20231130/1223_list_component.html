@@ -3,58 +3,213 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=
-  
-  , initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 
 <body>
   <div id="app">
     <form @submit.prevent="add">
-      <input type="text" :value="item">
-      <input type="button" value="新增">
+      <input type="text" v-model="input">
+      <input type="submit" value="新增">
     </form>
 
     <hr>
 
-    <input type="button" value="全部標記已完成" @click="">
-    <input type="button" value="全部標記未完成" @click=""><br>
+    <form @submit.prevent="search">
+      <input type="text" v-model="inputSearch">
+      <!-- keydown為何無效? -->
+      <input type="submit" value="搜尋" @keydown.esc="celSearch">
+      <input v-if="isSearch" type="button" value="取消" @click="celSearch">
+    </form>
 
-    <input type="button" value="顯示全部" @click="">
-    <input type="button" value="顯示已完成" @click="">
-    <input type="button" value="顯示未完成" @click=""><br>
-
-    <input type="button" value="清除全部" @click="">
-    <input type="button" value="清除已完成" @click="">
-    <input type="button" value="清除未完成" @click=""><br>
 
     <hr>
 
-    目前顯示{{}},共{{}}個
+    <input type="button" value="全部標記已完成" @click="allDone">
+    <input type="button" value="全部標記未完成" @click="allNot"><br>
 
-    <ul>
-      <li v-for="(item,i) in filter">
-        <input type="checkbox" v-model="item.done">
-        <del v-if="done">{{item.text}}</del>
-        <span v-else>{{item.text}}</span>
-        <input type="button" value="X" @click="del">
-      </li>
-    </ul>
+    <input type="button" value="顯示全部" @click="filter='全部'">
+    <input type="button" value="顯示已完成" @click="filter='已完成'">
+    <input type="button" value="顯示未完成" @click="filter='未完成'"><br>
+
+    <input type="button" value="清除全部" @click="clear('全部')">
+    <input type="button" value="清除已完成" @click="clear('已完成')">
+    <input type="button" value="清除未完成" @click="clear('未完成')"><br>
+
+    <hr>
+
+
+
+    <span v-if="!isSearch">
+      目前顯示 {{filter}} ,共 {{filterItem.length}} 個
+      <ul>
+        <li v-for="(item,i) in filterItem" :key="item.id">
+          <input type="checkbox" v-model="item.done">
+          <del v-if="item.done">{{item.text}}</del>
+          <span v-else>{{item.text}}</span>
+          <input type="button" value="X" @click="del(item.id,i)">
+        </li>
+      </ul>
+    </span>
+
+    <span v-else>
+      搜尋「{{searchText}}」結果 {{filter}} ,共 {{searchItemsFilter.length}} 個
+      <ul>
+        <li v-for="(item,i) in searchItemsFilter" :key="item.id">
+          <input type="checkbox" v-model="item.done">
+          <del v-if="item.done">{{item.text}}</del>
+          <span v-else>{{item.text}}</span>
+          <input type="button" value="X" @click="del(item.id)">
+        </li>
+      </ul>
+    </span>
+
 
   </div>
 
 
   <!-- Vue -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.13/vue.global.min.js'
-    integrity='sha512-3uydLDwuIAN29hgNdpLr1JG62FexPLeC52NahjCt1H7lHG/EYprZl3ibkwe668/KIQuqBmLPFVZaTxlUmN5Q3Q=='
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.9/vue.global.min.js'
+    integrity='sha512-01DXK8J/RTf+INWJaGSa1a8ePsny+wTV63r5e+qcW4Gx7cgYKeX7uNvJminP4WvBthCi03aWdTmGLcZk/DTKKQ=='
     crossorigin='anonymous'></script>
 
-  <!-- template -->
-  <script></script>
-
-
   <!-- 程式碼 -->
+  <script>
+    const { createApp, ref, reactive, computed } = Vue
+
+    createApp({
+      setup() {
+        const input = ref('')
+        const items = reactive([])
+        let filter = ref('全部')
+        // 為什麼Vue的id數字不會增加，但item的會?
+        let id = 1
+        let isSearch = ref(false)
+        const inputSearch = ref('')
+        const searchText = ref('')
+        const searchItems = reactive([])
+
+        const add = () => {
+          if (input.value.length <= 2) return
+
+          items.push({
+            id: id++,
+            text: input.value,
+            done: false,
+            edit: false,
+            editText: input.value,
+
+          })
+          input.value = ''
+        }
+
+        const allDone = () => {
+          items.forEach(el => {
+            el.done = true
+          });
+        }
+
+        const allNot = () => {
+          items.forEach(el => {
+            el.done = false
+          })
+        }
+
+        const clear = (value) => {
+          if (isSearch.value === false) {
+            const newItems = items.filter(item => {
+              if (value === '全部') return false
+              else if (value === '已完成') return item.done === false
+              else return item.done === true
+            })
+            items.splice(0, items.length, ...newItems)
+          } else {
+            const newSearchItems = searchItems.filter(item => {
+              if (value === '全部') return false
+              else if (value === '已完成') return item.done === false
+              else return item.done === true
+            })
+            searchItems.splice(0, searchItems.length, ...newSearchItems)
+            const saveItems = items.concat(searchItems).filter((item, index, self) => {
+              // index0f 不太懂???
+              return self.indexOf(item) !== index
+            })
+
+            const addItems = items.concat(saveItems).filter((item, index, self) => {
+              return self.indexOf(item) === index
+            })
+            // 失敗???
+            items.splice(0, items.length, ...addItems)
+            items.push(...saveItems)
+
+          }
+
+
+        }
+
+        const celSearch = () => {
+          inputSearch.value = ''
+          searchText.value = ''
+          isSearch.value = false
+        }
+
+        const search = () => {
+          if (inputSearch.value === '') {
+            searchItems.splice(0, searchItems.length)
+            inputSearch.value = ''
+            searchText.value = ''
+            isSearch.value = false
+          } else {
+            searchItems.splice(0, searchItems.length)
+            searchText.value = inputSearch.value
+            searchItems.push(...items.filter(item =>
+              item.text.includes(inputSearch.value)))
+            isSearch.value = true
+            inputSearch.value = ''
+          }
+
+
+        }
+
+
+        const del = (id) => {
+          const i = items.findIndex(item => {
+            return item.id === id
+          })
+          const j = searchItems.findIndex(item => {
+            return item.id === id
+          })
+
+          items.splice(i, 1)
+          // 為什麼這邊刪掉後，items的也會刪掉?
+          searchItems.splice(j, 1)
+          console.log(items, 'items')
+          console.log(searchItems, 'searchItems')
+        }
+
+        const filterItem = computed(() => {
+          return items.filter(item => {
+            if (filter.value === '全部') return true
+            else if (filter.value === '已完成') return item.done
+            else if (filter.value === '未完成') return !item.done
+          })
+        })
+
+        const searchItemsFilter = computed(() => {
+          return searchItems.filter(item => {
+            if (filter.value === '全部') return true
+            else if (filter.value === '已完成') return item.done
+            else return !item.done
+          })
+        })
+
+        return { searchItemsFilter, celSearch, searchText, isSearch, searchItems, input, items, id, add, filterItem, inputSearch, filter, del, allDone, allNot, clear, search }
+      }
+    })
+
+      .mount('#app')
+  </script>
 </body>
 
 </html>
