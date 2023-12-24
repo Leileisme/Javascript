@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  
+  , initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="add">
+      <input type="text" :value="item">
+      <input type="button" value="新增">
+    </form>
+
+    <hr>
+
+    <input type="button" value="全部標記已完成" @click="">
+    <input type="button" value="全部標記未完成" @click=""><br>
+
+    <input type="button" value="顯示全部" @click="">
+    <input type="button" value="顯示已完成" @click="">
+    <input type="button" value="顯示未完成" @click=""><br>
+
+    <input type="button" value="清除全部" @click="">
+    <input type="button" value="清除已完成" @click="">
+    <input type="button" value="清除未完成" @click=""><br>
+
+    <hr>
+
+    目前顯示{{}},共{{}}個
+
+    <ul>
+      <li v-for="(item,i) in filter">
+        <input type="checkbox" v-model="item.done">
+        <del v-if="done">{{item.text}}</del>
+        <span v-else>{{item.text}}</span>
+        <input type="button" value="X" @click="del">
+      </li>
+    </ul>
+
+  </div>
+
+
+  <!-- Vue -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.13/vue.global.min.js'
+    integrity='sha512-3uydLDwuIAN29hgNdpLr1JG62FexPLeC52NahjCt1H7lHG/EYprZl3ibkwe668/KIQuqBmLPFVZaTxlUmN5Q3Q=='
+    crossorigin='anonymous'></script>
+
+  <!-- template -->
+  <script></script>
+
+
+  <!-- 程式碼 -->
+</body>
+
+</html>
