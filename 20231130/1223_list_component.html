@@ -41,7 +41,7 @@
 
 
 
-    <span v-if="!isSearch">
+    <span>
       目前顯示 {{filter}} ,共 {{filterItem.length}} 個
       <ul>
         <li v-for="(item,i) in filterItem" :key="item.id">
@@ -53,7 +53,7 @@
       </ul>
     </span>
 
-    <span v-else>
+    <!-- <span v-else>
       搜尋「{{searchText}}」結果 {{filter}} ,共 {{searchItemsFilter.length}} 個
       <ul>
         <li v-for="(item,i) in searchItemsFilter" :key="item.id">
@@ -63,7 +63,7 @@
           <input type="button" value="X" @click="del(item.id)">
         </li>
       </ul>
-    </span>
+    </span> -->
 
 
   </div>
@@ -142,7 +142,6 @@
             // 失敗???
             items.splice(0, items.length, ...addItems)
             items.push(...saveItems)
-
           }
 
 
@@ -190,6 +189,7 @@
 
         const filterItem = computed(() => {
           return items.filter(item => {
+            if (!item.text.includes(searchText.value)) return false
             if (filter.value === '全部') return true
             else if (filter.value === '已完成') return item.done
             else if (filter.value === '未完成') return !item.done
