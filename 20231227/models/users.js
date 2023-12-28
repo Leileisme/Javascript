@@ -69,6 +69,7 @@ schema.pre('save', function (next) {
     } else {
       // 不成功的話產生出一個 mongoose 驗證錯誤
       const error = new Error.ValidationError(null)
+      // ???
       error.addError('password', new Error.ValidatorError({ message: '密碼長度錯誤' }))
       // 繼續下一步，拋出錯誤
       next(error)
