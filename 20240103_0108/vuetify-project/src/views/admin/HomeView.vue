@@ -1,3 +1,3 @@
 <template lang="pug">
-h1 HomeView.vue
+h1 admin
 </template>

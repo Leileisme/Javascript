@@ -26,7 +26,7 @@ VAppBar(color="primary")
     template(v-else)
       template(v-for="item in navItems" :key="item.to")
         VBtn(:to='item.to' :prepend-icon="item.icon" v-if="item.show") {{ item.text }}
-        VBtn(prepend-icon="mdi-logout" v-if="user.isLogin") 登出
+      VBtn(prepend-icon="mdi-logout" v-if="user.isLogin") 登出
 
 //- 頁面內容
 VMain

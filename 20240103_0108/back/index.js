@@ -3,6 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import routerUsers from './routes/users.js'
+import routeProducts from './routes/products.js'
 import './passport/passport.js'
 
 const app = express()
@@ -12,7 +13,7 @@ app.use(
   cors({
     // origin = 請求的來源
     // callback(錯誤,是否允許)
-    origin (origin, callback) {
+    origin(origin, callback) {
       // 後端的 origin 通常都是 undefined (除非特別設定)
       if (origin === undefined || origin.includes('github.io') || origin.includes('localhost')) {
         callback(null, true)
@@ -39,6 +40,7 @@ app.use((_, req, res, next) => {
 })
 
 app.use('/users', routerUsers)
+app.use('/products', routeProducts)
 
 // 所有的請求方式
 // * 代表任意路徑
